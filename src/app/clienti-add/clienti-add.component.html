@@ -1,0 +1,70 @@
+<section class="content-main" style="max-width: 760px;background-color: aliceblue; margin-top: 20px;">
+  <h1 class="content-title text-dark text-center">{{!clientiForm.form.valid ? 'Nuovo cliente' : 'Modifica cliente'}}</h1>
+  <div class="content-header">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #clientiForm="ngForm">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" [(ngModel)]="cliente.nome" class="form-control" id="nome" name="nome"
+          placeholder="Inserisci il nome" required #nome="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="cognome">Cognome</label>
+        <input type="text" [(ngModel)]="cliente.cognome" class="form-control" id="cognome" name="cognome"
+          placeholder="Inserisci il cognome" required #cognome="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="dataNascita">Data di nascita</label>
+        <input type="date" [(ngModel)]="cliente.dataNascita" [ngModel]="cliente.dataNascita | date: 'dd-MM-y'" class="form-control" id="dataNascita" name="dataNascita"
+          placeholder="Inserisci la data di nascita" required #dataNascita="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="luogoDiNascita">Luogo Di Nascita</label>
+        <input type="text" [(ngModel)]="cliente.luogoNascita" class="form-control" id="luogoDiNascita"
+          name="luogoDiNascita" placeholder="Inserisci il luogo di nascita" required #luogoDiNascita="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="codiceFiscale">Codice Fiscale</label>
+        <input type="text" [(ngModel)]="cliente.codiceFiscale" class="form-control" id="codiceFiscale"
+          name="codiceFiscale" placeholder="Inserisci il codice fiscale" required #codiceFiscale="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="nazionalita">Nazionalita</label>
+        <input type="text" [(ngModel)]="cliente.nazionalita" class="form-control" id="nazionalita" name="nazionalita"
+          placeholder="Inserisci la nazionalita" required #nazionalita="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="scadenzaCertificato">Scadenza Certificato</label>
+        <input type="date" [(ngModel)]="cliente.scadenzaCertificato" class="form-control" id="scadenzaCertificato"
+          name="scadenzaCertificato" placeholder="Inserisci la scadenza del certificato" required #scadenzaCertificato="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="indirizzo">Indirizzo</label>
+        <input type="text" [(ngModel)]="cliente.indirizzo" class="form-control" id="indirizzo" name="indirizzo"
+          placeholder="Inserisci l'ndirizzo" required #indirizzo="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" [(ngModel)]="cliente.email" class="form-control" id="email" name="email"
+          placeholder="Inserisci l'email" required #email="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="numeroTelefono">Numero Di Telefono</label>
+        <input type="text" [(ngModel)]="cliente.numTelefono" class="form-control" id="numeroTelefono"
+          name="numeroTelefono" placeholder="Inserisci il numero di telefono" required #numeroTelefono="ngModel">
+      </div>
+      <div class="row mt-4">
+        <div class="col-3 ms-5">
+          <button type="submit" [disabled]="!clientiForm.form.valid" class="btn btn-success">Salva</button>
+        </div>
+        <div class="col-4 ms-5">
+          <button type="button" class="btn btn-secondary" (click)="resetForm(clientiForm.form)">Reset</button>
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-primary" routerLink="/">Annulla</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</section>

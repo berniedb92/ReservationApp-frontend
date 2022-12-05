@@ -1,0 +1,51 @@
+<h2 class="text-dark">Dettaglio cliente</h2>
+<table class="table table-white table-borderless" *ngIf="cliente">
+  <tbody class="table-secondary">
+    <tr>
+    <th class="table-primary">Codice fiscale</th>
+    <td>{{cliente.codiceFiscale}}</td>
+    </tr>
+
+    <tr>
+    <th class="table-primary">Residenza</th>
+    <td class="table-border">{{cliente.indirizzo}}</td>
+    </tr>
+
+    <tr>
+    <th class="table-primary">Scadenza certificato</th>
+    <td>
+    <!-- [ngClass]="{'table-danger': cliente.isScad, 'table-white': !cliente.isScad}"> -->
+        {{cliente.scadenzaCertificato}}
+    </td>
+    <!-- <div class="col-4" *ngIf="cliente.isScad">
+      <img width="25" src="https://cdn-icons-png.flaticon.com/512/564/564619.png"/>
+    </div> -->
+    </tr>
+
+    <tr>
+    <th class="table-primary">Telefono</th>
+    <td>{{cliente.numTelefono}}</td>
+    </tr>
+
+    <tr>
+    <th class="table-primary">Luogo di nascita</th>
+    <td>{{cliente.luogoNascita}}</td>
+    </tr>
+
+    <tr>
+    <th class="table-primary">Nazionalità</th>
+    <td>{{cliente.nazionalita}}</td>
+    </tr>
+
+
+    <tr>
+      <th class="table-primary"><a class="btn btn-sm btn-primary w-10" [routerLink]="['/cliente-list']">Indietro</a></th>
+      <td>
+    </td>
+    </tr>
+
+  </tbody>
+</table>
+<div *ngIf="!cliente">
+  <h2>Nessun cliente trovato!!</h2>
+</div>

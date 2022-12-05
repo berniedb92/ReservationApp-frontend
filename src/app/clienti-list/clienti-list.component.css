@@ -1,0 +1,133 @@
+/*
+.button-details {
+  background-color: #4CAF50;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 8.8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button-delete {
+  background-color: #d31010;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 8.8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button-update {
+  background-color: darkmagenta;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 8.8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.table-bordered table-striped{
+  color: blueviolet;
+  background-color: aquamarine;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+  text-align: right;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}*/
+.form-check {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 1px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.col-4 {
+  margin-bottom: 10px;
+  float: right;
+}
+
+.col-2 {
+  min-width: 300px;
+  position: absolute;
+  text-align: center;
+  top: 16%;
+  left: 36%;
+  transform: translate(-50%, -50%);
+  font-size: 15px
+}
+
+.form-check-input {
+  background-color: black;
+}
+
+.warning-8{
+  background-color: white;
+  border: 1px white;
+}
+
+.col-3{
+  width: 25%;
+  float: right;
+  position: absolute;
+  text-align: left;
+  top: 27%;
+  left: 71%;
+  transform: translate(-50%, -50%);
+  margin-top: 4px;
+}
+
+.ngx-pagination{
+  margin-bottom:0 !important;
+}
+.ngx-pagination li{
+  margin-right: -1px !important;
+}
+.ngx-pagination li.current{
+  background-color: #007bff !important;
+  border: 1px solid #007bff !important;
+  padding: 6px 12px !important;
+  z-index: 999999 !important;
+  position: relative;
+}
+.ngx-pagination li a:focus{
+  outline:none;
+}
+.ngx-pagination a, .ngx-pagination button{
+  color: #007bff !important;
+  background-color: #fff !important;
+  border: 1px solid #dee2e6 !important;
+  padding: 6px 12px !important;
+
+}
+.ngx-pagination .disabled{
+  color: #6c757d !important;
+  pointer-events: none  !important;
+  cursor: auto  !important;
+  background-color: #fff  !important;
+  border: 1px solid #dee2e6  !important;
+  padding: 6px 12px !important;
+}

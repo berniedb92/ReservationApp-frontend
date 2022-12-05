@@ -1,0 +1,27 @@
+<h2 class="text-dark">Nuovo campo</h2>
+<div class="card my-3">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="numero">Numero</label>
+        <input type="text" [(ngModel)]="campo.numero" class="form-control" id="numero" name="numero"
+          placeholder="Enter numero" required #numero="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="superficie">Superficie</label>
+        <input type="text" [(ngModel)]="campo.superficie" class="form-control" id="superficie" name="superficie"
+          placeholder="Enter superficie" required #superficie="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="sport">Sport</label>
+        <input type="text" [(ngModel)]="campo.sport" class="form-control" id="sport" name="sport"
+          placeholder="Enter sport" required #sport="ngModel">
+      </div>
+      <div class="col-6">
+        <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-success">Salva</button>
+        <!-- <button class="btn btn-secondary" (click)="resetForm(userForm)">Reset</button> -->
+        <button class="btn btn-primary" (click)="close()">Annulla</button>
+      </div>
+    </form>
+  </div>
+</div>

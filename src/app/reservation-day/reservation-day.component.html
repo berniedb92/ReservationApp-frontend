@@ -1,0 +1,93 @@
+<h1 class="text-dark mt-3">Prenotazioni del giorno</h1>
+<!--Ordina per :
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="1"
+    (change)="sortChange(1)" checked>
+  <label class="form-check-label" for="flexRadioDefault1">
+    Cognome
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="2"
+    (change)="sortChange(2)">
+  <label class="form-check-label" for="flexRadioDefault2">
+    Data di Nascita
+  </label>
+</div>
+
+<div class="col-4">
+  <!-- <label for="surname_filter" class="form-label">Filtra cliente per cognome</label> -->
+  <!--<input type="text" class="form-control" id="surname_filter" #surname_filter
+    (keyup)="filterClienteByCognome(surname_filter.value)">
+  <div id="emailHelp" class="form-text">inserisci cognome cliente per filtrare.</div>
+</div>-->
+<!-- <div class="col-2 justify-content-left">
+  <button (click)="filterByscadenzaCertificato()" class="btn btn-secondary btn-sm" style="margin-left: 10px">
+    <fa-icon [icon]="faPager"></fa-icon>
+  </button>
+  <button (click)="ngOnInit()" class="btn btn-dark btn-sm" style="margin-left: 10px">
+    <fa-icon [icon]="faEraser"></fa-icon>
+  </button>
+</div> -->
+<table class="table table-bordered table-striped" >
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Data</th>
+      <th scope="col">Inizio</th>
+      <th scope="col">Fine</th>
+      <th scope="col">Modalita</th>
+      <th scope="col">Cliente 1</th>
+      <th scope="col">Cliente 2</th>
+      <th scope="col">Campo</th>
+      <!-- <th scope="col">Azioni</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let p of prenotazioni | paginate: {itemsPerPage: pageSize, currentPage: pageIndex}">
+      <tr>
+        <td>{{ p.data | date :'d/MM/yy' }}</td>
+        <td>{{ p.oraInizio | date :'HH:mm' }}</td>
+        <td>{{ p.oraFine | date :'HH:mm' }}</td>
+        <td>{{ p.modalita }}</td>
+        <td>{{ p.cliente1.nome + ' ' + p.cliente1.cognome }}</td>
+        <td>{{ p.cliente2.nome + ' ' + p.cliente2.cognome }}</td>
+        <td>{{ p.campo.numero + ' ' + p.campo.superficie }}</td>
+
+        <!-- <td>
+          <div style="align-content: center;">
+            <button [routerLink]="['/cliente-info', cl?.id]" class="btn btn-info btn-sm" style="margin-left: 10px">
+              <fa-icon [icon]="faInfoCircle"></fa-icon>
+            </button>
+            <button [routerLink]="['/cliente-info',cl.id,'modifica']" class="btn btn-success btn-sm"
+              style="margin-left: 10px">
+              <fa-icon [icon]="faPen"></fa-icon>
+            </button>
+            <button (click)="deleteCliente(cl.id)" class="btn btn-danger btn-sm" style="margin-left: 10px" id="myBtn">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+        </td> -->
+        <!-- <td class="warning-8">
+            <img *ngIf="cl.isScad" width="20" src="https://cdn-icons-png.flaticon.com/512/564/564619.png"/>
+          </td> -->
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<nav class="float-end mt-3" aria-label="Page navigation">
+  <pagination-controls
+            class="my-pagination"
+            (pageChange)="pageIndex = $event"
+            previousLabel="Precedente"
+            nextLabel="Successivo">
+ </pagination-controls>
+</nav>
+
+<label style="margin-top: 8px; margin-left: 10px;">Clienti per pagina:</label>
+<select class="form-select form-select-sm" style="width:2.5%; margin-left: 10px;" #size [(ngModel)]="pageSize">
+  <option value=10>10</option>
+  <option selected value=20>20</option>
+  <option value=30>30</option>
+</select>
+

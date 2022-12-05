@@ -1,0 +1,20 @@
+<h1 class="text-dark">Compleanni di oggi</h1>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Cognome</th>
+        <th scope="col">Data di nascita</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let cl of clientiComplex">
+      <tr>
+        <td>{{ cl.nome }}</td>
+        <td>{{ cl.cognome }}</td>
+        <td>{{ cl.dataNascita }}</td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  {{errore}}
