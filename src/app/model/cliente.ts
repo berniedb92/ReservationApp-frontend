@@ -8,12 +8,7 @@ export class Cliente {
     email!: string;
     codiceFiscale!: string;
     nazionalita!: string;
-    scadenzaCertificato!: Date;
     luogoNascita!: string;
     indirizzo!: string;
     numTelefono!: string;
-
-    setDate(dateNew: number) {
-      this.dataNascita.setFullYear(dateNew)
-    }
 }
