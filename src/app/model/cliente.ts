@@ -1,4 +1,4 @@
-import { ClientiInterface } from "../data-table/data-table-datasource";
+
 
 export class Cliente {
     id!: number;
@@ -13,7 +13,4 @@ export class Cliente {
     indirizzo!: string;
     numTelefono!: string;
 
-    setDate(dateNew: number) {
-      this.dataNascita.setFullYear(dateNew)
-    }
 }

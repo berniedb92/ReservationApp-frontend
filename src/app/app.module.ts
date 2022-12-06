@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
-import { DataTableComponent } from './data-table/data-table.component';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -27,13 +27,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ReservationAddComponent } from './reservation-add/reservation-add.component';
 import { ReservationDayComponent } from './reservation-day/reservation-day.component';
-import { ScheduleModule,RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DataTableComponent,
     BirthdayComponent,
     ClientiListComponent,
     ClientiAddComponent,
@@ -59,8 +58,7 @@ import { ScheduleModule,RecurrenceEditorModule, DayService, WeekService, WorkWee
     MatPaginatorModule,
     MatSortModule,
     NgxPaginationModule,
-    ScheduleModule,
-    RecurrenceEditorModule
+ 
   ],
   providers: [UtenteAnonimoService],
   bootstrap: [AppComponent]

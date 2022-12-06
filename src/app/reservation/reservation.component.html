@@ -76,24 +76,6 @@
           <td>{{ p.cliente1.nome + ' ' + p.cliente1.cognome }}</td>
           <td>{{ p.cliente2.nome + ' ' + p.cliente2.cognome }}</td>
           <td>{{ p.campo.numero + ' ' + p.campo.superficie }}</td>
-
-          <!-- <td>
-            <div style="align-content: center;">
-              <button [routerLink]="['/cliente-info', cl?.id]" class="btn btn-info btn-sm" style="margin-left: 10px">
-                <fa-icon [icon]="faInfoCircle"></fa-icon>
-              </button>
-              <button [routerLink]="['/cliente-info',cl.id,'modifica']" class="btn btn-success btn-sm"
-                style="margin-left: 10px">
-                <fa-icon [icon]="faPen"></fa-icon>
-              </button>
-              <button (click)="deleteCliente(cl.id)" class="btn btn-danger btn-sm" style="margin-left: 10px" id="myBtn">
-                <fa-icon [icon]="faTrash"></fa-icon>
-              </button>
-            </div>
-          </td> -->
-          <!-- <td class="warning-8">
-              <img *ngIf="cl.isScad" width="20" src="https://cdn-icons-png.flaticon.com/512/564/564619.png"/>
-            </td> -->
         </tr>
       </ng-container>
     </tbody>
@@ -114,8 +96,5 @@
     <option selected value=20>20</option>
     <option value=30>30</option>
   </select>
-  <div class="row" style="max-width: 1060px; height: 20px;">
-    <ejs-schedule  [selectedDate]="selectedDate"
-    [eventSettings]="eventSettings"></ejs-schedule>
-  </div>
+
 

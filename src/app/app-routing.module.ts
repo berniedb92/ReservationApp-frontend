@@ -8,7 +8,7 @@ import { ClientiListComponent } from './clienti-list/clienti-list.component';
 import { InfoComponent } from './info/info.component';
 import { CampiListComponent } from './campi-list/campi-list.component';
 import { CampiAddComponent } from './campi-add/campi-add.component';
-import { DataTableComponent } from './data-table/data-table.component';
+
 import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
@@ -19,7 +19,6 @@ const routes: Routes = [
   { path: 'cliente-info/:id/modifica', component:ClientiAddComponent },
   { path: 'campi-list', component:CampiListComponent },
   { path: 'campi-add', component:CampiAddComponent },
-  { path: '555', component: DataTableComponent },
   { path: 'reservation', component: ReservationComponent }
 ];
 
