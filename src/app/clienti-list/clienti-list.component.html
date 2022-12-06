@@ -53,15 +53,15 @@ Ordina per :
         <td>{{ cl.dataNascita | date: 'dd/MM/y' }}</td>
         <td>
           <div style="align-content: center;">
-            <button [routerLink]="['/cliente-info', cl?.id]" class="btn btn-info btn-sm" style="margin-left: 10px">
-              Info cliente
-            </button>
+            <a [routerLink]="['/cliente-info', cl?.id]" class="btn btn-info btn-sm" style="margin-left: 10px">
+              <span class="material-icons md-info" aria-hidden="true"></span>
+            </a>
             <button [routerLink]="['/cliente-info',cl.id,'modifica']" class="btn btn-success btn-sm"
               style="margin-left: 10px">
-              Modifica
+             <span class="material-icons md-edit" aria-hidden="true"></span>
             </button>
             <button (click)="deleteCliente(cl.id)" class="btn btn-danger btn-sm" style="margin-left: 10px" id="myBtn">
-              Elimina
+              <span class="material-icons md-delete" aria-hidden="true"></span>
             </button>
           </div>
         </td>
