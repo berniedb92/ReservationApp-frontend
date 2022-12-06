@@ -1,7 +1,7 @@
 import { Cliente } from "./cliente";
 
 export class Tesseramento {
-  cliente!: Cliente;
+  clienteTess!: Cliente;
   tipoTessera!: TipoTessera;
   integrazioneTessera!: IntegrazioneTessera;
   codiceTessera!: number;

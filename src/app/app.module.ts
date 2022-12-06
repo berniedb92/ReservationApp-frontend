@@ -26,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ReservationAddComponent } from './reservation-add/reservation-add.component';
 import { ReservationDayComponent } from './reservation-day/reservation-day.component';
+import { TesseramentoAddComponent } from './tesseramento-add/tesseramento-add.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ReservationDayComponent } from './reservation-day/reservation-day.compo
     ToastsComponent,
     ReservationComponent,
     ReservationAddComponent,
-    ReservationDayComponent
+    ReservationDayComponent,
+    TesseramentoAddComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,54 @@
+<section class="content-main" style="max-width: 760px;background-color: aliceblue; margin-top: 20px;">
+  <h1>{{title}}</h1>
+   <div class="content-header">
+   <div class="card-body">
+     <form [formGroup]="tesseraForm" (onSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="cliente">Cliente</label>
+        <select class="form-select" formControlName="cliente" aria-label="Default select example">
+          <option selected value="undefined">Seleziona il cliente</option>
+          <option *ngFor="let c of clientiNoTess" value="{{c.id}}">{{c.nome }} - {{c.cognome}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="cliente">Tipo Tessera</label>
+        <select class="form-select" formControlName="tipo" aria-label="Default select example">
+          <option selected value="undefined">Seleziona il cliente</option>
+          <option *ngFor="let t of tipiTessera" value="{{t.id}}">{{t.tipo}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="cliente">Tipo Tessera</label>
+        <select class="form-select" formControlName="integrazione" aria-label="Default select example">
+          <option selected value="null">Seleziona il cliente</option>
+          <option *ngFor="let i of integrazioneTessera" value="{{i.id}}">{{i.tipoIntegrazione}}</option>
+        </select>
+      </div>
+
+         <label for="dataNascita">Scadenza Certificato</label>
+         <input type="date" formControlName="scadenzaCertificato" class="form-control"
+           placeholder="Inserisci la scadenza de lcertificato">
+           <!-- <div *ngIf="getErrorNameAndLastname()">
+             {{getErrorNameAndLastname()}}
+           </div> -->
+
+       <div class="row mt-4">
+         <div class="col-3 ms-5">
+           <button [disabled]="!tesseraForm.valid" type="submit" class="btn btn-success">Salva</button>
+         </div>
+         <!-- <div class="col-4 ms-5">
+           <button type="button" class="btn btn-secondary" (click)="resetForm(clientiForm.form)">Reset</button>
+         </div> -->
+         <div class="col-3">
+           <button type="button" class="btn btn-primary" routerLink="/">Annulla</button>
+         </div>
+       </div>
+   </form>
+   </div>
+
+ </div>
+ </section>
+

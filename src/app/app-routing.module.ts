@@ -1,3 +1,4 @@
+import { TesseramentoAddComponent } from './tesseramento-add/tesseramento-add.component';
 import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'cliente-info/:id/modifica', component:ClientiAddComponent },
   { path: 'campi-list', component:CampiListComponent },
   { path: 'campi-add', component:CampiAddComponent },
-  { path: 'reservation', component: ReservationComponent }
+  { path: 'reservation', component: ReservationComponent },
+  { path: 'tesseramenti', component: TesseramentoAddComponent }
 ];
 
 

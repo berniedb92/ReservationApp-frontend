@@ -1,3 +1,4 @@
+import { IntegrazioneTessera, TipoTessera } from './../model/tesseramento';
 import { Prenotazione } from '../model/prenotazione';
 import { Campo } from '../model/campo';
 import { Cliente } from '../model/cliente';
@@ -44,6 +45,10 @@ export class UtenteAnonimoService {
     return this.http.get<Cliente[]>(this.url + 'list-clienti-complex')
   }
 
+  public listaClientiNoTessera(): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.url + 'list-clienti-notessera')
+  }
+
   public deleteCliente(id: number): Observable<Result> {
     return this.http.delete<Result>(this.url + `remove-cliente/${id}`)
   }
@@ -80,4 +85,13 @@ export class UtenteAnonimoService {
     return this.http.get<Prenotazione[]>(this.url + `list-pren-date/${data}`)
   }
 
+    //***************tesseramento**************/
+
+    public tipoTessera(): Observable<TipoTessera[]> {
+      return this.http.get<TipoTessera[]>(this.url + 'tipo')
+    }
+
+    public integrazioneTessera(): Observable<IntegrazioneTessera[]> {
+      return this.http.get<IntegrazioneTessera[]>(this.url + 'integrazione')
+    }
 }

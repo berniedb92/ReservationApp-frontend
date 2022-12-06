@@ -8,12 +8,12 @@ export class GlobalFunctions {
   constructor() { }
 
   /**
- * 
+ *
  * @param date The date to format
  * @param format The format type
  * @param time the time of the date in string
  * @param formatTime time format type
- * 
+ *
  * This funtion return the date format by the type send to the function.
  * The type format must be:
  *   dd-MM-yyyy
@@ -22,18 +22,18 @@ export class GlobalFunctions {
  *   mm/DD/yyyy
  *   yyyy-MM-dd
  *   yyyy/MM/dd
- * 
+ *
  * The time format type must be:
- * 
+ *
  *   HH:mm:ss
- *   HH:mm 
+ *   HH:mm
  */
   static formatDate(date: Date, format: string, time: boolean = false, formatTime: string | null = null): string {
     const symbols = ["-", "/", ":"];
     let dateTimeString = date.toISOString().split("T");
-    //console.log(dateTimeString);    
+    //console.log(dateTimeString);
     let stringDate = dateTimeString[0].split("-");
-    //console.log(stringDate);    
+    //console.log(stringDate);
     let stringTime = dateTimeString[1].substring(0, 8).split(":");
     let formatStringDate: string = "";
     let formatStringTime: string = "";
@@ -82,10 +82,10 @@ export class GlobalFunctions {
   }
 
   /**
-   * 
+   *
    * @param date you can pass any date
    * @returns it returns the time string example: "12:15" (hour:minutes)
-   * 
+   *
    * this function get the time by the date passed and return the formatted string.
    */
   static getTime(date: Date): string {
@@ -95,7 +95,7 @@ export class GlobalFunctions {
   }
 
   /**
-   * 
+   *
    * @param date the date to compare example the birth day
    * @param age the age to compare. For example check the time between now and a determinate date.
    * @returns true or false.
@@ -111,7 +111,7 @@ export class GlobalFunctions {
         if (sections.length == 3 || sections.length < 3 && sections.length > 0) {
           for (let section of sections) {
             let n = Number.parseInt(section);
-            if (n != NaN) {
+            if (!Number.isNaN(n)) {
               switch (sections.indexOf(section)) {
                 case 0:
                   if (n <= 31) {
@@ -149,9 +149,9 @@ export class GlobalFunctions {
   }
 
   /**
-   * 
+   *
    * @returns true or false
-   * 
+   *
    * This function return if the user is admin or not.
    */
   /* static isAdmin():boolean|null{
@@ -161,14 +161,14 @@ export class GlobalFunctions {
     }else{
       return null;
     }
-     
+
   } */
 
   /**
-   * 
+   *
    * @param startDate Meaning the start of the reservation
    * @param endDate Meaning the end of the reservation
-   * 
+   *
    * this function return the range of the start and the end of the reservation in minutes.
    */
   static getPeriod(startDate: string, endDate: string): any {
@@ -176,7 +176,7 @@ export class GlobalFunctions {
     let end = new Date(endDate);
 
     let period = (end.getTime() - start.getTime()) / (1000 * 60);
-    
+
     return period;
   }
   static isExpired(checkDate: string, matchDate: string | null = null): boolean {
@@ -186,9 +186,9 @@ export class GlobalFunctions {
 
   /**
    * Function to add slash to dates and to prevent date longer than 10 characters
-   * 
+   *
    * @param value is the value of the form control
-   * @param formControl is the control of the form 
+   * @param formControl is the control of the form
    */
   static slashingDate(input: HTMLInputElement, event: any, formControl?: AbstractControl) {
 
@@ -222,7 +222,7 @@ export class GlobalFunctions {
           if(formControl != null && formControl != undefined){
             formControl.patchValue(dateObject);
           }
-          
+
         } else if (value.length > 10) {
           input.value = value.substring(0, value.length - 1);
         }
@@ -251,11 +251,11 @@ export class GlobalFunctions {
 
   }
   /**
-   * 
+   *
    * @param form  the object formGroup
    * @array  formGroup's keys.object with two param {name:"formControlName",type:"type"}  type can be one
    * of these: "eachWord","all","firstLetter","none"
-   * 
+   *
    */
   static setFormatText(form: FormGroup, keys: any) {
     keys.forEach((el: any) => {
