@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
-
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -27,7 +26,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ReservationAddComponent } from './reservation-add/reservation-add.component';
 import { ReservationDayComponent } from './reservation-day/reservation-day.component';
-
 
 @NgModule({
   declarations: [
@@ -57,8 +55,7 @@ import { ReservationDayComponent } from './reservation-day/reservation-day.compo
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    NgxPaginationModule,
- 
+    NgxPaginationModule
   ],
   providers: [UtenteAnonimoService],
   bootstrap: [AppComponent]
