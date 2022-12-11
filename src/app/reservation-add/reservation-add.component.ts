@@ -106,7 +106,7 @@ inserimento(){
   console.log(this.prenotazione.codicePrenotazione,"Random")
   this.service.insertPrenotazione(this.prenotazione).subscribe({
       next:(response)=>{
-       response.campo= this.prenotazione.campo;
+     
         console.log("PREnotazione",this.prenotazione);
       },
       error:(error)=>{
