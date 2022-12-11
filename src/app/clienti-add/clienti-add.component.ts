@@ -6,6 +6,7 @@ import { Cliente } from '../model/cliente';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { GlobalFunctions } from '../common/global-functions';
 import { first } from 'rxjs';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-clienti-add',
@@ -55,7 +56,16 @@ export class ClientiAddComponent implements OnInit {
   }
 
   onSubmit(): void {
-
+    this.cliente.nome = this.c['firstname'].value;
+    this.cliente.cognome = this.c['lastname'].value;
+    this.cliente.dataNascita = this.c['dateOfBirth'].value;
+    this.cliente.luogoNascita = this.c['birthPlace'].value;
+    this.cliente.codiceFiscale = this.c['fiscalCode'].value;
+    this.cliente.nazionalita = this.c['nationality'].value;
+    this.cliente.indirizzo = this.c['address'].value;
+    this.cliente.numTelefono = this.c['phone'].value;
+    this.cliente.email = this.c['email'].value;
+   
     if (this.cliente.id > 0) {
       const userCopy = Object.assign({}, this.cliente)
       this.utenteAnonimoService.uodateCliente(userCopy).subscribe({
@@ -141,10 +151,7 @@ export class ClientiAddComponent implements OnInit {
 
   get c() { return this.registerClientForm.controls; }
 
-  registerClient() {
-    this.cliente.nome = this.c['firstname'].value;
-    this.cliente.cognome = this.c['lastname'].value;
-  }
+
 
   getErrorEmail() {
     if (this.registerClientForm.controls['email'].dirty && (this.registerClientForm.controls['email'].hasError('required'))) {

@@ -2,7 +2,7 @@
  <h1>{{title}}</h1>
   <div class="content-header">
   <div class="card-body">
-    <form [formGroup]="registerClientForm" (onSubmit)="onSubmit()">
+    <form [formGroup]="registerClientForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" formControlName="firstname" class="form-control" minlength="2"
@@ -79,7 +79,7 @@
       </div>
       <div class="row mt-4">
         <div class="col-3 ms-5">
-          <button [disabled]="!registerClientForm.valid" type="submit" class="btn btn-success">Salva</button>
+          <button [disabled]="!registerClientForm.valid" class="btn btn-success">Salva</button>
         </div>
         <!-- <div class="col-4 ms-5">
           <button type="button" class="btn btn-secondary" (click)="resetForm(clientiForm.form)">Reset</button>

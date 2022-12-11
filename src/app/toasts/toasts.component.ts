@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 declare var $: any;
-
+@Inject
 @Component({
   selector: 'app-toasts',
   templateUrl: './toasts.component.html',

@@ -1,4 +1,4 @@
-import { IntegrazioneTessera, TipoTessera } from './../model/tesseramento';
+import { IntegrazioneTessera, Tesseramento, TipoTessera } from './../model/tesseramento';
 import { Prenotazione } from '../model/prenotazione';
 import { Campo } from '../model/campo';
 import { Cliente } from '../model/cliente';
@@ -67,6 +67,10 @@ export class UtenteAnonimoService {
     return this.http.get<Campo[]>(this.url + 'list-campi')
   }
 
+  public searchCampoById(id:any) : Observable<Campo>{
+    return this.http.get<Campo>(this.url+`campo/${id}`)
+  }
+
   public addCampo(campo: Campo): Observable<Result> {
     return this.http.post<Result>(this.url + 'add-campo', campo)
   }
@@ -85,6 +89,10 @@ export class UtenteAnonimoService {
     return this.http.get<Prenotazione[]>(this.url + `list-pren-date/${data}`)
   }
 
+  public insertPrenotazione(prenotazione:Prenotazione):Observable<Prenotazione>{
+    return this.http.post<Prenotazione>(this.url+`inserisci`,prenotazione);
+  }
+
     //***************tesseramento**************/
 
     public tipoTessera(): Observable<TipoTessera[]> {
@@ -93,5 +101,11 @@ export class UtenteAnonimoService {
 
     public integrazioneTessera(): Observable<IntegrazioneTessera[]> {
       return this.http.get<IntegrazioneTessera[]>(this.url + 'integrazione')
+
+
+     
+    }
+    public selTesserati():Observable<Tesseramento[]>{
+      return this.http.get<Tesseramento[]>(this.url+'list-tesseramenti');
     }
 }

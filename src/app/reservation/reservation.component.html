@@ -13,12 +13,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <app-reservation-add></app-reservation-add>
+      <app-reservation-add ></app-reservation-add>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-        <button type="button" class="btn btn-primary">Inserisci</button>
-      </div>
+     
     </div>
   </div>
 </div>
@@ -63,7 +60,7 @@
         <th scope="col">Cliente 1</th>
         <!-- <th scope="col">Cliente 2</th> -->
         <th scope="col">Campo</th>
-        <!-- <th scope="col">Azioni</th> -->
+         <th scope="col">Azioni</th>
       </tr>
     </thead>
     <tbody>
@@ -73,7 +70,7 @@
           <td>{{ p.oraInizio | date :'HH:mm' }}</td>
           <td>{{ p.oraFine | date :'HH:mm' }}</td>
           <td>{{ p.modalita }}</td>
-          <td>{{ p.cliente.nome + ' ' + p.cliente.cognome }}</td>
+          <!-- <td>{{ p.cliente.nome + ' ' + p.cliente.cognome }}</td> -->
           <!-- <td>{{ p.cliente2.nome + ' ' + p.cliente2.cognome }}</td> -->
           <td>{{ p.campo.numero + ' ' + p.campo.superficie }}</td>
         </tr>

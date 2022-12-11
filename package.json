@@ -23,6 +23,8 @@
     "@fortawesome/angular-fontawesome": "^0.12.0",
     "@syncfusion/ej2-angular-schedule": "^20.3.58",
     "@syncfusion/ej2-material-theme": "~20.3.58",
+    "angular-moment": "^1.3.0",
+    "moment": "^2.29.4",
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

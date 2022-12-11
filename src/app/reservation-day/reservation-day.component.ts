@@ -1,6 +1,7 @@
 import { UtenteAnonimoService } from './../service/utente-anonimo.service';
 import { Component, OnInit } from '@angular/core';
 import { Prenotazione } from '../model/prenotazione';
+import { Tesseramento } from '../model/tesseramento';
 
 @Component({
   selector: 'app-reservation-day',
@@ -13,6 +14,7 @@ export class ReservationDayComponent implements OnInit {
   pageIndex: number = 1;
   prenotazioni: Prenotazione[] = []
   date = new Date()
+  tesserati:any;
 
   constructor(private service: UtenteAnonimoService) { }
 

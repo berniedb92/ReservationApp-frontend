@@ -1,6 +1,7 @@
 import { Campo } from './campo';
 import { Cliente } from "./cliente";
 import { Sport } from './sport';
+import { Tesseramento } from './tesseramento';
 
 export class Prenotazione {
   id!: number;
@@ -9,11 +10,9 @@ export class Prenotazione {
   oraInizio!: Date;
   oraFine!: Date;
   modalita!: string;
-  cliente!: Cliente;
   campo!: Campo;
-  sport!: Sport;
-  giocatore1!: string;
-  giocatore2!: string;
-  giocatore3!: string;
-  giocatore4!: string;
+  giocatore1!: Tesseramento;
+  giocatore2!: Tesseramento;
+  giocatore3!: Tesseramento;
+  giocatore4!: Tesseramento;
 }
