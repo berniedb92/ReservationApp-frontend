@@ -73,6 +73,16 @@
           <td>{{ p.modalita === 'singolo' ? p.giocatore1.clienteTess.nome +' '+ p.giocatore1.clienteTess.cognome : p.giocatore1.clienteTess.nome +' '+p.giocatore1.clienteTess.cognome + '-' + p.giocatore3.clienteTess.nome +' '+p.giocatore3.clienteTess.cognome }}</td>
            <td>{{ p.modalita === 'singolo' ? p.giocatore2.clienteTess.nome +' '+ p.giocatore2.clienteTess.cognome : p.giocatore2.clienteTess.nome +' '+p.giocatore2.clienteTess.cognome + '-' + p.giocatore4.clienteTess.nome +' '+p.giocatore4.clienteTess.cognome }}</td>
           <td>{{ p.campo.numero + ' ' + p.campo.superficie }}</td>
+          <td>
+            <div style="align-content: center;">
+              <a [routerLink]="['/details-reservation', p?.codicePrenotazione]" class="btn btn-info btn-sm" style="margin-left: 10px">
+                <span class="material-icons md-info" aria-hidden="true"></span>
+              </a>
+              <button class="btn btn-danger btn-sm" style="margin-left: 10px" id="myBtn">
+                <span class="material-icons md-delete" aria-hidden="true"></span>
+              </button>
+            </div>
+          </td>
         </tr>
       </ng-container>
     </tbody>

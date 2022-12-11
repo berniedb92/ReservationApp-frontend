@@ -5,6 +5,7 @@ import { Cliente } from '../model/cliente';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
+import { DettaglioPrenotazione } from '../model/dettagliPrenotazione';
 
 export interface Result {
   code: string
@@ -14,22 +15,22 @@ export interface Result {
 @Injectable()
 export class UtenteAnonimoService {
 
-  url : string;
+  url: string;
 
-   // creiamo un BehaviorSubject
+  // creiamo un BehaviorSubject
   data$: BehaviorSubject<Cliente[]> = new BehaviorSubject<Cliente[]>([]);
 
-   // emettere valori nel subject
+  // emettere valori nel subject
   update(value: Cliente[]) {
-     this.data$.next(value);
+    this.data$.next(value);
   }
 
   getData() {
     return this.data$.getValue(); // restituisce il valore attuale del subject
   }
 
-  constructor(private http: HttpClient){
-      this.url = 'http://localhost:8080/api/reservation/'
+  constructor(private http: HttpClient) {
+    this.url = 'http://localhost:8080/api/reservation/'
 
   }
 
@@ -67,8 +68,8 @@ export class UtenteAnonimoService {
     return this.http.get<Campo[]>(this.url + 'list-campi')
   }
 
-  public searchCampoById(id:any) : Observable<Campo>{
-    return this.http.get<Campo>(this.url+`campo/${id}`)
+  public searchCampoById(id: any): Observable<Campo> {
+    return this.http.get<Campo>(this.url + `campo/${id}`)
   }
 
   public addCampo(campo: Campo): Observable<Result> {
@@ -89,23 +90,26 @@ export class UtenteAnonimoService {
     return this.http.get<Prenotazione[]>(this.url + `list-pren-date/${data}`)
   }
 
-  public insertPrenotazione(prenotazione:Prenotazione):Observable<Prenotazione>{
-    return this.http.post<Prenotazione>(this.url+`inserisci`,prenotazione);
+  public insertPrenotazione(prenotazione: Prenotazione): Observable<Prenotazione> {
+    return this.http.post<Prenotazione>(this.url + `inserisci`, prenotazione);
   }
 
-    //***************tesseramento**************/
+  //***************tesseramento**************/
 
-    public tipoTessera(): Observable<TipoTessera[]> {
-      return this.http.get<TipoTessera[]>(this.url + 'tipo')
-    }
+  public tipoTessera(): Observable<TipoTessera[]> {
+    return this.http.get<TipoTessera[]>(this.url + 'tipo')
+  }
 
-    public integrazioneTessera(): Observable<IntegrazioneTessera[]> {
-      return this.http.get<IntegrazioneTessera[]>(this.url + 'integrazione')
+  public integrazioneTessera(): Observable<IntegrazioneTessera[]> {
+    return this.http.get<IntegrazioneTessera[]>(this.url + 'integrazione')
+}
+  public selTesserati(): Observable<Tesseramento[]> {
+    return this.http.get<Tesseramento[]>(this.url + 'list-tesseramenti');
+  }
 
+// ****************** Dettaglio Prenotazione ***************
 
-     
-    }
-    public selTesserati():Observable<Tesseramento[]>{
-      return this.http.get<Tesseramento[]>(this.url+'list-tesseramenti');
-    }
+public getDettagliPrenotazione(codicePrenotazione:any):Observable<DettaglioPrenotazione[]>{
+  return this.http.get<DettaglioPrenotazione[]>(this.url+`dett-pre/cerca/codPren/${codicePrenotazione}`);
+}
 }
