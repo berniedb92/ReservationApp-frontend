@@ -1,6 +1,4 @@
 import { Campo } from './campo';
-import { Cliente } from "./cliente";
-import { Sport } from './sport';
 import { Tesseramento } from './tesseramento';
 
 export class Prenotazione {

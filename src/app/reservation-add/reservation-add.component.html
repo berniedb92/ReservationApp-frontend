@@ -1,82 +1,83 @@
 <section class="content-main" style="max-width: 760px; margin-top: 20px;">
   <!-- <h1 class="content-title text-dark text-center">{{!clientiForm.form.valid ? 'Inserimento prenotazione' : 'Modifica prenotazione'}}</h1> -->
   <div class="content-header">
-  <div class="card-body">
-    <form [formGroup]="registerReservationForm" method="get">
-      <div class="row">
-        <div class="col">
-      <div class="form-group">
-        <label for="nome">Data</label>
-        <input type="date" formControlName ="dateReservation" class="form-control">
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="oraInizio">Inizio</label>
-        <select class="form-select" formControlName ="oraInizio" aria-label="Default select example">
-          <option selected value="undefined">Seleziona l'ora d'inizio</option>
-          <option *ngFor="let t1 of timeSelect" value="{{t1}}">{{t1}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="oraFine">Fine</label>
-        <select class="form-select" formControlName ="oraFine" aria-label="Default select example">
-          <option selected value="undefined">Seleziona l'ora di fine</option>
-          <option *ngFor="let t2 of timeSelect" value="{{t2}}">{{t2}}</option>
-        </select>
-      </div>
-    </div>
-    </div>
-      <div class="form-group">
-        <label for="luogoDiNascita">Modalità</label>
-        <select class="form-select" formControlName ="modality" aria-label="Default select example">
-          <option selected value="undefined">Seleziona modalità</option>
-          <option value="singolo">Singolo</option>
-          <option value="doppio">Doppio</option>
-        </select>
-      </div>
-   <div class="form-group">
-        <label for="campo">Campo</label>
-        <select class="form-select"  aria-label="Default select example" formControlName ="campo">
-          <option selected value="undefined">Seleziona il campo</option>
-          <option  *ngFor="let ca of campi" value="{{ca.numero}}">{{ca.numero}} - {{ca.superficie}}</option>
-        </select>
-      </div>
-      <!-- <div class="form-group">
+    <div class="card-body">
+      <form [formGroup]="registerReservationForm" method="get">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="nome">Data</label>
+              <input type="date" formControlName="dateReservation" class="form-control">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="oraInizio">Inizio</label>
+              <select class="form-select" formControlName="oraInizio" aria-label="Default select example">
+                <option selected value="undefined">Seleziona l'ora d'inizio</option>
+                <option *ngFor="let t1 of timeSelect" value="{{t1}}">{{t1}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="oraFine">Fine</label>
+              <select class="form-select" formControlName="oraFine" aria-label="Default select example">
+                <option selected value="undefined">Seleziona l'ora di fine</option>
+                <option *ngFor="let t2 of timeSelect" value="{{t2}}">{{t2}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="campo">Campo</label>
+          <select class="form-select" #cam aria-label="Default select example" formControlName="campo" >
+            <option selected value="undefined">Seleziona il campo</option>
+            <option *ngFor="let ca of campi" value="{{ca.numero}}">{{ca.numero}} - {{ca.superficie}} - {{ca.sport}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="cam.value != '3'">
+          <label for="luogoDiNascita">Modalità</label>
+          <select class="form-select" formControlName="modality" aria-label="Default select example">
+            <option selected value="">Seleziona modalità</option>
+            <option value="singolo">Singolo</option>
+            <option value="doppio">Doppio</option>
+          </select>
+        </div>
+        <!-- <div class="form-group">
         <label for="sport">Sport</label>
         <select class="form-select" [(ngModel)]="prenotazione.sport" *ngFor="let s of sport" aria-label="Default select example">
           <option selected value="undefined">Seleziona lo sport</option>
           <option value="{{s.id}}">{{s.tipo}}</option>
         </select>
       </div> -->
-      <div class="form-group">
-        <label for="giocatore1">Giocatore 1</label>
-        <input type="text" formControlName ="playerOne" class="form-control" id="giocatore1"
-          name="giocatore1" placeholder="Inserisci il nome o cognome del giocatore" >
-      </div>
-      <div class="form-group">
-        <label for="giocatore2">Giocatore 2</label>
-        <input type="text" formControlName ="playerTwo" class="form-control" id="giocatore2"
-          name="giocatore2" placeholder="Inserisci il nome o cognome del giocatore">
-      </div>
-      <div class="form-group" *ngIf="prenotazione.modalita === 'doppio'">
-        <label for="giocatore3">Giocatore 3</label>
-        <input type="text" formControlName ="giocatore3" class="form-control" id="giocatore3"
-          name="giocatore3" placeholder="Inserisci il nome o cognome del giocatore" >
-      </div>
-      <div class="form-group" *ngIf="prenotazione.modalita === 'doppio'">
-        <label for="giocatore4">Giocatore 4</label>
-        <input type="text" formControlName ="giocatore4" class="form-control" id="giocatore4"
-          name="giocatore4" placeholder="Inserisci il nome o cognome del giocatore" >
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-        <button type="button" class="btn btn-primary" (click)="inserimento()">Inserisci</button>
-      </div>
-    </form>
+        <div class="form-group">
+          <label for="giocatore1">Giocatore 1</label>
+          <input type="text" formControlName="playerOne" class="form-control" id="giocatore1" name="giocatore1"
+            placeholder="Inserisci il nome o cognome del giocatore">
+        </div>
+        <div class="form-group">
+          <label for="giocatore2">Giocatore 2</label>
+          <input type="text" formControlName="playerTwo" class="form-control" id="giocatore2" name="giocatore2"
+            placeholder="Inserisci il nome o cognome del giocatore">
+        </div>
+        <div class="form-group" *ngIf="registerReservationForm.get('modality')?.value === 'doppio' || cam.value === '3'">
+          <label for="giocatore3">Giocatore 3</label>
+          <input type="text" formControlName="playerThree" class="form-control" id="giocatore3" name="giocatore3"
+            placeholder="Inserisci il nome o cognome del giocatore">
+        </div>
+        <div class="form-group" *ngIf="registerReservationForm.get('modality')?.value === 'doppio' || cam.value === '3'">
+          <label for="giocatore4">Giocatore 4</label>
+          <input type="text" formControlName="playerFour" class="form-control" id="giocatore4" name="giocatore4"
+            placeholder="Inserisci il nome o cognome del giocatore">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+          <button type="button" class="btn btn-primary" (click)="inserimento()">Inserisci</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 </section>
-

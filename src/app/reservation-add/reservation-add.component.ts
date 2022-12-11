@@ -1,5 +1,4 @@
 import { UtenteAnonimoService } from './../service/utente-anonimo.service';
-import { Sport } from './../model/sport';
 import { Component, Input, OnInit } from '@angular/core';
 import { Campo } from '../model/campo';
 import { Cliente } from '../model/cliente';
@@ -39,10 +38,10 @@ export class ReservationAddComponent implements OnInit {
   registerReservationForm: FormGroup = {} as FormGroup;
   errore:string="";
 
-  constructor(private service: UtenteAnonimoService) { 
-  
+  constructor(private service: UtenteAnonimoService) {
+
   }
-  
+
 
   ngOnInit(): void {
    this.service.listaCampi().subscribe(data => {this.campi=data})
@@ -66,7 +65,7 @@ export class ReservationAddComponent implements OnInit {
       playerThree: new FormControl(this.prenotazione.giocatore3? this.prenotazione.giocatore3: null, [Validators.required]),
       playerFour: new FormControl(this.prenotazione.giocatore4? this.prenotazione.giocatore4: null, [Validators.required])
     });
-     
+
 
 
 }
@@ -82,21 +81,21 @@ inserimento(){
   this.prenotazione.giocatore2 = this.reservation['playerTwo'].value;
   this.prenotazione.giocatore3 = this.reservation['playerThree'].value;
   this.prenotazione.giocatore4 = this.reservation['playerFour'].value;
-  
+
   const tempoInizio = moment(this.prenotazione.data).add( this.reservation['oraInizio'].value,'hour');
-  const tempoFine = moment(this.prenotazione.data).add( this.reservation['oraFine'].value,'hour'); 
+  const tempoFine = moment(this.prenotazione.data).add( this.reservation['oraFine'].value,'hour');
 
   const campo = this.campi.filter(z => z.numero ==this.reservation['campo'].value );
   const giocatore1 = this.tesserati.filter(t=> t.codiceTessera == this.reservation['playerOne'].value);
   const giocatore2 = this.tesserati.filter(t=> t.codiceTessera == this.reservation['playerTwo'].value);
   const giocatore3 = this.tesserati.filter(t=> t.codiceTessera == this.reservation['playerThree'].value);
   const giocatore4 = this.tesserati.filter(t=> t.codiceTessera == this.reservation['playerFour'].value);
-  
+
   this.prenotazione.oraInizio = new Date (tempoInizio.toDate());
   this.prenotazione.oraFine = new Date (tempoFine.toDate());
- 
+
   this.prenotazione.campo = campo[0];
- 
+
   this.prenotazione.giocatore1 = giocatore1[0];
   this.prenotazione.giocatore2 = giocatore2[0];
   this.prenotazione.giocatore3 = giocatore3[0];
@@ -106,7 +105,7 @@ inserimento(){
   console.log(this.prenotazione.codicePrenotazione,"Random")
   this.service.insertPrenotazione(this.prenotazione).subscribe({
       next:(response)=>{
-     
+
         console.log("PREnotazione",this.prenotazione);
       },
       error:(error)=>{
