@@ -8,11 +8,19 @@
    <div class="card-body">
      <form [formGroup]="tesseraForm" (ngSubmit)="onSubmit()">
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="!this.route.snapshot.params['codice']">
         <label for="cliente">Cliente</label>
         <select class="form-select" formControlName="cliente" aria-label="Default select example">
           <option selected value="null">Seleziona il cliente</option>
           <option *ngFor="let c of clientiNoTess" value="{{c.id}}">{{c.nome }} {{c.cognome}}</option>
+        </select>
+      </div>
+
+      <div class="form-group" *ngIf="this.route.snapshot.params['codice']">
+        <label for="cliente">Cliente</label>
+        <select class="form-select" formControlName="cliente" aria-label="Default select example">
+          <option selected value="null">Seleziona il cliente</option>
+          <option *ngFor="let c of clientiTess" value="{{c.id}}">{{c.nome }} {{c.cognome}}</option>
         </select>
       </div>
 
@@ -23,6 +31,14 @@
           <option *ngFor="let t of tipiTessera" value="{{t.id}}">{{t.tipo}}</option>
         </select>
       </div>
+
+      <!-- <div class="form-group" *ngIf="this.route.snapshot.params['codice']">
+        <label for="cliente">Tipo Tessera</label>
+        <select class="form-select" formControlName="tipo" aria-label="Default select example">
+          <option value="null">Seleziona tipo tessera</option>
+          <option selected *ngFor="let t of tipiTessera" value="{{t.id}}">{{t.tipo}}</option>
+        </select>
+      </div> -->
 
       <div class="form-group">
         <label for="cliente">Integrazione Tessera</label>

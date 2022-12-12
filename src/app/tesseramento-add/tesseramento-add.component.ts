@@ -5,6 +5,7 @@ import { UtenteAnonimoService } from './../service/utente-anonimo.service';
 import { Tesseramento, TipoTessera, IntegrazioneTessera } from './../model/tesseramento';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-tesseramento-add',
@@ -16,37 +17,17 @@ export class TesseramentoAddComponent implements OnInit {
   title = ''
   tesseramento: Tesseramento = new Tesseramento()
   clientiNoTess: Cliente[]= []
+  clientiTess: Cliente[]= []
   tesserati:Tesseramento[] = []
   tipiTessera: TipoTessera[] = []
   integrazioneTessera: IntegrazioneTessera[] = []
   tesseraForm: FormGroup = {} as FormGroup;
 
-  constructor(private service: UtenteAnonimoService, private route: ActivatedRoute) { }
+  constructor(private service: UtenteAnonimoService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    if(this.tesseramento.codiceTessera === 0) {
-      this.title = "Inserisci nuovo tesserato";
-      this.service.listaClientiNoTessera().subscribe({
-        next: (response) => {
-          this.clientiNoTess = response
-        }
-      })
-    } else {
-      const codice = this.route.snapshot.params['codice'];
-      this.title = "Modifica tesserato";
-      this.service.selTesseratoCodice(codice).subscribe({
-        next: (response) => {
-          this.tesseramento = response
-        }
-      })
-    }
-
-    this.service.integrazioneTessera().subscribe({
-      next: (response) => {
-        this.integrazioneTessera = response
-      }
-    })
+    this.generateForm()
 
     this.service.tipoTessera().subscribe({
       next: (response) => {
@@ -54,7 +35,46 @@ export class TesseramentoAddComponent implements OnInit {
       }
     })
 
-    this.generateForm()
+    this.service.integrazioneTessera().subscribe({
+      next: (response) => {
+        this.integrazioneTessera = response
+      }
+    })
+
+    console.log(this.tesseramento)
+    const codice = this.route.snapshot.params['codice'];
+    if(!codice) {
+      this.title = "Inserisci nuovo tesserato";
+
+      this.service.listaClientiNoTessera().subscribe({
+        next: (response) => {
+          this.clientiNoTess = response
+        }
+      })
+
+    } else {
+      this.title = "Modifica tesserato";
+      this.service.selTesseratoCodice(codice).subscribe({
+        next: (response) => {
+
+          this.tesseramenti['cliente'].disable()
+          const tipo = this.tipiTessera.filter(x => x.id == response.tipo.id)
+          const integrazione = this.integrazioneTessera.filter(x => x.id == response.integrazione.id)
+
+          this.tesseramenti['tipo'].patchValue(tipo[0].id)
+          this.tesseramenti['integrazione'].patchValue(integrazione[0].id)
+          this.tesseramenti['scadenzaCertificato'].patchValue(response.scadenzaCertificato)
+
+          this.service.listaClientiId(response.clienteTess.id).subscribe({
+            next:(resp) => {
+              this.clientiTess[0] = resp;
+              this.tesseramenti['cliente'].patchValue(this.clientiTess[0].id)
+            }
+          })
+        }
+      })
+    }
+
   }
 
   get tesseramenti() {
