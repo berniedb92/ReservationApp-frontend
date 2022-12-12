@@ -95,7 +95,11 @@ export class UtenteAnonimoService {
   }
 
   public getDettagliPrenotazione(id: number): Observable<DettaglioPrenotazione[]> {
-    return this.http.get<DettaglioPrenotazione[]>(this.url + `dett-pre/cerca/codPren/${id}`)
+    return this.http.get<DettaglioPrenotazione[]>(this.url + `dett-pre/cerca/codPren/${id}`);
+  }
+
+  public modificaDettaglioPrenotazione(dettaglio:DettaglioPrenotazione):Observable<DettaglioPrenotazione>{
+    return this.http.post<DettaglioPrenotazione>(this.url+`dett-pre/modifica`,dettaglio);
   }
 
   //***************tesseramento**************/
