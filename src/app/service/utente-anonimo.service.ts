@@ -94,19 +94,34 @@ export class UtenteAnonimoService {
     return this.http.post<Prenotazione>(this.url + `inserisci`, prenotazione);
   }
 
+  public getDettagliPrenotazione(id: number): Observable<DettaglioPrenotazione[]> {
+    return this.http.get<DettaglioPrenotazione[]>(this.url + `dett-pre/cerca/codPren/${id}`)
+  }
+
   //***************tesseramento**************/
 
   public tipoTessera(): Observable<TipoTessera[]> {
     return this.http.get<TipoTessera[]>(this.url + 'tipo')
   }
 
-    public integrazioneTessera(): Observable<IntegrazioneTessera[]> {
-      return this.http.get<IntegrazioneTessera[]>(this.url + 'integrazione')
+  public integrazioneTessera(): Observable<IntegrazioneTessera[]> {
+    return this.http.get<IntegrazioneTessera[]>(this.url + 'integrazione')
+  }
 
+  public selTesserati():Observable<Tesseramento[]>{
+    return this.http.get<Tesseramento[]>(this.url+'list-tesseramenti');
+  }
 
+  public selTesseratoCodice(codice: number):Observable<Tesseramento>{
+    return this.http.get<Tesseramento>(this.url+`list-tesseramenti-id/${codice}`);
+  }
 
-    }
-    public selTesserati():Observable<Tesseramento[]>{
-      return this.http.get<Tesseramento[]>(this.url+'list-tesseramenti');
-    }
+  public insTesserato(tesserato: Tesseramento):Observable<Result>{
+    return this.http.post<Result>(this.url+'new-tessera', tesserato);
+  }
+
+  public upTesserato(tesserato: Tesseramento):Observable<Result>{
+    return this.http.put<Result>(this.url+'modifica-tessera', tesserato);
+  }
+
 }

@@ -1,3 +1,4 @@
+import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list.component';
 import { TesseramentoAddComponent } from './tesseramento-add/tesseramento-add.component';
 import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
@@ -23,10 +24,11 @@ const routes: Routes = [
   { path: 'campi-list', component:CampiListComponent },
   { path: 'campi-add', component:CampiAddComponent },
   { path: 'reservation', component: ReservationComponent },
-  { path: 'tesseramenti', component: TesseramentoAddComponent },
-   {path:"insert-reservation",component:ReservationAddComponent},
-   {path:"details-reservation/:id",component:DetailsReservationComponent}
- 
+  { path: 'new-tess', component: TesseramentoAddComponent },
+  { path: 'tesseramenti', component: TesseramentoListComponent },
+  { path: 'insert-reservation',component:ReservationAddComponent},
+  { path: 'details-reservation/:id',component:DetailsReservationComponent},
+  { path: 'modifica-tessera/:codice',component:TesseramentoAddComponent}
 ];
 
 

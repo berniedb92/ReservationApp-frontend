@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { GlobalFunctions } from './../common/global-functions';
 import { Cliente } from './../model/cliente';
 import { UtenteAnonimoService } from './../service/utente-anonimo.service';
@@ -15,21 +16,31 @@ export class TesseramentoAddComponent implements OnInit {
   title = ''
   tesseramento: Tesseramento = new Tesseramento()
   clientiNoTess: Cliente[]= []
+  tesserati:Tesseramento[] = []
   tipiTessera: TipoTessera[] = []
   integrazioneTessera: IntegrazioneTessera[] = []
   tesseraForm: FormGroup = {} as FormGroup;
 
-  constructor(private service: UtenteAnonimoService) { }
+  constructor(private service: UtenteAnonimoService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.title = "Inserisci nuovo tesserato";
-
-    this.service.listaClientiNoTessera().subscribe({
-      next: (response) => {
-        this.clientiNoTess = response
-      }
-    })
+    if(this.tesseramento.codiceTessera === 0) {
+      this.title = "Inserisci nuovo tesserato";
+      this.service.listaClientiNoTessera().subscribe({
+        next: (response) => {
+          this.clientiNoTess = response
+        }
+      })
+    } else {
+      const codice = this.route.snapshot.params['codice'];
+      this.title = "Modifica tesserato";
+      this.service.selTesseratoCodice(codice).subscribe({
+        next: (response) => {
+          this.tesseramento = response
+        }
+      })
+    }
 
     this.service.integrazioneTessera().subscribe({
       next: (response) => {
@@ -65,14 +76,26 @@ export class TesseramentoAddComponent implements OnInit {
     this.tesseramento.tipo = tipo[0];
     this.tesseramento.integrazione = integrazione[0];
 
-    this.service.addTesserato(this.tesseramento).subscribe({
-      next: (response) => {
-        console.log(response)
-      },
-      error: (error) => {
-        console.log(error.error.message)
-      }
-    })
+    if(this.tesseramento.codiceTessera === 0) {
+      this.service.insTesserato(this.tesseramento).subscribe({
+        next: (response) => {
+          console.log(response)
+        },
+        error: (error) => {
+          console.log(error.error.message)
+        }
+      })
+    } else {
+      this.service.upTesserato(this.tesseramento).subscribe({
+        next: (response) => {
+          console.log(response)
+        },
+        error: (error) => {
+          console.log(error.error.message)
+        }
+      })
+    }
+
   }
 
   generateForm()  {
