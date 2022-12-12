@@ -12,6 +12,7 @@ import { CampiAddComponent } from './campi-add/campi-add.component';
 
 import { ReservationComponent } from './reservation/reservation.component';
 import { ReservationAddComponent } from './reservation-add/reservation-add.component';
+import { DetailsReservationComponent } from './details-reservation/details-reservation.component';
 
 const routes: Routes = [
   { path: 'cliente-list', component: ClientiListComponent },
@@ -23,8 +24,9 @@ const routes: Routes = [
   { path: 'campi-add', component:CampiAddComponent },
   { path: 'reservation', component: ReservationComponent },
   { path: 'tesseramenti', component: TesseramentoAddComponent },
-   {path:"insert-reservation",component:ReservationAddComponent}
-
+   {path:"insert-reservation",component:ReservationAddComponent},
+   {path:"details-reservation/:id",component:DetailsReservationComponent}
+ 
 ];
 
 

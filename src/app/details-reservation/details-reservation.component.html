@@ -1,0 +1,55 @@
+<div class="content-main mt-4">
+<table class="table table-bordered" >
+    
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Codice Prenotazione</th>
+        <th scope="col">Nominativo</th>
+        <th scope="col">Codice Tessera</th>
+        <th scope="col">Data Prenotazione</th>
+        <th scope="col">Pagamento</th>
+        <th scope="col">Pagamento Effettuato</th>
+        <th scope="col">Note</th>
+         <th scope="col">Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let dett of dettaglioPrenotazioni | paginate: {itemsPerPage: pageSize, currentPage: pageIndex}">
+        <tr>
+           <td>{{ dett.codicePrenotazione.codicePrenotazione }}</td>
+          <td>{{ dett.cliente.clienteTess.nome + " " + dett.cliente.clienteTess.cognome}}</td>
+          <td>{{ dett.cliente.codiceTessera}}</td>
+          <td>{{ dett.codicePrenotazione.data | date:"dd/MM/YYYY"}}</td>
+          <td>{{ dett.pagamento}}</td>
+          <ng-container *ngIf="dett.pagamentoEffettuato; else elseTemplate">
+            <span class="material-icons md-payment" style="font-size: 2rem; color: rgb(0, 128, 55);"></span> 
+            <span class="material-icons md-payment" style="font-size: 2rem; color: rgb(192, 6, 6);"></span> 
+        </ng-container>
+        <ng-template #elseTemplate>
+       
+          <span class="material-icons md-payment" style="font-size: 2rem; color: rgb(192, 6, 6);"></span>
+        </ng-template>
+          <td>{{ dett.note}}</td> 
+           
+
+       
+      </ng-container>
+    </tbody>
+  </table>
+
+  <nav class="float-end mt-3" aria-label="Page navigation">
+    <pagination-controls
+              class="my-pagination"
+              (pageChange)="pageIndex = $event"
+              previousLabel="Precedente"
+              nextLabel="Successivo">
+   </pagination-controls>
+  </nav>
+
+  <label style="margin-top: 8px; margin-left: 10px;">Clienti per pagina:</label>
+  <select class="form-select form-select-sm" style="width:2.5%; margin-left: 10px;" #size [(ngModel)]="pageSize">
+    <option value=10>10</option>
+    <option selected value=20>20</option>
+    <option value=30>30</option>
+  </select>
+</div>

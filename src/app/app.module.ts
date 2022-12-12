@@ -27,7 +27,6 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { ReservationAddComponent } from './reservation-add/reservation-add.component';
 import { ReservationDayComponent } from './reservation-day/reservation-day.component';
 import { TesseramentoAddComponent } from './tesseramento-add/tesseramento-add.component';
-import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +45,7 @@ import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list
     ReservationComponent,
     ReservationAddComponent,
     ReservationDayComponent,
-    TesseramentoAddComponent,
-    TesseramentoListComponent
+    TesseramentoAddComponent
   ],
   imports: [
     BrowserModule,
