@@ -101,11 +101,17 @@ export class UtenteAnonimoService {
 
     public integrazioneTessera(): Observable<IntegrazioneTessera[]> {
       return this.http.get<IntegrazioneTessera[]>(this.url + 'integrazione')
-
-
-     
     }
     public selTesserati():Observable<Tesseramento[]>{
       return this.http.get<Tesseramento[]>(this.url+'list-tesseramenti');
     }
+
+    public addTesserato(tesserato: Tesseramento): Observable<Result> {
+      return this.http.post<Result>(this.url + 'new-tessera', tesserato);
+    }
+
+    public upTesserato(tesserato: Tesseramento): Observable<Result> {
+      return this.http.put<Result>(this.url + 'modifica-tessera', tesserato);
+    }
+
 }

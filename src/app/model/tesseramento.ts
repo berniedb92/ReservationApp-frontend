@@ -2,16 +2,18 @@ import { Cliente } from "./cliente";
 
 export class Tesseramento {
   clienteTess!: Cliente;
-  tipoTessera!: TipoTessera;
-  integrazioneTessera!: IntegrazioneTessera;
+  tipo!: TipoTessera;
+  integrazione!: IntegrazioneTessera;
   codiceTessera!: number;
   dataTesseramento!: Date;
   scadenzaCertificato!: Date;
+  attiva!: boolean;
+  scadenzaTessera!: Date;
 }
 
 export class IntegrazioneTessera{
   id!: number;
-  tipoIntegrazione!: string;
+  tipo!: string;
   prezzo!: number;
 }
 

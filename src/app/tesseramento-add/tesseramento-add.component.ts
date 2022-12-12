@@ -22,6 +22,9 @@ export class TesseramentoAddComponent implements OnInit {
   constructor(private service: UtenteAnonimoService) { }
 
   ngOnInit(): void {
+
+    this.title = "Inserisci nuovo tesserato";
+
     this.service.listaClientiNoTessera().subscribe({
       next: (response) => {
         this.clientiNoTess = response
@@ -43,16 +46,41 @@ export class TesseramentoAddComponent implements OnInit {
     this.generateForm()
   }
 
+  get tesseramenti() {
+    return this.tesseraForm.controls
+  }
+
   onSubmit() {
 
+    this.tesseramento.clienteTess = this.tesseramenti['cliente'].value
+    this.tesseramento.tipo = this.tesseramenti['tipo'].value
+    this.tesseramento.integrazione = this.tesseramenti['integrazione'].value
+    this.tesseramento.scadenzaCertificato = this.tesseramenti['scadenzaCertificato'].value
+
+    const cliente = this.clientiNoTess.filter(x => x.id == this.tesseramenti['cliente'].value)
+    const tipo = this.tipiTessera.filter(x => x.id == this.tesseramenti['tipo'].value)
+    const integrazione = this.integrazioneTessera.filter(x => x.id == this.tesseramenti['integrazione'].value)
+
+    this.tesseramento.clienteTess = cliente[0];
+    this.tesseramento.tipo = tipo[0];
+    this.tesseramento.integrazione = integrazione[0];
+
+    this.service.addTesserato(this.tesseramento).subscribe({
+      next: (response) => {
+        console.log(response)
+      },
+      error: (error) => {
+        console.log(error.error.message)
+      }
+    })
   }
 
   generateForm()  {
     this.tesseraForm = new FormGroup({
-      cliente: new FormControl(this.tesseramento.clienteTess ? this.tesseramento.clienteTess : "", [Validators.required]),
-      tipo: new FormControl(this.tesseramento.tipoTessera ? this.tesseramento.tipoTessera : "", [Validators.required]),
-      integrazione: new FormControl(this.tesseramento.integrazioneTessera ? this.tesseramento.integrazioneTessera : "", [Validators.required]),
-      scadenzaCertificato: new FormControl(this.tesseramento.scadenzaCertificato ? this.tesseramento.scadenzaCertificato : "", [Validators.required, GlobalFunctions.validateDate()])
+      cliente: new FormControl(this.tesseramento.clienteTess, [Validators.required]),
+      tipo: new FormControl(this.tesseramento.tipo, [Validators.required]),
+      integrazione: new FormControl(this.tesseramento.integrazione, [Validators.required]),
+      scadenzaCertificato: new FormControl(this.tesseramento.scadenzaCertificato, [Validators.required, GlobalFunctions.validateDate()])
     })
   }
 

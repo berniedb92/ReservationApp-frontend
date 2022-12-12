@@ -1,36 +1,40 @@
+<div class="col mt-5 mb-5">
+  <app-tesseramento-list></app-tesseramento-list>
+</div>
+
 <section class="content-main" style="max-width: 760px;background-color: aliceblue; margin-top: 20px;">
   <h1>{{title}}</h1>
    <div class="content-header">
    <div class="card-body">
-     <form [formGroup]="tesseraForm" (onSubmit)="onSubmit()">
+     <form [formGroup]="tesseraForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">
         <label for="cliente">Cliente</label>
         <select class="form-select" formControlName="cliente" aria-label="Default select example">
-          <option selected value="undefined">Seleziona il cliente</option>
-          <option *ngFor="let c of clientiNoTess" value="{{c.id}}">{{c.nome }} - {{c.cognome}}</option>
+          <option selected value="null">Seleziona il cliente</option>
+          <option *ngFor="let c of clientiNoTess" value="{{c.id}}">{{c.nome }} {{c.cognome}}</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="cliente">Tipo Tessera</label>
         <select class="form-select" formControlName="tipo" aria-label="Default select example">
-          <option selected value="undefined">Seleziona il cliente</option>
+          <option selected value="null">Seleziona tipo tessera</option>
           <option *ngFor="let t of tipiTessera" value="{{t.id}}">{{t.tipo}}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="cliente">Tipo Tessera</label>
+        <label for="cliente">Integrazione Tessera</label>
         <select class="form-select" formControlName="integrazione" aria-label="Default select example">
-          <option selected value="null">Seleziona il cliente</option>
-          <option *ngFor="let i of integrazioneTessera" value="{{i.id}}">{{i.tipoIntegrazione}}</option>
+          <option selected value="null">Seleziona integrazione tessera</option>
+          <option *ngFor="let i of integrazioneTessera" value="{{i.id}}">{{i.tipo}}</option>
         </select>
       </div>
 
          <label for="dataNascita">Scadenza Certificato</label>
          <input type="date" formControlName="scadenzaCertificato" class="form-control"
-           placeholder="Inserisci la scadenza de lcertificato">
+           placeholder="Inserisci la scadenza del certificato">
            <!-- <div *ngIf="getErrorNameAndLastname()">
              {{getErrorNameAndLastname()}}
            </div> -->
