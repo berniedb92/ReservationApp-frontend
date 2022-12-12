@@ -1,4 +1,35 @@
 .content-main{
  max-width: fit-content;
  max-height: min-content;
+
+}
+td {
+    width: max-content;
+    text-align: center;
+}
+
+th {
+    width: max-content;
+    text-align: center!important;
+}
+table ::ng-deep .mat-header-cell {
+    margin-right: 1rem!important;
+    white-space: nowrap;
+    text-align: center!important;
+}
+
+
+mat-header-cell {
+    display: flex;
+    justify-content: center;
+}
+
+.cont-table {
+    overflow-x: auto;
+}
+ 
+.table thead{
+    background-color: teal;
+    border-radius: 10rem!important;
+    
 }

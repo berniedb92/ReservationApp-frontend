@@ -1,93 +1,118 @@
 <section class="content-main" style="max-width: 760px;background-color: aliceblue; margin-top: 20px;">
- <h1>{{title}}</h1>
+  <h1>{{title}}</h1>
   <div class="content-header">
-  <div class="card-body">
-    <form [formGroup]="registerClientForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="nome">Nome</label>
-        <input type="text" formControlName="firstname" class="form-control" minlength="2"
-          placeholder="Inserisci il nome">
-          <div *ngIf="getErrorName()">
-            {{getErrorName()}}
+    <div class="card-body">
+      <form [formGroup]="registerClientForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" formControlName="firstname" class="form-control" minlength="2"
+                placeholder="Inserisci il nome">
+              <div *ngIf="getErrorName()" style="color: red;">
+                {{getErrorName()}}
+              </div>
+            </div>
           </div>
-      </div>
-    <div class="form-group">
-        <label for="cognome">Cognome</label>
-        <input type="text" formControlName="lastname" class="form-control" minlength="3"
-          placeholder="Inserisci il cognome">
-          <div *ngIf="getErrorLastName()">
-            {{getErrorLastName()}}
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="cognome">Cognome</label>
+              <input type="text" formControlName="lastname" class="form-control" minlength="3"
+                placeholder="Inserisci il cognome">
+              <div *ngIf="getErrorLastName()" style="color: red;">
+                {{getErrorLastName()}}
+              </div>
+            </div>
           </div>
-    </div>
-    <div *ngIf=""></div>
-     <div class="form-group">
-      
-        <label for="dataNascita">Data di nascita</label>
-        <input type="date" formControlName="dateOfBirth" class="form-control" 
-          placeholder="Inserisci la data di nascita">
-      
-      </div>
-      <div class="form-group">
-        <label for="luogoDiNascita">Luogo Di Nascita</label>
-        <input type="text" formControlName="birthPlace" class="form-control"
-          placeholder="Inserisci il luogo di nascita">
-          <div *ngIf="getErrorBirthPlace()">
-            {{getErrorBirthPlace()}}
+          <div class="col-4">
+            <div class="form-group">
+
+              <label for="dataNascita">Data di nascita</label>
+              <input type="date" formControlName="dateOfBirth" class="form-control"
+                placeholder="Inserisci la data di nascita">
+            </div>
+
           </div>
-      </div>
-      <div class="form-group">
-        <label for="codiceFiscale">Codice Fiscale</label>
-        <input type="text" formControlName ="fiscalCode" class="form-control"
-          name="codiceFiscale" placeholder="Inserisci il codice fiscale">
-          <!-- <div *ngIf="getErrorNationality()">
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="luogoDiNascita">Luogo Di Nascita</label>
+              <input type="text" formControlName="birthPlace" class="form-control"
+                placeholder="Inserisci il luogo di nascita" style="color: red;">
+              <div *ngIf="getErrorBirthPlace()"style="color: red;">
+                {{getErrorBirthPlace()}}
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="codiceFiscale">Codice Fiscale</label>
+              <input type="text" formControlName="fiscalCode" class="form-control" name="codiceFiscale"
+                placeholder="Inserisci il codice fiscale" >
+              <!-- <div *ngIf="getErrorNationality()" >
             {{getErrorNationality()}}
           </div> -->
-      </div>
-      <div class="form-group">
-        <label for="nazionalita">Nazionalita</label>
-        <input type="text" formControlName="nationality" class="form-control" id="nazionalita" name="nazionalita"
-          placeholder="Inserisci la nazionalita">
-          <div *ngIf="getErrorNationality()">
-            {{getErrorNationality()}}
+            </div>
           </div>
-      </div>
-      <div class="form-group">
-        <label for="indirizzo">Indirizzo</label>
-        <input type="text" formControlName="address" class="form-control"
-          placeholder="Inserisci l'ndirizzo" >
-          <div *ngIf="getErrorAddress()">
-            {{getErrorAddress()}}
-          </div>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" formControlName="email"  class="form-control"
-          placeholder="Inserisci l'email" >
-          <div *ngIf="getErrorEmail()">
-            {{getErrorEmail()}}
         </div>
-    </div>
-      <div class="form">
-        <label>Numero Di Telefono</label>
-        <input type="text" formControlName="phone" class="form-control"
-          name="phone" placeholder="Inserisci il numero di telefono">
-          <div *ngIf="getErrorPhone()">
-            {{getErrorPhone()}}
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="nazionalita">Nazionalita</label>
+              <input type="text" formControlName="nationality" class="form-control" id="nazionalita" name="nazionalita"
+                placeholder="Inserisci la nazionalita">
+              <div *ngIf="getErrorNationality()"  style="color: red;">
+                {{getErrorNationality()}}
+              </div>
+            </div>
           </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-3 ms-5">
-          <button [disabled]="!registerClientForm.valid" class="btn btn-success">Salva</button>
+          <div class="col">
+            <div class="form-group">
+              <label for="indirizzo">Indirizzo</label>
+              <input type="text" formControlName="address" class="form-control" placeholder="Inserisci l'ndirizzo">
+              <div *ngIf="getErrorAddress()"  style="color: red;">
+                {{getErrorAddress()}}
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- <div class="col-4 ms-5">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" formControlName="email" class="form-control" placeholder="Inserisci l'email">
+              <div *ngIf="getErrorEmail()" style="color: red;">
+               {{getErrorEmail()}}
+              </div>
+            </div>
+          </div>
+          <div class="col">
+
+            <div class="form">
+              <label>Numero Di Telefono</label>
+              <input type="text" formControlName="phone" class="form-control" name="phone"
+                placeholder="Inserisci il numero di telefono">
+              <div *ngIf="getErrorPhone()"  style="color: red;">
+                {{getErrorPhone()}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-3 ms-5">
+            <button [disabled]="!registerClientForm.valid" class="btn btn-success">Salva</button>
+          </div>
+          <!-- <div class="col-4 ms-5">
           <button type="button" class="btn btn-secondary" (click)="resetForm(clientiForm.form)">Reset</button>
         </div> -->
-        <div class="col-3">
-          <button type="button" class="btn btn-primary" routerLink="/">Annulla</button>
+          <div class="col-3">
+            <button type="button" class="btn btn-primary" routerLink="/">Annulla</button>
+          </div>
         </div>
-      </div>
-  </form>
+      </form>
+    </div>
+
   </div>
-  
-</div>
 </section>

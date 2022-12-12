@@ -1,7 +1,7 @@
 <div class="content-main mt-4">
   <table class="table table-bordered">
 
-    <thead class="table-dark">
+    <thead class="table">
       <tr>
         <th scope="col">Codice Prenotazione</th>
         <th scope="col">Nominativo</th>
@@ -23,17 +23,21 @@
           <td>{{ dett.pagamento}}</td>
           <ng-container *ngIf="dett.pagamentoEffettuato; else elseTemplate">
             <span class="material-icons md-savings" title="Pagamento  effettuato"
-              style="font-size: 1.5rem; color: rgb(0, 128, 55);padding-left:2rem"></span>
+              style="font-size: 1.5rem; color: rgb(0, 128, 55);padding-left:4rem"></span>
           </ng-container>
           <ng-template #elseTemplate>
             <span class="material-icons md-savings" title="Pagamento non effettuato"
-              style="font-size: 1.5rem; color: rgb(192, 6, 6);padding-left:2rem;"></span>
+              style="font-size: 1.5rem; color: rgb(192, 6, 6);padding-left:4rem;"></span>
           </ng-template>
           <td>{{ dett.note}}</td>
           <div class="row">
-            <td><button type="button" class="btn" [disabled]="dett.pagamentoEffettuato == true" (click)="effettuaPagamento(dett)">
+            <td><button type="button" class="btn"  (click)="effettuaPagamento(dett)">
                 <span title="Effetua Pagamento" aria-hidden="true" class="material-icons md-payment"
                   style="font-size: 1.5rem; color: rgb(0, 128, 55)"></span>
+              </button>
+              <button type="button" class="btn"  (click)="modificaPagamento(dett)">
+                <span title="Modifica Pagamento" aria-hidden="true" class="material-icons md-payment"
+                  style="font-size: 1.5rem; color: rgb(225, 28, 28)"></span>
               </button>
               <button type="button" class="btn">
                 <span title="Inserisci note" aria-hidden="true" #id class="material-icons md-note" data-bs-toggle="modal"
@@ -67,9 +71,142 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-              <button type="button" class="btn btn-primary" (click)="inserisciNote()">Inserisci</button>
+              <button type="button" class="btn btn-primary" (click)="inserisciNote()" data-bs-dismiss="modal">Inserisci</button>
             </div>
           </form>
         </div>
       </div>
     </div>
+
+    <!-- <div class="cont-tab d-block">
+      <mat-tab-group color="accent" backgroundColor="primary">
+          <mat-tab label="Storico prenotazioni">
+              <ng-container *ngIf="driver.reservations != undefined && driver.reservations.length == 0">
+                  <div class="p-4">
+                      <h2 style="font-weight: 500; margin-top: 1rem;text-align:text-center;">Non sono presenti
+                          guide effettuate</h2>
+                  </div>
+              </ng-container>
+              <ng-container *ngIf="driver.reservations != undefined && driver.reservations.length != 0">
+                  <div>
+                      <table mat-table [dataSource]="dataSourceGuide" matSort>
+                          <ng-container matColumnDef="reservationNumber">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef mat-sort-header>Numero
+                                  prenotazione
+                              </th>
+                              <td class="td-field" style="font-weight: 500; text-align: left;" mat-cell
+                                  *matCellDef="let element">
+                                  {{element.reservationNumber}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="startDate">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef mat-sort-header>Data inizio
+                              </th>
+                              <td class="td-field" style="text-align: left;" mat-cell *matCellDef="let element">
+                                  {{element.startDate | date: 'dd/MM/yyyy H:mm' }} </td>
+                          </ng-container>
+                          <ng-container matColumnDef="endDate">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef mat-sort-header>Durata guida
+                              </th>
+                              <td class="td-field" style="text-align: left;" mat-cell *matCellDef="let element">
+                                  {{element.differenza}} minuti </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="guida">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef>Guida effettuata
+                              </th>
+                              <td class="td-field" style="font-weight: 500; text-align: left;" mat-cell
+                                  *matCellDef="let element">
+                                  {{element.driveDone? 'Si':'No'}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="punti">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef>Punti Acquisiti
+                              </th>
+                              <td class="td-field" style="font-weight: 500; text-align: left;" mat-cell
+                                  *matCellDef="let element">
+                                  {{element.points? element.points :'--'}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="car">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef>Macchina guidata
+                              </th>
+                              <td class="td-field" style="font-weight: 500; text-align: left;" mat-cell
+                                  *matCellDef="let element">
+                                  {{element.driveDone? element.idCar:'--'}} </td>
+                            </ng-container>
+                          <tr mat-header-row *matHeaderRowDef="displayedColumnsGuide"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumnsGuide"></tr>
+                      </table>
+                      <mat-paginator [pageSizeOptions]="[3, 5, 10, 25]"></mat-paginator>
+                  </div>
+              </ng-container>
+          </mat-tab>
+
+          <mat-tab label="Storico patenti">
+              <ng-container *ngIf="driver.licences == undefined">
+                  <div class="p-4">
+                      <h2 style="font-weight: 500; margin-top: 1rem; text-align:text-center;">Non esiste ancora
+                          uno storico</h2>
+                  </div>
+              </ng-container>
+              <ng-container *ngIf="driver.licences != undefined && driver.licences.length != 0">
+                  <div>
+                      <table mat-table [dataSource]="dataSourceStoric" matSort>
+                          <ng-container matColumnDef="type">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+                              <td class="td-field" style="text-align: left;" mat-cell *matCellDef="let element">
+                                  {{element.type.description}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="issuedAt">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef mat-sort-header>Data
+                                  emissione
+                              </th>
+                              <td class="td-field" style=" text-align: left;" mat-cell *matCellDef="let element">
+                                  {{element.issuedAt | date: 'dd/MM/yyyy'}}</td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="driveNumber">
+                              <th class="th-field" mat-header-cell *matHeaderCellDef mat-sort-header>Numero Guide
+                              </th>
+                              <td class="td-field" style="font-weight: 500; text-align: left;" mat-cell
+                                  *matCellDef="let element">
+                                  {{element.nDrives}} </td>
+                          </ng-container>
+
+                          <tr mat-header-row *matHeaderRowDef="displayedColumnsStoric"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumnsStoric;"></tr>
+                      </table>
+                      <mat-paginator [pageSizeOptions]="[3, 5, 10, 25]"></mat-paginator>
+                  </div>
+              </ng-container>
+
+          </mat-tab>
+
+          <!--  <mat-tab *ngIf="isAdmin" label="Responsabile associato">
+              <ng-container *ngIf="driver.responsable == undefined">
+                  <div class="p-4">
+                      <h2 style="font-weight: 500; margin-top: 1rem;text-align:text-center;">Nessun responsabile
+                          associato</h2>
+                  </div>
+              </ng-container>
+              <ng-container *ngIf="driver.responsable != undefined">
+                  <div class="row m-0 p-2">
+                      <div class="col" style="padding : 0.438rem 0.938rem">
+                          <span>Nome: <b>{{driver.responsable.firstname}}</b></span>
+                      </div>
+                      <div class="col" style="padding : 0.438rem 0.938rem">
+                          <span>Cognome: <b>{{driver.responsable.lastname}}</b></span>
+                      </div>
+                      <div class="col" style="padding : 0.438rem 0.938rem">
+                          <span>Data di nascita: <b>{{driver.responsable.dateOfBirth}}</b></span>
+                      </div>
+                      <div class="col">
+                          <button mat-flat-button color="primary" (click)="detailResponsable()">Visualizza</button>
+                      </div>
+                  </div>
+              </ng-container>
+           </mat-tab>
+      </mat-tab-group>
+  </div> --> -->

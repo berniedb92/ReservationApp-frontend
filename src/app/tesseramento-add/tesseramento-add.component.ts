@@ -119,7 +119,7 @@ export class TesseramentoAddComponent implements OnInit {
 
     console.log(this.tesseramento)
 
-    if(this.tesseramento.codiceTessera === 0) {
+    if(this.tesseramento.clienteTess) {
       const cliente = this.clientiNoTess.filter(x => x.id == this.tesseramenti['cliente'].value)
       this.tesseramento.clienteTess = cliente[0];
       this.service.insTesserato(this.tesseramento).subscribe({
@@ -164,4 +164,6 @@ export class TesseramentoAddComponent implements OnInit {
   //   })
   // }
 
-}
+  }
+
+

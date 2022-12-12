@@ -60,6 +60,26 @@ export class DetailsReservationComponent implements OnInit {
     });
 
   }
+
+
+  modificaPagamento(dettaglioPrenotazioni: any) {
+
+    this.updateStatusReservation({
+      'idDettaglio': dettaglioPrenotazioni["idDettaglio"],
+      'codicePrenotazione': dettaglioPrenotazioni["codicePrenotazione"],
+      'cliente': dettaglioPrenotazioni["cliente"],
+      'pagamento': dettaglioPrenotazioni["pagamento"],
+      'pagamentoEffettuato': dettaglioPrenotazioni.pagamentoEffettuato = false,
+      'note': dettaglioPrenotazioni['note']
+    }).subscribe({
+      next: () => {
+
+      },
+      error: (error) => {
+      }
+    });
+
+  }
   generateForm() {
     this.registerNoteForm = new FormGroup({
       note: new FormControl(this.dettTesserato.note ? this.dettTesserato.note : "", [Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(10), Validators.maxLength(80)]),
