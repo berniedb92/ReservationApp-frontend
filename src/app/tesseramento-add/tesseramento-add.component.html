@@ -18,10 +18,8 @@
 
       <div class="form-group" *ngIf="this.route.snapshot.params['codice']">
         <label for="cliente">Cliente</label>
-        <select class="form-select" formControlName="cliente" aria-label="Default select example">
-          <option selected value="null">Seleziona il cliente</option>
-          <option *ngFor="let c of clientiTess" value="{{c.id}}">{{c.nome }} {{c.cognome}}</option>
-        </select>
+        <input type="text" formControlName="cliente" class="form-control" minlength="2"
+          placeholder="Inserisci il nome">
       </div>
 
       <div class="form-group">
@@ -50,7 +48,7 @@
 
          <label for="dataNascita">Scadenza Certificato</label>
          <input type="date" formControlName="scadenzaCertificato" class="form-control"
-           placeholder="Inserisci la scadenza del certificato">
+           placeholder="Inserisci la scadenza del certificato" value="{{ tesseramento.scadenzaCertificato | date:'dd/MM/aaaa'}}">
            <!-- <div *ngIf="getErrorNameAndLastname()">
              {{getErrorNameAndLastname()}}
            </div> -->
@@ -63,8 +61,11 @@
            <button type="button" class="btn btn-secondary" (click)="resetForm(clientiForm.form)">Reset</button>
          </div> -->
          <div class="col-3">
-           <button type="button" class="btn btn-primary" routerLink="/">Annulla</button>
+           <button type="button" class="btn btn-primary" routerLink="/tesseramenti">Annulla</button>
          </div>
+         <div class="col-3">
+          <button type="button" class="btn btn-secondary" (click)="ngOnInit()">Discard</button>
+        </div>
        </div>
    </form>
    </div>

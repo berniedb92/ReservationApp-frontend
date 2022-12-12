@@ -17,7 +17,8 @@ export class TesseramentoAddComponent implements OnInit {
   title = ''
   tesseramento: Tesseramento = new Tesseramento()
   clientiNoTess: Cliente[]= []
-  clientiTess: Cliente[]= []
+  cliente: Cliente = new Cliente()
+  codiceModifica: number = 0;
   tesserati:Tesseramento[] = []
   tipiTessera: TipoTessera[] = []
   integrazioneTessera: IntegrazioneTessera[] = []
@@ -27,7 +28,7 @@ export class TesseramentoAddComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.generateForm()
+   this.generateForm()
 
     this.service.tipoTessera().subscribe({
       next: (response) => {
@@ -41,8 +42,8 @@ export class TesseramentoAddComponent implements OnInit {
       }
     })
 
-    console.log(this.tesseramento)
     const codice = this.route.snapshot.params['codice'];
+
     if(!codice) {
       this.title = "Inserisci nuovo tesserato";
 
@@ -56,21 +57,41 @@ export class TesseramentoAddComponent implements OnInit {
       this.title = "Modifica tesserato";
       this.service.selTesseratoCodice(codice).subscribe({
         next: (response) => {
-
+          console.log(response)
           this.tesseramenti['cliente'].disable()
           const tipo = this.tipiTessera.filter(x => x.id == response.tipo.id)
           const integrazione = this.integrazioneTessera.filter(x => x.id == response.integrazione.id)
+          this.cliente = response.clienteTess;
 
+          this.tesseramenti['cliente'].patchValue(this.cliente.cognome + ' ' + this.cliente.nome)
           this.tesseramenti['tipo'].patchValue(tipo[0].id)
           this.tesseramenti['integrazione'].patchValue(integrazione[0].id)
           this.tesseramenti['scadenzaCertificato'].patchValue(response.scadenzaCertificato)
 
-          this.service.listaClientiId(response.clienteTess.id).subscribe({
-            next:(resp) => {
-              this.clientiTess[0] = resp;
-              this.tesseramenti['cliente'].patchValue(this.clientiTess[0].id)
-            }
-          })
+
+
+          this.tesseramento.codiceTessera = codice;
+
+
+          // this.tesseramento = response;
+
+
+          // this.tesseramento.tipo = this.tesseramenti['tipo'].value
+          // this.tesseramento.integrazione = this.tesseramenti['integrazione'].value
+          // this.tesseramento.scadenzaCertificato = this.tesseramenti['scadenzaCertificato'].value
+
+          // this.tesseramento.tipo = tipo[0];
+          // this.tesseramento.integrazione = integrazione[0];
+
+          // this.service.listaClientiId(response.clienteTess.id).subscribe({
+          //   next:(resp) => {
+          //     this.clientiTess[0] = resp;
+          //    this.tesseramenti['cliente'].patchValue(this.clientiTess[0].id)
+          //     this.generateForm()
+          //   }
+          // })
+          // this.generateForm()
+
         }
       })
     }
@@ -88,15 +109,19 @@ export class TesseramentoAddComponent implements OnInit {
     this.tesseramento.integrazione = this.tesseramenti['integrazione'].value
     this.tesseramento.scadenzaCertificato = this.tesseramenti['scadenzaCertificato'].value
 
-    const cliente = this.clientiNoTess.filter(x => x.id == this.tesseramenti['cliente'].value)
+
     const tipo = this.tipiTessera.filter(x => x.id == this.tesseramenti['tipo'].value)
     const integrazione = this.integrazioneTessera.filter(x => x.id == this.tesseramenti['integrazione'].value)
 
-    this.tesseramento.clienteTess = cliente[0];
+
     this.tesseramento.tipo = tipo[0];
     this.tesseramento.integrazione = integrazione[0];
 
+    console.log(this.tesseramento)
+
     if(this.tesseramento.codiceTessera === 0) {
+      const cliente = this.clientiNoTess.filter(x => x.id == this.tesseramenti['cliente'].value)
+      this.tesseramento.clienteTess = cliente[0];
       this.service.insTesserato(this.tesseramento).subscribe({
         next: (response) => {
           console.log(response)
@@ -106,6 +131,9 @@ export class TesseramentoAddComponent implements OnInit {
         }
       })
     } else {
+      //this.tesseramenti['cliente'].enable()
+      this.tesseramento.clienteTess = this.cliente
+      console.log(this.tesseramento, 'modifica')
       this.service.upTesserato(this.tesseramento).subscribe({
         next: (response) => {
           console.log(response)
@@ -120,11 +148,20 @@ export class TesseramentoAddComponent implements OnInit {
 
   generateForm()  {
     this.tesseraForm = new FormGroup({
-      cliente: new FormControl(this.tesseramento.clienteTess, [Validators.required]),
-      tipo: new FormControl(this.tesseramento.tipo, [Validators.required]),
-      integrazione: new FormControl(this.tesseramento.integrazione, [Validators.required]),
-      scadenzaCertificato: new FormControl(this.tesseramento.scadenzaCertificato, [Validators.required, GlobalFunctions.validateDate()])
+      cliente: new FormControl(this.tesseramento.clienteTess ? this.tesseramento.clienteTess : '', [Validators.required]),
+      tipo: new FormControl(this.tesseramento.tipo ? this.tesseramento.tipo : '', [Validators.required]),
+      integrazione: new FormControl(this.tesseramento.integrazione ? this.tesseramento.integrazione: '', [Validators.required]),
+      scadenzaCertificato: new FormControl(this.tesseramento.scadenzaCertificato ? this.tesseramento.scadenzaCertificato: '', [Validators.required, GlobalFunctions.validateDate()])
     })
   }
+
+  // generateForm()  {
+  //   this.tesseraForm = new FormGroup({
+  //     cliente: new FormControl(this.tesseramento.clienteTess, [Validators.required]),
+  //     tipo: new FormControl(this.tesseramento.tipo, [Validators.required]),
+  //     integrazione: new FormControl(this.tesseramento.integrazione, [Validators.required]),
+  //     scadenzaCertificato: new FormControl(this.tesseramento.scadenzaCertificato, [Validators.required, GlobalFunctions.validateDate()])
+  //   })
+  // }
 
 }
