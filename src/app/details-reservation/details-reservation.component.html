@@ -8,7 +8,7 @@
         <th scope="col">Codice Tessera</th>
         <th scope="col">Data Prenotazione</th>
         <th scope="col">Pagamento</th>
-        <th scope="col">Pagamento Effettuato</th>
+        <th scope="col">Pagato</th>
         <th scope="col">Note</th>
         <th scope="col">Azioni</th>
       </tr>
@@ -20,7 +20,8 @@
           <td>{{ dett.cliente.clienteTess.nome + " " + dett.cliente.clienteTess.cognome}}</td>
           <td>{{ dett.cliente.codiceTessera}}</td>
           <td>{{ dett.codicePrenotazione.data | date:"dd/MM/YYYY"}}</td>
-          <td>{{ dett.pagamento}}</td>
+          <td>{{ dett.pagamento + '€'}}</td>
+          <td>
           <ng-container *ngIf="dett.pagamentoEffettuato; else elseTemplate">
             <span class="material-icons md-savings" title="Pagamento  effettuato"
               style="font-size: 1.5rem; color: rgb(0, 128, 55);padding-left:2rem"></span>
@@ -29,9 +30,11 @@
             <span class="material-icons md-savings" title="Pagamento non effettuato"
               style="font-size: 1.5rem; color: rgb(192, 6, 6);padding-left:2rem;"></span>
           </ng-template>
+        </td>
           <td>{{ dett.note}}</td>
-          <div class="row">
-            <td><button type="button" class="btn" [disabled]="dett.pagamentoEffettuato == true" (click)="effettuaPagamento(dett)">
+          <!-- <div class="row"> -->
+            <td>
+              <button type="button" class="btn" [disabled]="dett.pagamentoEffettuato == true" (click)="effettuaPagamento(dett)">
                 <span title="Effetua Pagamento" aria-hidden="true" class="material-icons md-payment"
                   style="font-size: 1.5rem; color: rgb(0, 128, 55)"></span>
               </button>
@@ -40,7 +43,7 @@
                   data-bs-target="#exampleModal" (click)="selectId(dett)" style="font-size: 1.5rem; color: rgb(213, 202, 52)"></span>
               </button>
             </td>
-          </div>
+          <!-- </div> -->
         </tr>
       </ng-container>
 
@@ -56,14 +59,14 @@
         </div>
         <div class="modal-body">
           <form [formGroup]="registerNoteForm" method="get">
-        
+
             <div class="form-outline">
               <label class="form-label">Inserisci una nota:</label>
               <textarea formControlName="note" class="form-control"
               placeholder="Aggiungi un commento" id="textAreaExample" rows="4"></textarea>
-             
+
             </div>
-          
+
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>

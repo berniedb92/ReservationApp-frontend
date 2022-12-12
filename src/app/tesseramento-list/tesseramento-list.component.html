@@ -24,17 +24,17 @@
                 <td>{{ t.scadenzaCertificato | date :'dd/MM/yyyy' }}</td>
                 <td>
                     <div class="buttons-grid">
-                        <button class="btn btn-success btn-sm">
-                            <span class="material-icons md-edit" [routerLink]="['/modifica-tessera', t.codiceTessera]" title="Campi" aria-hidden="true"></span>
+                        <button type="button" class="btn" style="color: blueviolet; font-size: 1.5rem;border-width: 2px;">
+                            <span class="material-icons md-edit" [routerLink]="['/modifica-tessera', t.codiceTessera]" title="Modifica" aria-hidden="true"></span>
                         </button>
-                        <button class="btn btn-warning btn-sm">
-                            <span class="material-icons md-event_note" title="Campi" aria-hidden="true"></span>
+                        <button type="button" class="btn" style="color: sandybrown; font-size: 1.5rem;border-width: 2px;">
+                            <span class="material-icons md-event_note" title="Note" aria-hidden="true"></span>
                         </button>
-                        <button class="btn btn-danger btn-sm">
-                            <span class="material-icons md-delete_outline" title="Campi" aria-hidden="true"></span>
+                        <button type="button" class="btn" style="color: red; font-size: 1.5rem; border-width: 2px;">
+                            <span class="material-icons md-delete_outline" title="Elimina" aria-hidden="true"></span>
                         </button>
-                        <button class="btn btn-primary btn-sm">
-                            <span class="material-icons md-info" title="Campi" aria-hidden="true"></span>
+                        <button type="button" class="btn" style="color: blue; font-size: 1.5rem;border-width: 2px;">
+                            <span class="material-icons md-info" title="Info" aria-hidden="true"></span>
                         </button>
                     </div>
                 </td>

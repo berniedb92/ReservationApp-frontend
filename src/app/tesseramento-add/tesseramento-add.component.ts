@@ -62,12 +62,13 @@ export class TesseramentoAddComponent implements OnInit {
           const tipo = this.tipiTessera.filter(x => x.id == response.tipo.id)
           const integrazione = this.integrazioneTessera.filter(x => x.id == response.integrazione.id)
           this.cliente = response.clienteTess;
+          this.codiceModifica = codice;
 
           this.tesseramenti['cliente'].patchValue(this.cliente.cognome + ' ' + this.cliente.nome)
           this.tesseramenti['tipo'].patchValue(tipo[0].id)
           this.tesseramenti['integrazione'].patchValue(integrazione[0].id)
           this.tesseramenti['scadenzaCertificato'].patchValue(response.scadenzaCertificato)
-
+          this.tesseramenti['dataTesseramento'].patchValue(response.dataTesseramento)
 
 
           this.tesseramento.codiceTessera = codice;
@@ -119,7 +120,7 @@ export class TesseramentoAddComponent implements OnInit {
 
     console.log(this.tesseramento)
 
-    if(this.tesseramento.codiceTessera === 0) {
+    if(this.codiceModifica === 0) {
       const cliente = this.clientiNoTess.filter(x => x.id == this.tesseramenti['cliente'].value)
       this.tesseramento.clienteTess = cliente[0];
       this.service.insTesserato(this.tesseramento).subscribe({
@@ -151,7 +152,8 @@ export class TesseramentoAddComponent implements OnInit {
       cliente: new FormControl(this.tesseramento.clienteTess ? this.tesseramento.clienteTess : '', [Validators.required]),
       tipo: new FormControl(this.tesseramento.tipo ? this.tesseramento.tipo : '', [Validators.required]),
       integrazione: new FormControl(this.tesseramento.integrazione ? this.tesseramento.integrazione: '', [Validators.required]),
-      scadenzaCertificato: new FormControl(this.tesseramento.scadenzaCertificato ? this.tesseramento.scadenzaCertificato: '', [Validators.required, GlobalFunctions.validateDate()])
+      scadenzaCertificato: new FormControl(this.tesseramento.scadenzaCertificato ? this.tesseramento.scadenzaCertificato: '', [Validators.required, GlobalFunctions.validateDate()]),
+      dataTesseramento: new FormControl(this.tesseramento.dataTesseramento ? this.tesseramento.dataTesseramento: '', [GlobalFunctions.validateDate()])
     })
   }
 

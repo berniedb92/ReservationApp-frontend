@@ -9,6 +9,9 @@ export class Tesseramento {
   scadenzaCertificato!: Date;
   attiva!: boolean;
   scadenzaTessera!: Date;
+  note!: string;
+  pagamento!: number;
+  pagata!: boolean;
 }
 
 export class IntegrazioneTessera{
