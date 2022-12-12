@@ -1,7 +1,7 @@
 <div class="content-main mt-4">
   <table class="table table-bordered">
 
-    <thead class="table-dark">
+    <thead class="table">
       <tr>
         <th scope="col">Codice Prenotazione</th>
         <th scope="col">Nominativo</th>
@@ -24,19 +24,22 @@
           <td>
           <ng-container *ngIf="dett.pagamentoEffettuato; else elseTemplate">
             <span class="material-icons md-savings" title="Pagamento  effettuato"
-              style="font-size: 1.5rem; color: rgb(0, 128, 55);padding-left:2rem"></span>
+              style="font-size: 1.5rem; color: rgb(0, 128, 55);padding-left:4rem"></span>
           </ng-container>
           <ng-template #elseTemplate>
             <span class="material-icons md-savings" title="Pagamento non effettuato"
-              style="font-size: 1.5rem; color: rgb(192, 6, 6);padding-left:2rem;"></span>
+              style="font-size: 1.5rem; color: rgb(192, 6, 6);padding-left:4rem;"></span>
           </ng-template>
         </td>
           <td>{{ dett.note}}</td>
-          <!-- <div class="row"> -->
-            <td>
-              <button type="button" class="btn" [disabled]="dett.pagamentoEffettuato == true" (click)="effettuaPagamento(dett)">
+          <div class="row">
+            <td><button type="button" class="btn" [disabled]="dett.pagamentoEffettuato == true" (click)="effettuaPagamento(dett)">
                 <span title="Effetua Pagamento" aria-hidden="true" class="material-icons md-payment"
                   style="font-size: 1.5rem; color: rgb(0, 128, 55)"></span>
+              </button>
+              <button type="button" class="btn"  (click)="modificaPagamento(dett)">
+                <span title="Modifica Pagamento" aria-hidden="true" class="material-icons md-payment"
+                  style="font-size: 1.5rem; color: rgb(225, 28, 28)"></span>
               </button>
               <button type="button" class="btn">
                 <span title="Inserisci note" aria-hidden="true" #id class="material-icons md-note" data-bs-toggle="modal"
@@ -70,7 +73,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-              <button type="button" class="btn btn-primary" (click)="inserisciNote()">Inserisci</button>
+              <button type="button" class="btn btn-primary" (click)="inserisciNote()" data-bs-dismiss="modal">Inserisci</button>
             </div>
           </form>
         </div>
