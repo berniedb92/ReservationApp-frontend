@@ -30,10 +30,11 @@
                         <button type="button" class="btn" style="color: sandybrown; font-size: 1.5rem;border-width: 2px;">
                             <span class="material-icons md-event_note" title="Note" aria-hidden="true"></span>
                         </button>
-                        <button type="button" class="btn" style="color: red; font-size: 1.5rem; border-width: 2px;">
+                        <button type="button" class="btn" style="color: red; font-size: 1.5rem; border-width: 2px;" (click)="deleteTessera(t.codiceTessera)">
                             <span class="material-icons md-delete_outline" title="Elimina" aria-hidden="true"></span>
                         </button>
-                        <button type="button" class="btn" style="color: blue; font-size: 1.5rem;border-width: 2px;">
+                        <button type="button" class="btn" style="color: blue; font-size: 1.5rem;border-width: 2px;" (click)="quote(t.codiceTessera, t.clienteTess.cognome)"
+                        data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             <span class="material-icons md-info" title="Info" aria-hidden="true"></span>
                         </button>
                     </div>
@@ -42,3 +43,14 @@
         </ng-container>
     </tbody>
 </table>
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <h3>Cliente selezionato => {{quoteSel.tesserato}}</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Singolo tennis: {{quoteSel.singolo}}</li>
+            <li class="list-group-item">Doppio tennis: {{quoteSel.doppio}}</li>
+            <li class="list-group-item">Padel: {{quoteSel.padel}}</li>
+          </ul>
+    </div>
+</div>
+

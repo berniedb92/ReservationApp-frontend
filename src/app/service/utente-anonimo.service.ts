@@ -8,8 +8,19 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { DettaglioPrenotazione } from '../model/dettagliPrenotazione';
 
 export interface Result {
+  date: Date
+  message: string
+}
+
+export interface ErrorMsg {
   code: string
   message: string
+}
+
+export interface ResponseNode {
+  DoppioTennis: number
+  SingoloTennis: number
+  Padel: number
 }
 
 @Injectable()
@@ -126,6 +137,14 @@ export class UtenteAnonimoService {
 
   public upTesserato(tesserato: Tesseramento):Observable<Result>{
     return this.http.put<Result>(this.url+'modifica-tessera', tesserato);
+  }
+
+  public delTesserato(codice: number):Observable<ErrorMsg>{
+    return this.http.delete<ErrorMsg>(this.url + `remove-tessera/${codice}`);
+  }
+
+  public selQuoteTesserato(codice: number):Observable<ResponseNode>{
+    return this.http.get<ResponseNode>(this.url + `quote-tessere/${codice}`);
   }
 
 }
