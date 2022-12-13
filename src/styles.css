@@ -1,12 +1,15 @@
 @import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/@syncfusion/ej2-material-theme/styles/material.css";
 
 /* ================== BASE =================== */
 body {
   position: relative;
-  min-height: 100vh;
+  max-height: 100vh!important;
+  overflow-x: none;
+  display: flex;
+  flex-direction: column;
 }
+
 
 body.offcanvas-active {
   overflow: hidden;
@@ -18,17 +21,15 @@ body.offcanvas-active {
 
 
 .content-main {
-  padding: 30px 3%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgb(255, 255, 255);
-}
-
-.content-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
+  min-height:  100vh!important;
+  background-color: rgb(255, 255, 255);
+  justify-content: flex-start;
+}
+.content-header {
+ display: flex;
+ justify-content: center!important;
+  position: relative;
 }
 
 .content-header a {
@@ -42,7 +43,7 @@ body.offcanvas-active {
 .main-header {
   padding-left: 3%;
   padding-right: 3%;
-  min-height: 72px;
+  min-height: 100%;
   background-color: #fff;
   border-bottom: 1px solid rgba(108, 117, 125, 0.25);
 }

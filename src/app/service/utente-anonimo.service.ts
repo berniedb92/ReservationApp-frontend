@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { DettaglioPrenotazione } from '../model/dettagliPrenotazione';
+import { Router } from '@angular/router';
 
 export interface Result {
   code: string
@@ -19,7 +20,7 @@ export class UtenteAnonimoService {
 
   // creiamo un BehaviorSubject
   data$: BehaviorSubject<Cliente[]> = new BehaviorSubject<Cliente[]>([]);
-
+  router:BehaviorSubject<any> = new BehaviorSubject(null);
   // emettere valori nel subject
   update(value: Cliente[]) {
     this.data$.next(value);
@@ -29,8 +30,22 @@ export class UtenteAnonimoService {
     return this.data$.getValue(); // restituisce il valore attuale del subject
   }
 
-  constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080/api/reservation/'
+  getUrl(){
+    return this.router.getValue();
+  }
+
+  setUrl(url:string){
+    this.router.next(url)  }
+
+  constructor(private http: HttpClient, private route:Router) {
+    this.url = 'http://localhost:8080/api/reservation/';
+    this.route.events.subscribe(
+      {
+        next:()=>{
+         this.router.next(this.route.url) 
+        }
+      }
+     )
 
   }
 

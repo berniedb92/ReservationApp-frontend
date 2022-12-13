@@ -8,6 +8,7 @@ import { GlobalFunctions } from '../common/global-functions';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 import { Tesseramento } from '../model/tesseramento';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-reservation-add',
   templateUrl: './reservation-add.component.html',
@@ -33,12 +34,12 @@ export class ReservationAddComponent implements OnInit {
 
   prenotazione: Prenotazione = new Prenotazione();
   campi: Campo[] = []
-
+  router:string="";
   tesserati :Tesseramento[] =[];
   registerReservationForm: FormGroup = {} as FormGroup;
   errore:string="";
 
-  constructor(private service: UtenteAnonimoService) {
+  constructor(private service: UtenteAnonimoService,private route:Router) {
 
   }
 
@@ -49,6 +50,8 @@ export class ReservationAddComponent implements OnInit {
    this.service.selTesserati().subscribe(data =>{this.tesserati=data});
     console.log("TESSERATI",this.tesserati);
    this.generateForm();
+
+   console.log("ROTta",this.service.router);
    console.log("Valore Form",this.registerReservationForm)
   }
 

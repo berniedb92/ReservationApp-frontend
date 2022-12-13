@@ -4,6 +4,7 @@
 </button>
 
 <!-- Modal -->
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" >
     <div class="modal-content">
@@ -19,6 +20,7 @@
     </div>
   </div>
 </div>
+
   <h1 class="text-dark mt-3">Lista prenotazioni</h1>
   <!--Ordina per :
   <div class="form-check">
@@ -50,8 +52,8 @@
       <fa-icon [icon]="faEraser"></fa-icon>
     </button>
   </div> -->
-  <table class="table table-bordered table-striped" >
-    <thead class="table-dark">
+  <table class="table table-bordered table-striped;" >
+    <thead class="table-dark"> 
       <tr>
         <th scope="col">Data</th>
         <th scope="col">Inizio</th>
@@ -88,7 +90,7 @@
     </tbody>
   </table>
 
-  <nav class="float-end mt-3" aria-label="Page navigation">
+  <nav class="float-end mt-3" aria-label="Page navigation "style="color:white;">
     <pagination-controls
               class="my-pagination"
               (pageChange)="pageIndex = $event"
@@ -97,8 +99,9 @@
    </pagination-controls>
   </nav>
 
-  <label style="margin-top: 8px; margin-left: 10px;">Clienti per pagina:</label>
+  <label style="margin-top: 8px; margin-left: 10px;color:white;">Clienti per pagina:</label>
   <select class="form-select form-select-sm" style="width:4%; margin-left: 10px;" #size [(ngModel)]="pageSize">
+    <option value=5>5</option>
     <option value=10>10</option>
     <option selected value=20>20</option>
     <option value=30>30</option>

@@ -16,7 +16,9 @@ export class ReservationDayComponent implements OnInit {
   date = new Date()
   tesserati:any;
 
-  constructor(private service: UtenteAnonimoService) { }
+  constructor(private service: UtenteAnonimoService) { 
+  
+  }
 
   ngOnInit(): void {
     this.service.listaPrenotazioniDate(this.splitData(this.date)).subscribe(
@@ -24,6 +26,8 @@ export class ReservationDayComponent implements OnInit {
         this.prenotazioni = data;
       }
     )
+
+    
   }
 
   splitData(data: Date): string {

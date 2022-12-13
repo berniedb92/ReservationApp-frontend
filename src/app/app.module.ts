@@ -29,6 +29,8 @@ import { ReservationDayComponent } from './reservation-day/reservation-day.compo
 import { TesseramentoAddComponent } from './tesseramento-add/tesseramento-add.component';
 import { DetailsReservationComponent } from './details-reservation/details-reservation.component';
 import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list
     ReservationDayComponent,
     TesseramentoAddComponent,
     TesseramentoListComponent,
-    DetailsReservationComponent
+    DetailsReservationComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+
   ],
   providers: [UtenteAnonimoService],
   bootstrap: [AppComponent]
