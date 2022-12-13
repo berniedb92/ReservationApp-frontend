@@ -2,10 +2,12 @@
   <app-tesseramento-list></app-tesseramento-list>
 </div> -->
 
-<section class="content-main" style="max-width: 760px;background-color: aliceblue; margin-top: 20px;">
-  <h1>{{title}}</h1>
-   <div class="content-header">
+<div class="addTess">
+<section>
+  
+  
    <div class="card-body">
+    <h1>{{title}}</h1>
      <form [formGroup]="tesseraForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group" *ngIf="!this.route.snapshot.params['codice']">
@@ -76,6 +78,7 @@
    </form>
    </div>
 
- </div>
+
  </section>
 
+</div>

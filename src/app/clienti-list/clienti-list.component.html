@@ -1,4 +1,4 @@
-<div class="col ms-5 mx-5">
+<div class="container pt-4">
 <h1 class="text-dark">Lista clienti</h1>
 Ordina per :
 <div class="form-check">
@@ -31,7 +31,7 @@ Ordina per :
   </button>
 </div> -->
 <table class="table table-bordered table-striped" >
-  <thead class="table-dark">
+  <thead class="table">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nome</th>
@@ -84,8 +84,9 @@ Ordina per :
 
 <label style="margin-top: 8px; margin-left: 10px;">Clienti per pagina:</label>
 <select class="form-select form-select-sm" style="width:5%; margin-left: 10px;" #size [(ngModel)]="pageSize">
+  <option value=5>5</option>
   <option value=10>10</option>
   <option selected value=20>20</option>
   <option value=30>30</option>
 </select>
-
+</div>

@@ -1,4 +1,4 @@
-<div class="content-main mt-4">
+
   <table class="table table-bordered">
 
     <thead class="table">
@@ -24,15 +24,15 @@
           <td>
           <ng-container *ngIf="dett.pagamentoEffettuato; else elseTemplate">
             <span class="material-icons md-savings" title="Pagamento  effettuato"
-              style="font-size: 1.5rem; color: rgb(0, 128, 55);padding-left:4rem"></span>
+              style="font-size: 1.5rem; color: rgb(0, 128, 55);"></span>
           </ng-container>
           <ng-template #elseTemplate>
             <span class="material-icons md-savings" title="Pagamento non effettuato"
-              style="font-size: 1.5rem; color: rgb(192, 6, 6);padding-left:4rem;"></span>
+              style="font-size: 1.5rem; color: rgb(192, 6, 6);"></span>
           </ng-template>
         </td>
           <td>{{ dett.note}}</td>
-          <div class="row">
+          <div class="row m-0">
             <td><button type="button" class="btn" [disabled]="dett.pagamentoEffettuato == true" (click)="effettuaPagamento(dett)">
                 <span title="Effetua Pagamento" aria-hidden="true" class="material-icons md-payment"
                   style="font-size: 1.5rem; color: rgb(0, 128, 55)"></span>
@@ -46,7 +46,7 @@
                   data-bs-target="#exampleModal" (click)="selectId(dett)" style="font-size: 1.5rem; color: rgb(213, 202, 52)"></span>
               </button>
             </td>
-          </div>
+         </div>
         </tr>
       </ng-container>
 
@@ -78,4 +78,4 @@
           </form>
         </div>
       </div>
-    </div>
+

@@ -1,5 +1,5 @@
-<div class="container position-relative">
-<div class="col-6 position-absolute top-0 start-0">
+<div class="tabellaCampi">
+
 <h2 class="text-dark">Campi inseriti</h2>
 <table class="table table-bordered table-striped table-dark">
   <thead class="thead-dark">
@@ -31,7 +31,7 @@
     </td></tr>
   </tfoot>
 </table>
-</div>
+
 <div class="col-5 position-absolute end-0 top-100" *ngIf="showAdd">
   <app-campi-add (close-add-campi)="hideAdd()" (reload)="reloadComponent()"></app-campi-add>
 </div>

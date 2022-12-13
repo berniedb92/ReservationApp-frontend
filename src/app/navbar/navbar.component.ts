@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RouteguardGuard } from '../routeguard.guard';
+import { UtenteAnonimoService } from '../service/utente-anonimo.service';
 import { AdminMenu, UserMenu } from './navbar.enum';
 interface ItemAdminMenu {
   description: string;
@@ -15,10 +18,14 @@ export class NavbarComponent implements OnInit {
   topbarAdminList: Array<ItemAdminMenu> = [];
   sidebarOpen: boolean = false;
   sidebarWidth: string = "3.5rem";
+  route:string ="";
+  constructor(private service:UtenteAnonimoService,) {
+   }
 
-  constructor() { }
 
   ngOnInit(): void {
+console.log("this.rote",this.route)
+   
   }
   openCloseSidebar() {
     this.sidebarOpen = !this.sidebarOpen;

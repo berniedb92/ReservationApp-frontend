@@ -1,22 +1,20 @@
-.content-main{
- max-width: fit-content;
- max-height: min-content;
 
-}
 td {
     width: max-content;
-    text-align: center;
-    vertical-align: middle;
+    text-align: center!important;
+    align-items: center;
 }
 
 th {
     width: max-content;
     text-align: center!important;
+    align-items: center;
 }
 table ::ng-deep .mat-header-cell {
-    margin-right: 1rem!important;
+
     white-space: nowrap;
     text-align: center!important;
+
 }
 
 
@@ -33,4 +31,8 @@ mat-header-cell {
     background-color: teal;
     border-radius: 10rem!important;
 
+}
+table{
+    margin-top: 5rem;
+    background-color: #fefefe;
 }

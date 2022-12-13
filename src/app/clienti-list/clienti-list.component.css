@@ -131,3 +131,7 @@
   border: 1px solid #dee2e6  !important;
   padding: 6px 12px !important;
 }
+table thead{
+  background-color: teal;
+
+}
