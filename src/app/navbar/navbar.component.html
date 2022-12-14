@@ -2,16 +2,13 @@
   <div class="container-fluid">
 
   
-              <button type="button" id="sidebarCollapse" class="btn btn-info">
-                  <i class="fas fa-align-left"></i>
-                  <span>Reservation App</span>
-              </button>
-  
+    <a type="button"  (click)="openCloseSidebar()">
+      <i class="fas fa-align-left"></i>
+      <span>Reservation App</span>
+    </a>
+
        
-      
-
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -107,3 +104,4 @@
     </div>
   </div>
 </nav>
+<!-- <app-sidebar (openSideBar)="openCloseSidebar()" ></app-sidebar> -->

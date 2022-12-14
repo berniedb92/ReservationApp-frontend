@@ -1,7 +1,9 @@
-<div class="wrapper">
+<app-navbar (openSideBar)="openCloseSidebar()" ></app-navbar>
+
+<div class="wrapper"  >
     <!-- Sidebar -->
-    <nav id="sidebar">
-      
+    <nav class="sidebar" [ngStyle]="{'width':sidebarWidth}" >
+   
         <div class="sidebar-header">
             <h3>Bootstrap Sidebar</h3>
         </div>
@@ -9,7 +11,7 @@
         <ul class="list-unstyled components">
             <p>Dummy Heading</p>
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{route}}</a>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"></a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
                         <a href="#">Home 1</a>
@@ -46,6 +48,13 @@
                 <a href="#">Contact</a>
             </li>
         </ul>
+        
     </nav>
-  
+  <div class="container">
+    <router-outlet></router-outlet>
   </div>
+   
+  </div>
+
+
+

@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { outputAst } from '@angular/compiler';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Navigation, Router } from '@angular/router';
 import { UtenteAnonimoService } from '../service/utente-anonimo.service';
 
@@ -9,16 +10,24 @@ import { UtenteAnonimoService } from '../service/utente-anonimo.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+  sidebarOpen :boolean =false;
+  sidebarWidth:string="3.5rem";
   route:any ="";
-  constructor(private service:UtenteAnonimoService){
-
+  
+  constructor(elementRef:ElementRef){
+   elementRef;
   }
   ngOnInit(): void {
-   console.log("ROTTAAAAAA",this.service.getUrl());
+   
   }
 
-
-
+openCloseSidebar  () {
+    this.sidebarOpen = !this.sidebarOpen;
+    if (this.sidebarOpen) {
+      this.sidebarWidth = "15rem";
+    } else {
+      this.sidebarWidth = "3.5rem";
+    }
+  }
 
 }

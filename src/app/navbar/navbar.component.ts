@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { RouteguardGuard } from '../routeguard.guard';
 import { UtenteAnonimoService } from '../service/utente-anonimo.service';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 import { AdminMenu, UserMenu } from './navbar.enum';
 interface ItemAdminMenu {
   description: string;
@@ -14,25 +17,32 @@ interface ItemAdminMenu {
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
-  topbarAdminList: Array<ItemAdminMenu> = [];
-  sidebarOpen: boolean = false;
-  sidebarWidth: string = "3.5rem";
+export class NavbarComponent implements OnInit , AfterViewInit{
+
   route:string ="";
+
+  @Output('openSideBar') openSideBar = new EventEmitter() 
+
+  // @ViewChild('sidebar') sidebar:ElementRef = {} as ElementRef;
+  // @ViewChild('sidebar') sidebarOpen: SidebarComponent = new SidebarComponent(this.sidebar);
   constructor(private service:UtenteAnonimoService,) {
+ 
    }
 
 
+
   ngOnInit(): void {
-console.log("this.rote",this.route)
+
    
   }
-  openCloseSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
-    if (this.sidebarOpen) {
-      this.sidebarWidth = "15rem";
-    } else {
-      this.sidebarWidth = "3.5rem";
-    }
-}
+
+  ngAfterViewInit(): void {
+  
+  }
+
+  openCloseSidebar(){
+   this.openSideBar.emit();
+  }
+
+
 }
