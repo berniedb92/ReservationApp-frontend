@@ -54,6 +54,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .container{
   justify-content: center;
-display: flex;
-
+  display: flex;
+  max-width: 1600px;
 }

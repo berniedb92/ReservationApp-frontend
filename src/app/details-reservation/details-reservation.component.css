@@ -3,6 +3,7 @@ td {
     width: max-content;
     text-align: center!important;
     align-items: center;
+    vertical-align: middle;
 }
 
 th {

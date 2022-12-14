@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -20,24 +20,26 @@ interface ItemAdminMenu {
 export class NavbarComponent implements OnInit , AfterViewInit{
 
   route:string ="";
+  @Input() open = false;
+  @Input() margin = ''
 
-  @Output('openSideBar') openSideBar = new EventEmitter() 
+  @Output('openSideBar') openSideBar = new EventEmitter()
 
   // @ViewChild('sidebar') sidebar:ElementRef = {} as ElementRef;
   // @ViewChild('sidebar') sidebarOpen: SidebarComponent = new SidebarComponent(this.sidebar);
   constructor(private service:UtenteAnonimoService,) {
- 
+
    }
 
 
 
   ngOnInit(): void {
 
-   
+
   }
 
   ngAfterViewInit(): void {
-  
+
   }
 
   openCloseSidebar(){
