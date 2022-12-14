@@ -8,46 +8,23 @@
             <h3>Bootstrap Sidebar</h3>
         </div>
   
-        <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"></a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a  aria-expanded="true" href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
+        <div class="menu-bar">
+       
+        
+                    <div class="menu" *ngFor="let item of topbarUserList" [ngClass]="isSelected(item.itemMenu)? 'selectedIcon':'' ">
+                     <a >
+                            <fa-icon class='icon' [icon]="item.icon"></fa-icon>
+                            <b *ngIf="sidebarOpen" class="text">{{item.description}}</b>
+                        </a>
+                    </div>
+
+                    <div class="">
+                        <a >
+                            <fa-icon class="icon" [icon]="feedBack"></fa-icon>
+                            <b class="text nav-text" *ngIf="sidebarOpen">Feedback</b>
+                        </a>
+                    </div>
+    </div>
         
     </nav>
   <div class="container">

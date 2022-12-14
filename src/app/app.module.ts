@@ -31,6 +31,7 @@ import { DetailsReservationComponent } from './details-reservation/details-reser
 import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
 
   ],
   providers: [UtenteAnonimoService],
