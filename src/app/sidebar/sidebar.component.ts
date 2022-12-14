@@ -21,6 +21,7 @@ interface ItemMenu {
 export class SidebarComponent implements OnInit {
   sidebarOpen :boolean =false;
   sidebarWidth:string="3.5rem";
+  margin = '18px'
   route:any ="";
   userMenu: UserMenu = UserMenu.home;
   feedBack=faMessage;
@@ -55,15 +56,17 @@ export class SidebarComponent implements OnInit {
    
   }
   ngOnInit(): void {
-   
+
   }
 
 openCloseSidebar  () {
     this.sidebarOpen = !this.sidebarOpen;
     if (this.sidebarOpen) {
       this.sidebarWidth = "15rem";
+      this.margin = "140px"
     } else {
       this.sidebarWidth = "3.5rem";
+      this.margin = '18px'
     }
   }
 navigate(itemMenu:AdminMenu|UserMenu){

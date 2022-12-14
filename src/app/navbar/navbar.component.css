@@ -44,3 +44,11 @@ nav {
   border-right: 10px;
 }
 
+.md-menu {
+    margin-left: -18px;
+}
+
+.material-icons {
+  font-size: 30px;
+}
+
