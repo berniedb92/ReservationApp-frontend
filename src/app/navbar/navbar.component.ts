@@ -5,7 +5,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouteguardGuard } from '../routeguard.guard';
 import { UtenteAnonimoService } from '../service/utente-anonimo.service';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { AdminMenu, UserMenu } from './navbar.enum';
+import { AdminMenu, UserMenu } from '../sidebar/navbar.enum';
 interface ItemAdminMenu {
   description: string;
   itemMenu: AdminMenu | UserMenu;
@@ -20,13 +20,7 @@ interface ItemAdminMenu {
 export class NavbarComponent implements OnInit , AfterViewInit{
 
   route:string ="";
-  @Input() open = false;
-  @Input() margin = ''
-
-  @Output('openSideBar') openSideBar = new EventEmitter()
-
-  // @ViewChild('sidebar') sidebar:ElementRef = {} as ElementRef;
-  // @ViewChild('sidebar') sidebarOpen: SidebarComponent = new SidebarComponent(this.sidebar);
+ 
   constructor(private service:UtenteAnonimoService,) {
 
    }
@@ -42,9 +36,7 @@ export class NavbarComponent implements OnInit , AfterViewInit{
 
   }
 
-  openCloseSidebar(){
-   this.openSideBar.emit();
-  }
+
 
 
 }

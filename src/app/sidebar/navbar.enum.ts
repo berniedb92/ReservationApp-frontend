@@ -14,9 +14,13 @@ export enum AdminMenu {
 export enum UserMenu{
     compress,
     home,
+    listClient,
+    addClient,
+    campi,
     reservation,
-    addDriver,
-    associateDriver,
+    listTessera,
+    addTesserato,
+
     
      
 }

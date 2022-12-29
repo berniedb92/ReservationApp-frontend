@@ -1,73 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg">
+ 
   <div class="container-fluid">
 
-      <!-- <li class="nav-item" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </li> -->
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" (click)="openCloseSidebar()" [ngStyle]="{'margin-right':margin}">
-          <!-- <i class="fas fa-align-left"></i> -->
-          <div *ngIf="open">
-            <span class="material-icons md-menu_open" title="Sidebar" aria-hidden="true"></span>
-            <strong style="font-size: large; margin-left: 15px;">Menu</strong>
+       <ul class="navbar-nav ">
+        <header>
+          <div class="image-text">
+              <span class="image">
+                  <img src="https://image.similarpng.com/very-thumbnail/2020/09/Tennis-Logo-on--transparent-background-PNG.png" alt="...">
+              </span>
           </div>
+      </header>
 
-          <span *ngIf="!open" class="material-icons md-menu" title="Sidebar" aria-hidden="true"></span>
-         </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/">
-            <span class="material-icons md-home" title="Home" aria-hidden="true"></span>
-            Home</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/cliente-list" class="nav-link" aria-current="page">
-          <span class="material-icons md-list_alt" title="List" aria-hidden="true"></span>
-          Lista clienti
-        </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/cliente-add">
-          <span class="material-icons md-add" title="New" aria-hidden="true"></span>
-          Aggiungi cliente
-        </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/campi-list">
-            <span class="material-icons md-sports" title="Campi" aria-hidden="true"></span>
-            Campi
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/reservation">
-            <span class="material-icons md-apps" title="Prenotazione" aria-hidden="true"></span>
-            Prenotazione
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/new-tess">
-            <span class="material-icons md-add" title="newTess" aria-hidden="true"></span>
-            Nuovo tesserato
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/tesseramenti">
-            <span class="material-icons md-drag_handle" title="Tesserati" aria-hidden="true"></span>
-            Lista tesserati
-          </a>
-        </li>
-      </ul>
 
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Cerca</button>
-      </form>
+      </ul> 
 
+  
       <div class="col-nav">
         <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="md-28 material-icons md-menu"></i> </button>
         <ul class="nav">

@@ -1,5 +1,6 @@
 img {
   display: inline-block;
+  max-width: 2rem;
 }
 
 .dduser {
@@ -52,3 +53,9 @@ nav {
   font-size: 30px;
 }
 
+.navbar{
+  background:rgba(106, 105, 105)
+}
+.navbar-collapse{
+  justify-content: space-between;
+}
