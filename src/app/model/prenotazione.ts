@@ -13,4 +13,5 @@ export class Prenotazione {
   giocatore2!: Tesseramento;
   giocatore3!: Tesseramento;
   giocatore4!: Tesseramento;
+  evento!: string;
 }

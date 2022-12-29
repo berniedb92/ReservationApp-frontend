@@ -1,4 +1,4 @@
-  <!-- Button trigger modal -->
+<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary float-end mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Inserisci nuova prenotazione
 </button>
@@ -6,7 +6,7 @@
 <!-- Modal -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" >
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <!-- <h5 class="modal-title" id="exampleModalLabel">Prenotazione</h5> -->
@@ -14,15 +14,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <app-reservation-add ></app-reservation-add>
+        <app-reservation-add></app-reservation-add>
       </div>
 
     </div>
   </div>
 </div>
 
-  <h1 class="text-dark mt-3">Lista prenotazioni</h1>
-  <!--Ordina per :
+<h1 class="text-dark mt-3">Lista prenotazioni</h1>
+<!--Ordina per :
   <div class="form-check">
     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="1"
       (change)="sortChange(1)" checked>
@@ -40,11 +40,11 @@
 
   <div class="col-4">
     <!-- <label for="surname_filter" class="form-label">Filtra cliente per cognome</label> -->
-    <!--<input type="text" class="form-control" id="surname_filter" #surname_filter
+<!--<input type="text" class="form-control" id="surname_filter" #surname_filter
       (keyup)="filterClienteByCognome(surname_filter.value)">
     <div id="emailHelp" class="form-text">inserisci cognome cliente per filtrare.</div>
   </div>-->
-  <!-- <div class="col-2 justify-content-left">
+<!-- <div class="col-2 justify-content-left">
     <button (click)="filterByscadenzaCertificato()" class="btn btn-secondary btn-sm" style="margin-left: 10px">
       <fa-icon [icon]="faPager"></fa-icon>
     </button>
@@ -52,58 +52,60 @@
       <fa-icon [icon]="faEraser"></fa-icon>
     </button>
   </div> -->
-  <table class="table table-bordered table-striped;" >
-    <thead class="table-dark"> 
+<table class="table table-bordered table-striped;">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Data</th>
+      <th scope="col">Inizio</th>
+      <th scope="col">Fine</th>
+      <th scope="col">Modalita</th>
+      <th scope="col">Cliente 1</th>
+      <th scope="col">Cliente 2</th>
+      <th scope="col">Campo</th>
+      <th scope="col">Azioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let p of prenotazioni | paginate: {itemsPerPage: pageSize, currentPage: pageIndex}">
       <tr>
-        <th scope="col">Data</th>
-        <th scope="col">Inizio</th>
-        <th scope="col">Fine</th>
-        <th scope="col">Modalita</th>
-        <th scope="col">Cliente 1</th>
-        <th scope="col">Cliente 2</th>
-        <th scope="col">Campo</th>
-         <th scope="col">Azioni</th>
+        <td>{{ p.data | date :'dd/MM/yy' }}</td>
+        <td>{{ p.oraInizio | date :'HH:mm' }}</td>
+        <td>{{ p.oraFine | date :'HH:mm' }}</td>
+        <td>{{ p.modalita }}</td>
+        <td *ngIf="p.modalita != 'evento'">{{ p.modalita === 'singolo' ? p.giocatore1.clienteTess.nome +' '+
+          p.giocatore1.clienteTess.cognome : p.giocatore1.clienteTess.nome +' '+p.giocatore1.clienteTess.cognome + '-' +
+          p.giocatore3.clienteTess.nome +' '+p.giocatore3.clienteTess.cognome}}</td>
+        <td *ngIf="p.modalita != 'evento'">{{ p.modalita === 'singolo' ? p.giocatore2.clienteTess.nome +' '+
+          p.giocatore2.clienteTess.cognome : p.giocatore2.clienteTess.nome +' '+p.giocatore2.clienteTess.cognome + '-' +
+          p.giocatore4.clienteTess.nome +' '+p.giocatore4.clienteTess.cognome }}</td>
+        <td *ngIf="p.modalita === 'evento'" colspan="2" style="text-align: center; font-size: large;"> {{p.evento}} </td>
+        <td>{{ p.campo.numero + ' ' + p.campo.superficie }}</td>
+        <td>
+          <div style="align-content: center;">
+            <a [routerLink]="['/details-reservation', p?.codicePrenotazione]" class="btn btn-info btn-sm"
+              style="margin-left: 10px">
+              <span class="material-icons md-info" aria-hidden="true"></span>
+            </a>
+            <button class="btn btn-danger btn-sm" style="margin-left: 10px" id="myBtn">
+              <span class="material-icons md-delete" aria-hidden="true"></span>
+            </button>
+          </div>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let p of prenotazioni | paginate: {itemsPerPage: pageSize, currentPage: pageIndex}">
-        <tr>
-          <td>{{ p.data | date :'dd/MM/yy' }}</td>
-          <td>{{ p.oraInizio | date :'HH:mm' }}</td>
-          <td>{{ p.oraFine | date :'HH:mm' }}</td>
-          <td>{{ p.modalita }}</td>
-          <td>{{ p.modalita === 'singolo' ? p.giocatore1.clienteTess.nome +' '+ p.giocatore1.clienteTess.cognome : p.giocatore1.clienteTess.nome +' '+p.giocatore1.clienteTess.cognome + '-' + p.giocatore3.clienteTess.nome +' '+p.giocatore3.clienteTess.cognome }}</td>
-           <td>{{ p.modalita === 'singolo' ? p.giocatore2.clienteTess.nome +' '+ p.giocatore2.clienteTess.cognome : p.giocatore2.clienteTess.nome +' '+p.giocatore2.clienteTess.cognome + '-' + p.giocatore4.clienteTess.nome +' '+p.giocatore4.clienteTess.cognome }}</td>
-          <td>{{ p.campo.numero + ' ' + p.campo.superficie }}</td>
-          <td>
-            <div style="align-content: center;">
-              <a [routerLink]="['/details-reservation', p?.codicePrenotazione]" class="btn btn-info btn-sm" style="margin-left: 10px">
-                <span class="material-icons md-info" aria-hidden="true"></span>
-              </a>
-              <button class="btn btn-danger btn-sm" style="margin-left: 10px" id="myBtn">
-                <span class="material-icons md-delete" aria-hidden="true"></span>
-              </button>
-            </div>
-          </td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
+    </ng-container>
+  </tbody>
+</table>
 
-  <nav class="float-end mt-3" aria-label="Page navigation "style="color:white;">
-    <pagination-controls
-              class="my-pagination"
-              (pageChange)="pageIndex = $event"
-              previousLabel="Precedente"
-              nextLabel="Successivo">
-   </pagination-controls>
-  </nav>
+<nav class="float-end mt-3" aria-label="Page navigation ">
+  <pagination-controls class="my-pagination" (pageChange)="pageIndex = $event" previousLabel="Precedente"
+    nextLabel="Successivo">
+  </pagination-controls>
+</nav>
 
-  <label style="margin-top: 8px; margin-left: 10px;color:white;">Clienti per pagina:</label>
-  <select class="form-select form-select-sm" style="width:4%; margin-left: 10px;" #size [(ngModel)]="pageSize">
-    <option value=5>5</option>
-    <option value=10>10</option>
-    <option selected value=20>20</option>
-    <option value=30>30</option>
-  </select>
-
+<label style="margin-top: 8px; margin-left: 10px;color:white;">Clienti per pagina:</label>
+<select class="form-select form-select-sm" style="width: 10px; margin-left: 10px;" #size [(ngModel)]="pageSize">
+  <option value=5>5</option>
+  <option value=10>10</option>
+  <option selected value=20>20</option>
+  <option value=30>30</option>
+</select>

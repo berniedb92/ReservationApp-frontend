@@ -1,4 +1,3 @@
-import { ModalComponent } from './modal/modal.component';
 import { MaterialModule } from './material/material.module';
 import { UtenteAnonimoService } from './service/utente-anonimo.service';
 import { NgModule } from '@angular/core';
@@ -45,7 +44,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CampiAddComponent,
     FooterComponent,
     HomeComponent,
-    ModalComponent,
     ToastsComponent,
     ReservationComponent,
     ReservationAddComponent,
