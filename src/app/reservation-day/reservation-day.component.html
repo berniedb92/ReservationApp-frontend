@@ -1,44 +1,14 @@
 <h1 class="text-dark mt-3">Prenotazioni del giorno</h1>
-<!--Ordina per :
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="1"
-    (change)="sortChange(1)" checked>
-  <label class="form-check-label" for="flexRadioDefault1">
-    Cognome
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="2"
-    (change)="sortChange(2)">
-  <label class="form-check-label" for="flexRadioDefault2">
-    Data di Nascita
-  </label>
-</div>
-
-<div class="col-4">
-  <!-- <label for="surname_filter" class="form-label">Filtra cliente per cognome</label> -->
-  <!--<input type="text" class="form-control" id="surname_filter" #surname_filter
-    (keyup)="filterClienteByCognome(surname_filter.value)">
-  <div id="emailHelp" class="form-text">inserisci cognome cliente per filtrare.</div>
-</div>-->
-<!-- <div class="col-2 justify-content-left">
-  <button (click)="filterByscadenzaCertificato()" class="btn btn-secondary btn-sm" style="margin-left: 10px">
-    <fa-icon [icon]="faPager"></fa-icon>
-  </button>
-  <button (click)="ngOnInit()" class="btn btn-dark btn-sm" style="margin-left: 10px">
-    <fa-icon [icon]="faEraser"></fa-icon>
-  </button>
-</div> -->
-<table class="table table-bordered table-striped" >
-  <thead class="table-dark">
+<table>
+  <thead>
     <tr>
-      <th scope="col">Data</th>
-        <th scope="col">Inizio</th>
-        <th scope="col">Fine</th>
-        <th scope="col">Modalita</th>
-        <th scope="col">Cliente 1</th>
-        <th scope="col">Cliente 2</th>
-        <th scope="col">Campo</th>
+      <th >Data</th>
+        <th >Inizio</th>
+        <th >Fine</th>
+        <th>Modalita</th>
+        <th >Cliente 1</th>
+        <th >Cliente 2</th>
+        <th>Campo</th>
     </tr>
   </thead>
   <tbody>

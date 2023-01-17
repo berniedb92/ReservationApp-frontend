@@ -1,33 +1,30 @@
-<app-navbar></app-navbar>
+<div class="body">
+  <app-navbar></app-navbar>
 
 
-<div class="content-header"  >
+  <div class="content-header">
     <!-- Sidebar -->
-    <nav class="sidebar" [ngStyle]="{'width':sidebarWidth}" >
-   
-        <div class="menu-bar">
-            
-               <div class="menu" *ngFor="let item of topbarUserList" [ngClass]="isSelected(item.itemMenu)? 'selectedIcon':'' ">
-                        <a (click)=" item.itemMenu==userEnum.compress? openCloseSidebar():navigate(item.itemMenu)">
-                            <fa-icon class='icon' [icon]="item.icon"></fa-icon>
-                            <b *ngIf="sidebarOpen" class="text">{{item.description}}</b>
-                        </a>
-                    </div>
-    <div class="bottom-content"></div>
-                    
-    </div>
-        
+    <nav class="sidebar" [ngStyle]="{'width':sidebarWidth}">
 
-      
+      <div class="menu-bar">
 
+        <div class="menu" *ngFor="let item of topbarUserList" [ngClass]="isSelected(item.itemMenu)? 'selectedIcon':'' ">
+          <a (click)=" item.itemMenu==userEnum.compress? openCloseSidebar():navigate(item.itemMenu)">
+            <fa-icon class='icon' [icon]="item.icon"></fa-icon>
+            <b *ngIf="sidebarOpen" class="text">{{item.description}}</b>
+          </a>
+        </div>
+        <div class="bottom-content"></div>
+
+      </div>
     </nav>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
+
+    <router-outlet></router-outlet>
+
   </div>
-  
-
-  
 
 
 
+
+
+</div>
