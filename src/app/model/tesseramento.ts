@@ -12,6 +12,7 @@ export class Tesseramento {
   note!: string;
   pagamento!: number;
   pagata!: boolean;
+  selected!: boolean;
 }
 
 export class IntegrazioneTessera{

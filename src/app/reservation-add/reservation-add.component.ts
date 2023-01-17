@@ -1,3 +1,4 @@
+import { Tesseramento } from './../model/tesseramento';
 import { UtenteAnonimoService } from './../service/utente-anonimo.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Campo } from '../model/campo';
@@ -7,7 +8,6 @@ import { AbstractControl, AsyncValidatorFn, FormArray, FormControl, FormGroup, V
 import { GlobalFunctions } from '../common/global-functions';
 import { Moment } from 'moment';
 import * as moment from 'moment';
-import { Tesseramento } from '../model/tesseramento';
 import { Router } from '@angular/router';
 declare var $: any;
 
@@ -28,6 +28,16 @@ export class ReservationAddComponent implements OnInit {
   tesserati: Tesseramento[] = [];
   registerReservationForm: FormGroup = {} as FormGroup;
   errore: string = "";
+  tessere: Tesseramento[] = [];
+  tessere2: Tesseramento[] = [];
+  tessere3: Tesseramento[] = [];
+  tessere4: Tesseramento[] = [];
+  tessereCopy: Tesseramento[] = [];
+  giocatore1!: number;
+  giocatore2!: number;
+  giocatore3!: number;
+  giocatore4!: number;
+
 
 
   isJqueryWorking: any;
@@ -41,6 +51,13 @@ export class ReservationAddComponent implements OnInit {
     this.service.selTesserati().subscribe(data => { this.tesserati = data });
     console.log("TESSERATI", this.tesserati);
     this.generateForm();
+
+    // this.service.selTesseratoCognome('').subscribe(
+    //   resp => {
+    //     this.tessere = resp
+    //     this.tessereCopy = this.tessere
+    //   }
+    // )
 
     console.log("ROTta", this.service.router);
     console.log("Valore Form", this.registerReservationForm)
@@ -78,8 +95,8 @@ export class ReservationAddComponent implements OnInit {
     this.prenotazione.oraFine = this.reservation['oraFine'].value;
     this.prenotazione.modalita = this.reservation['modality'].value;
     this.prenotazione.campo = this.reservation['campo'].value;
-    this.prenotazione.giocatore1 = this.reservation['playerOne'].value;
-    this.prenotazione.giocatore2 = this.reservation['playerTwo'].value;
+    // this.prenotazione.giocatore1 = this.reservation['playerOne'].value;
+    // this.prenotazione.giocatore2 = this.reservation['playerTwo'].value;
     this.prenotazione.giocatore3 = this.reservation['playerThree'].value;
     this.prenotazione.giocatore4 = this.reservation['playerFour'].value;
     this.prenotazione.evento = this.reservation['event'].value;
@@ -92,10 +109,10 @@ export class ReservationAddComponent implements OnInit {
     const tempoFine = moment(this.prenotazione.data).add(this.reservation['oraFine'].value, 'hour');
 
     const campo = this.campi.filter(z => z.numero == this.reservation['campo'].value);
-    const giocatore1 = this.tesserati.filter(t => t.codiceTessera == this.reservation['playerOne'].value);
-    const giocatore2 = this.tesserati.filter(t => t.codiceTessera == this.reservation['playerTwo'].value);
-    const giocatore3 = this.tesserati.filter(t => t.codiceTessera == this.reservation['playerThree'].value);
-    const giocatore4 = this.tesserati.filter(t => t.codiceTessera == this.reservation['playerFour'].value);
+    const giocatore1 = this.tesserati.filter(t => t.codiceTessera == this.giocatore1);
+    const giocatore2 = this.tesserati.filter(t => t.codiceTessera == this.giocatore2);
+    const giocatore3 = this.tesserati.filter(t => t.codiceTessera == this.giocatore3);
+    const giocatore4 = this.tesserati.filter(t => t.codiceTessera == this.giocatore4);
 
     this.prenotazione.oraInizio = new Date(tempoInizio.toDate());
     this.prenotazione.oraFine = new Date(tempoFine.toDate());
@@ -120,5 +137,127 @@ export class ReservationAddComponent implements OnInit {
         console.log("ERROREEEE", this.errore)
       }
     })
+  }
+
+  r: number = 0;
+
+  onTypeCognome(cognome: string, type: string) {
+    this.service.selTesseratoCognome(cognome).subscribe(
+      {
+        next: (response) => {
+          console.log(cognome)
+
+          switch (type) {
+            case 'playerOne':
+              if (cognome.length >= 3) {
+                this.tessere = response;
+                this.tessereCopy = this.tessere
+                this.tessereCopy = this.tessere.filter(x => x.clienteTess.cognome.includes(cognome.toLowerCase()));
+                this.r = cognome.length
+              }
+
+              if (cognome.length < this.r) {
+                this.tessere = []
+              }
+
+              break;
+            case 'playerTwo':
+              if (cognome.length >= 3) {
+                this.tessere2 = response;
+                this.tessereCopy = this.tessere2
+                this.tessereCopy = this.tessere2.filter(x => x.clienteTess.cognome.includes(cognome.toLowerCase()));
+                this.r = cognome.length
+              }
+
+              if (cognome.length < this.r) {
+                this.tessere2 = []
+              }
+              break;
+            case 'playerThree':
+              if (cognome.length >= 3) {
+                this.tessere3 = response;
+                this.tessereCopy = this.tessere3
+                this.tessereCopy = this.tessere3.filter(x => x.clienteTess.cognome.includes(cognome.toLowerCase()));
+                this.r = cognome.length
+              }
+
+              if (cognome.length < this.r) {
+                this.tessere3 = []
+              }
+              break;
+            case 'playerFour':
+              if (cognome.length >= 3) {
+                this.tessere4 = response;
+                this.tessereCopy = this.tessere4
+                this.tessereCopy = this.tessere4.filter(x => x.clienteTess.cognome.includes(cognome.toLowerCase()));
+                this.r = cognome.length
+              }
+
+              if (cognome.length < this.r) {
+                this.tessere4 = []
+              }
+              break;
+          }
+
+        },
+        error: (error) => {
+          console.log(error);
+          switch (type) {
+            case 'playerOne':
+              this.tessere = []
+
+
+              break;
+            case 'playerTwo':
+
+              this.tessere2 = []
+
+              break;
+            case 'playerThree':
+
+              this.tessere3 = []
+
+              break;
+            case 'playerFour':
+              this.tessere4 = []
+
+              break;
+          }
+        }
+      }
+    )
+  }
+
+  radioChecked(id: string, form: any, n: number) {
+    console.log(id)
+    console.log(form)
+
+    switch (form) {
+      case 'playerOne':
+        this.giocatore1 = n
+        this.registerReservationForm.patchValue({
+          playerOne: id
+        });
+        break;
+      case 'playerTwo':
+        this.giocatore2 = n
+        this.registerReservationForm.patchValue({
+          playerTwo: id
+        });
+        break;
+        case 'playerThree':
+        this.giocatore3 = n
+        this.registerReservationForm.patchValue({
+          playerThree: id
+        });
+        break;
+      case 'playerFour':
+        this.giocatore4 = n
+        this.registerReservationForm.patchValue({
+          playerFour: id
+        });
+        break;
+    }
+
   }
 }

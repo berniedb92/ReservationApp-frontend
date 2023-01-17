@@ -53,7 +53,7 @@ export class UtenteAnonimoService {
     this.route.events.subscribe(
       {
         next:()=>{
-         this.router.next(this.route.url) 
+         this.router.next(this.route.url)
         }
       }
      )
@@ -156,6 +156,10 @@ export class UtenteAnonimoService {
 
   public delTesserato(codice: number):Observable<ErrorMsg>{
     return this.http.delete<ErrorMsg>(this.url + `remove-tessera/${codice}`);
+  }
+
+  public selTesseratoCognome(cognome: string):Observable<Tesseramento[]>{
+    return this.http.get<Tesseramento[]>(this.url + `list-tesseramenti-cognome/${cognome}`);
   }
 
   public selQuoteTesserato(codice: number):Observable<ResponseNode>{

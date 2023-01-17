@@ -75,32 +75,77 @@
         <div class="form-group" *ngIf="tipo.value === 'prenotazione'">
           <label for="giocatore1">Giocatore 1</label>
           <input type="text" formControlName="playerOne" class="form-control" id="giocatore1" name="giocatore1"
-            placeholder="Inserisci il codice tessera">
+            placeholder="Inserisci il codice tessera" (keyup)="onTypeCognome(registerReservationForm.get('playerOne')?.value, 'playerOne')">
         </div>
+
+        <div class="form-check" *ngFor='let item of tessere'>
+          <ul class="list-group">
+            <button class="list-group-item" (click)="radioChecked(item.clienteTess.cognome, 'playerOne', item.codiceTessera)">{{item.clienteTess.cognome}}</button>
+          </ul>
+        </div>
+
         <div class="form-group" *ngIf="tipo.value === 'prenotazione'">
           <label for="giocatore2">Giocatore 2</label>
           <input type="text" formControlName="playerTwo" class="form-control" id="giocatore2" name="giocatore2"
-            placeholder="Inserisci il codice tessera">
+            placeholder="Inserisci il codice tessera" (keyup)="onTypeCognome(registerReservationForm.get('playerTwo')?.value, 'playerTwo')">
         </div>
+
+        <div class="form-check" *ngFor='let item2 of tessere2'>
+          <ul class="list-group">
+            <button class="list-group-item" (click)="radioChecked(item2.clienteTess.cognome, 'playerTwo', item2.codiceTessera)">{{item2.clienteTess.cognome}}</button>
+          </ul>
+        </div>
+
         <div class="form-group" *ngIf="registerReservationForm.get('modality')?.value === 'doppio' && cam.value != '3' && tipo.value === 'prenotazione'">
           <label for="giocatore3">Giocatore 3</label>
           <input type="text" formControlName="playerThree" class="form-control" id="giocatore3" name="giocatore3"
-            placeholder="Inserisci il codice tessera">
+            placeholder="Inserisci il codice tessera" (keyup)="onTypeCognome(registerReservationForm.get('playerThree')?.value, 'playerThree')">
         </div>
+
+        <div class="form-check" *ngFor='let item3 of tessere3'>
+          <ul class="list-group">
+            <button class="list-group-item" (click)="radioChecked(item3.clienteTess.cognome, 'playerThree', item3.codiceTessera)">{{item3.clienteTess.cognome}}</button>
+          </ul>
+        </div>
+
         <div class="form-group" *ngIf="registerReservationForm.get('modality')?.value === 'doppio' && cam.value != '3' && tipo.value === 'prenotazione'">
           <label for="giocatore4">Giocatore 4</label>
           <input type="text" formControlName="playerFour" class="form-control" id="giocatore4" name="giocatore4"
-            placeholder="Inserisci il codice tessera">
+            placeholder="Inserisci il codice tessera" (keyup)="onTypeCognome(registerReservationForm.get('playerFour')?.value, 'playerFour')">
         </div>
+
+        <div class="form-check" *ngFor='let item4 of tessere4'>
+          <ul class="list-group">
+            <button class="list-group-item" (click)="radioChecked(item4.clienteTess.cognome, 'playerFour', item4.codiceTessera)">{{item4.clienteTess.cognome}}</button>
+          </ul>
+        </div>
+
         <div class="form-group" *ngIf="tipo.value === 'prenotazione' && cam.value === '3'">
           <label for="giocatore3">Giocatore 3</label>
           <input type="text" formControlName="playerThree" class="form-control" id="giocatore3" name="giocatore3"
             placeholder="Inserisci il codice tessera">
         </div>
+
+        <div *ngIf="tipo.value === 'prenotazione' && cam.value === '3'">
+        <div class="form-check" *ngFor='let item3 of tessere3'>
+          <ul class="list-group">
+            <button class="list-group-item" (click)="radioChecked(item3.clienteTess.cognome, 'playerThree', item3.codiceTessera)">{{item3.clienteTess.cognome}}</button>
+          </ul>
+        </div>
+        </div>
+
         <div class="form-group" *ngIf="tipo.value === 'prenotazione' && cam.value === '3'">
           <label for="giocatore4">Giocatore 4</label>
           <input type="text" formControlName="playerFour" class="form-control" id="giocatore4" name="giocatore4"
-            placeholder="Inserisci il codice tessera">
+            placeholder="Inserisci il codice tessera" (keyup)="onTypeCognome(registerReservationForm.get('playerFour')?.value, 'playerFour')">
+        </div>
+
+        <div *ngIf="tipo.value === 'prenotazione' && cam.value === '3'">
+        <div class="form-check" *ngFor='let item4 of tessere4'>
+          <ul class="list-group">
+            <button class="list-group-item" (click)="radioChecked(item4.clienteTess.cognome, 'playerFour', item4.codiceTessera)">{{item4.clienteTess.cognome}}</button>
+          </ul>
+        </div>
         </div>
 
         <div class="form-group" *ngIf="tipo.value === 'evento'">
