@@ -59,3 +59,15 @@ nav {
 .navbar-collapse{
   justify-content: space-between;
 }
+.addReservation{
+ display: inline;
+  justify-content: space-between;
+}
+.menu button{
+  justify-content: space-between;
+  padding-left: 0.5rem;
+}
+ .nav{
+justify-content: space-between;
+padding-left: 4rem;
+}

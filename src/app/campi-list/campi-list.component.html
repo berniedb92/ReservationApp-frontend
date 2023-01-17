@@ -1,38 +1,30 @@
 <div class="tabellaCampi">
 
-<h2 class="text-dark">Campi inseriti</h2>
-<table class="table table-bordered table-striped table-dark">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Numero</th>
-      <th scope="col">Superficie</th>
-      <th scope="col">Sport</th>
-      <th scope="col">Azioni</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let c of campiCopy">
-      <td>{{ c.numero }}</td>
-      <td>{{ c.superficie }}</td>
-      <td>{{ c.sport }}</td>
+  <h2 class="text-dark">Campi inseriti</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Numero</th>
+        <th>Superficie</th>
+        <th>Sport</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of campiCopy">
+        <td>{{ c.numero }}</td>
+        <td>{{ c.superficie }}</td>
+        <td>{{ c.sport }}</td>
 
-      <td>
-        <div style="align-content: center;">
-        <button (click)="deleteCampo(c.numero)" class="btn btn-danger" style="margin-left: 10px">Elimina</button>
-        </div>
-      </td>
-    </tr>
+        <td>
+          <div style="align-content: center;">
+            <button (click)="deleteCampo(c.numero)" class="btn btn-danger"><span class="material-icons md-delete"
+                aria-hidden="true"></span></button>
+          </div>
+        </td>
+      </tr>
 
-  </tbody>
-  <tfoot>
-    <tr><td colspan="4">
-      <a class="btn btn-sm btn-primary w-10" (click)="showsAdd()">Aggiungi campo</a>
-      <a class="btn btn-sm btn-secondary w-10" routerLink="">Chiudi</a>
-    </td></tr>
-  </tfoot>
-</table>
+    </tbody>
 
-<div class="" *ngIf="showAdd">
-  <app-campi-add (close-add-campi)="hideAdd()" (reload)="reloadComponent()"></app-campi-add>
-</div>
+  </table>
 </div>

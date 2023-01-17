@@ -21,9 +21,7 @@ export class TesseramentoListComponent implements OnInit {
   }
 
   constructor(private service: UtenteAnonimoService, private router: Router) {
-    this.router.events.subscribe((res) => {
-      console.log(this.router.url,"Current URL");
-  })
+ 
   }
 
   ngOnInit(): void {

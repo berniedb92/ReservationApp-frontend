@@ -24,8 +24,6 @@ export class CampiListComponent implements OnInit {
         this.campi = this.campiCopy;
       }
     )
-    
-   console.log("ROTta",this.utenteAnonimoService.router);
   }
 
   showsAdd() {

@@ -2,7 +2,7 @@ import { outputAst } from '@angular/compiler';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Navigation, Router } from '@angular/router';
 import { IconDefinition, faBars, faHome, faCalendarPlus, faUserPlus, faUserPen, faTableTennis, faUsersLine, faUserGroup } from '@fortawesome/free-solid-svg-icons';
-import { AdminMenu, UserMenu } from './navbar.enum';
+import { AdminMenu, UserMenu } from './sidebar.enum';
 import { UtenteAnonimoService } from '../service/utente-anonimo.service';
 import { icon } from '@fortawesome/fontawesome-svg-core';
 
@@ -46,12 +46,7 @@ export class SidebarComponent implements OnInit {
       icon: faUserGroup,
       paths: ["/cliente-list"],
     },
-    {
-      description: 'Aggiungi Cliente',
-      itemMenu: UserMenu.addClient,
-      icon: faUserPlus,
-      paths: ["/cliente-add"],
-    },
+   
     {
       description: 'Campi',
       itemMenu: UserMenu.campi,
@@ -70,12 +65,7 @@ export class SidebarComponent implements OnInit {
       icon: faUsersLine,
       paths: ["/tesseramenti"],
     },
-    {
-      description: 'Aggiungi Tesserato',
-      itemMenu: UserMenu.addTesserato,
-      icon: faUserPen,
-      paths: ["/new-tess"],
-    }
+ 
   ]
   constructor(private router:Router) {
 

@@ -15,23 +15,23 @@
 
 
       </ul>
-
-
-      <div class="col-nav">
+     <div class="col-nav">
         <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="md-28 material-icons md-menu"></i> </button>
         <ul class="nav">
-
+          
+          <div class="menu" *ngFor="let item of topbarUserList">
+             <button class="btn btn-primary" (click)="navigate(item.itemMenu)"><fa-icon class='icon' [icon]="item.icon"></fa-icon>
+              <b class="text">{{item.description}}</b></button>
+              <div class="addReservation" *ngIf="item.description =='Campo Padel'">
+                <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">Aggiungi Prenotazione</button>
+              </div>
+          </div>
           <li class="nav-item">
             <a class="nav-link btn-icon" onclick="darkmode(this)" href="#">
               <span class="material-icons md-nights_stay" title="Dark mode"></span>
             </a>
           </li>
 
-          <!-- <li class="nav-item">
-            <a class="nav-link btn-icon" href="#">
-              <app-notification></app-notification>
-            </a>
-          </li> -->
 
           <li class="nav-item">
             <a class="nav-link" href="#"> English </a>

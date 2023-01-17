@@ -16,12 +16,16 @@
         <label for="sport">Sport</label>
         <input type="text" [(ngModel)]="campo.sport" class="form-control" id="sport" name="sport"
           placeholder="Enter sport" required #sport="ngModel">
+        <div class="row mt-3">
+        <div class="col">
+          <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-success">Salva</button>
+        </div>
+        <div class="col"><!-- <button class="btn btn-secondary" (click)="resetForm(userForm)">Reset</button> -->
+          <button class="btn btn-primary" (click)="close()">Annulla</button>
+        </div>
       </div>
-      <div class="col-6">
-        <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-success">Salva</button>
-        <!-- <button class="btn btn-secondary" (click)="resetForm(userForm)">Reset</button> -->
-        <button class="btn btn-primary" (click)="close()">Annulla</button>
       </div>
+
     </form>
   </div>
 </div>
