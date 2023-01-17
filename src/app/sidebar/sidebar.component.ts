@@ -87,7 +87,7 @@ export class SidebarComponent implements OnInit {
   openCloseSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
     if (this.sidebarOpen) {
-      this.sidebarWidth = "18rem";
+      this.sidebarWidth = "14rem";
     } else {
       this.sidebarWidth = "3.5rem";
     }
