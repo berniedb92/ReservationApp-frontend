@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   topbarUserList: Array<ItemMenu> = [];
   userEnum = UserNavbarMenu;
   userMenu: UserNavbarMenu | undefined;
+  showImg: boolean = false
 
   constructor(private service: UtenteAnonimoService, private router: Router) {
 
@@ -34,6 +35,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     throw new Error('Method not implemented.');
+  }
+
+  show(b: boolean) {
+    this.showImg = b
   }
 
 

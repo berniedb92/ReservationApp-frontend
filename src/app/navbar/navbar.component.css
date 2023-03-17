@@ -56,6 +56,7 @@ nav {
 nav {
   background: whitesmoke;
   border-bottom: #669cd9;
+  min-height: 4.5rem;
 }
 .navbar-collapse{
   justify-content: space-between;
@@ -89,7 +90,7 @@ nav {
 }
 
 img {
-  margin-left: 0.5rem;
+  margin-left: 3rem;
 }
 
 

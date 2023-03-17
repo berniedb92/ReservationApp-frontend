@@ -7,8 +7,17 @@
     <nav class="sidebar" [ngStyle]="{'width':sidebarWidth}">
 
       <div class="menu-bar">
+        <div class="row">
+          <div class="col-3 image-text">
+            <a (click)="(openCloseSidebar())"><fa-icon class='icon-bar' [icon]="faBars"></fa-icon></a>
+          </div>
+          <div class="col-1">
+            <img src="/assets/images/logo.png" [hidden]="!showImage">
+          </div>
+        </div>
 
         <div class="menu" *ngFor="let item of topbarUserList" [ngClass]="isSelected(item.itemMenu)? 'selectedIcon':'' ">
+
           <a (click)=" item.itemMenu==userEnum.compress? openCloseSidebar():navigate(item.itemMenu)">
             <fa-icon class='icon' [icon]="item.icon"></fa-icon>
             <b *ngIf="sidebarOpen" class="text">{{item.description}}</b>

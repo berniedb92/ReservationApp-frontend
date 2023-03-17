@@ -12,7 +12,7 @@ import { CostantsTime } from '../common/constants';
 @Component({
   selector: 'app-reservation-add',
   templateUrl: './reservation-add.component.html',
-  styleUrls: ['./reservation-add.component.css']
+  styleUrls: ['./reservation-add.component.scss']
 })
 
 
@@ -118,7 +118,7 @@ export class ReservationAddComponent implements OnInit {
     this.prenotazione.oraFine = this.dateGenerate(this.b)
     this.prenotazione.campo = this.reservation['campo'].value;
 
-    console.log('this',this.prenotazione)
+    console.log('this', this.prenotazione)
   }
 
 
@@ -321,9 +321,8 @@ export class ReservationAddComponent implements OnInit {
   };
 
   handleSelection(event: Date) {
-
-    this.selectionDate = new Date(event.setDate(event.getDate() - 1))
-
+    console.log(event)
+    this.selectionDate = event
     this.prenotazione.data = this.selectionDate
     console.log(this.selectionDate)
   }
@@ -391,7 +390,7 @@ export class ReservationAddComponent implements OnInit {
 
           var max = this.index + 1
 
-          if(this.campo === 3) max = this.index
+          if (this.campo === 3) max = this.index
 
           for (let x = this.index; x <= max; x++) {
 
@@ -436,7 +435,7 @@ export class ReservationAddComponent implements OnInit {
         }
       }
     } else {
-      if(this.campo === 3) {
+      if (this.campo === 3) {
         CostantsTime.resetTimeInizio(this.campo)
       } else {
         this.chipsSelInizio(this.saveDateIn)

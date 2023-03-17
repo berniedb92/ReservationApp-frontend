@@ -1,8 +1,8 @@
-section {
+/* section {
   border: 0.1rem solid #fefefe;
   border-radius: 2rem;
   background-color: rgb(231, 227, 227);
-}
+} */
 
 .mat-stepper-horizontal {
   margin-top: 8px;
@@ -54,12 +54,12 @@ input {
   margin-left: 13px;
 }
 
-h1 {
+/* h1 {
   color: #669cd9;
   font-size: 30px;
   font-weight: 700;
   margin-left: 13px;
-}
+} */
 
 button {
   border-radius: 20px !important;
@@ -75,12 +75,10 @@ button {
 }
 
 .calendar-container {
-  display: ruby-base;
-  position: absolute;
-}
+  width: 100%;
 
-
-.col-8 {
-  display: flex;
-  position: relative;
+  &mat-calendar-body-selected {
+    color: red;
+    background-color: blue;
+  }
 }

@@ -1,156 +1,83 @@
-/* @import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css'; */
-/* You can add global styles to this file, and also import other style files */
+@import "./styles/fonts";
+@import "./styles/variables";
 
-/* ================== BASE =================== */
-/* body {
-  position: relative;
-  max-height: 100vh!important;
-  overflow-x: none;
-  display: flex;
-  flex-direction: column;
-}
+.content {
+  margin-inline: 100px;
+  padding: 0;
+  color: $fut-blue;
+  background: $bg-color;
+  font-family: Poppins;
+  font-size: 0.875rem;
+  text-decoration: none;
 
-
-body.offcanvas-active {
-  overflow: hidden;
-}
-
-.main-wrap {
-  margin-left: 260px;
-}
-
-
-.content-main {
-  display: flex;
-  min-height:  200vh!important;
-  background-color: rgb(255, 255, 255);
-  justify-content: flex-start;
-}
-
-.content-header {
- display: flex;
- justify-content: center!important;
-  position: relative;
-  padding: 5rem;
-}
-
-.content-header a {
-  margin-right: 5px;
-}
-
-.content-header .content-title {
-  margin-bottom: 0;
-}
-
-.main-header {
-  padding-left: 3%;
-  padding-right: 3%;
-  min-height: 100%;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(108, 117, 125, 0.25);
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
-
-
-/* .container{
-  justify-content: center;
-  display: flex;
-  max-width: 100rem;
-  padding-left:6rem!important ;
-  padding-top: 4rem;
-} */
-/* table {
-  border-spacing: 1;
-  border-collapse: collapse;
-  background: white;
-  border: #FFED86 1px;
-  border-radius: 6px !important;
-
-  overflow: hidden;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-} */
-/* table * {
-  position: relative;
-}
-table thead tr {
-  height: 60px;
-  background: #FFED86;
-  font-size: 16px;
-}
-table tbody tr {
-  height: 48px;
-  border-bottom: 1px solid #E3F1D5;
-}
-table tbody tr:last-child {
-  border: 0;
-}
-table td, table th {
-  text-align: left;
-}
-table td.l, table th.l {
-  text-align: right;
-}
-table td.c, table th.c {
-  text-align: center;
-}
-table td.r, table th.r {
-  text-align: center;
-} */
-
-/* @media screen and (max-width: 45.5rem) {
-  table {
-    display: block;
-  }
-  table *, table tr, table td, table th {
-    display: block;
-  }
-  table thead {
-    display: none;
-  }
-  table tbody tr {
-    height: auto;
-    padding: 8px 0;
-  }
-  table tbody tr td {
-    padding-left: 45%;
-    margin-bottom: 12px;
-  }
-  table tbody tr td:last-child {
-    margin-bottom: 0;
-  }
-  table tbody tr td:before {
-    position: absolute;
+  h1 {
+    color: $fut-blue;
+    background-color: white;
     font-weight: 700;
-    width: 80%;
-    left: 10px;
-    top: 0;
+    font-family: Poppins;
   }
-  table tbody tr td:nth-child(1):before {
-    content: "Code";
-  }
-  table tbody tr td:nth-child(2):before {
-    content: "Stock";
-  }
-  table tbody tr td:nth-child(3):before {
-    content: "Cap";
-  }
-  table tbody tr td:nth-child(4):before {
-    content: "Inch";
-  }
-  table tbody tr td:nth-child(5):before {
-    content: "Box Type";
-  }
-} */
 
+  a,
+  a:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-.content-header {
-  display: flex;
-  justify-content: center!important;
-   position: relative;
-   padding: 5rem;
- }
+  a:focus,
+  a:active,
+  button:focus,
+  button:active {
+    outline: 0;
+  }
+
+  button:hover,
+  button:focus {
+    outline: 0;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  h1 {
+    color: $fut-blue;
+    font-weight: 700;
+    font-family: Space-Grotesk;
+  }
+
+  h2 {
+    color: $fut-blue;
+    font-weight: 700;
+    font-family: Space-Grotesk;
+  }
+
+  h3 {
+    color: $fut-blue;
+    font-weight: 700;
+    font-family: Space-Grotesk;
+  }
+
+  h4 {
+    color: $fut-blue;
+    font-weight: 700;
+    font-family: Space-Grotesk;
+  }
+
+  h5 {
+    color: $fut-blue;
+    font-weight: 700;
+    font-family: Space-Grotesk;
+  }
+
+  h6 {
+    color: $fut-blue;
+    font-weight: 700;
+    font-family: Space-Grotesk;
+  }
+
+  p {
+    color: $fut-blue;
+    margin-bottom: 0.5rem;
+  }
+
+}

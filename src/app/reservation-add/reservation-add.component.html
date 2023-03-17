@@ -172,6 +172,7 @@
 <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
   {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
 </button> -->
+<section class="content">
 <h1>Nuova prenotazione</h1>
 <!-- <form [formGroup]="registerReservationForm"> -->
   <mat-stepper [linear]="isLinear" #stepper>
@@ -182,7 +183,7 @@
         <div class="col-4">
           <div class="calendar-container resizableDialog">
             <mat-label class="label">Seleziona la data</mat-label>
-            <mat-calendar formControlName="dateReservation" [startAt]="startDate" [selected]="selectionDate" [minDate]="minDate" [maxDate]="maxDate"
+            <mat-calendar class="calendar-container" formControlName="dateReservation" [startAt]="startDate" [selected]="selectionDate" [minDate]="minDate" [maxDate]="maxDate"
               [dateFilter]="dateFilter" (selectedChange)="handleSelection($event)">
             </mat-calendar>
           </div>
@@ -310,5 +311,6 @@
       </div>
     </mat-step>
   </mat-stepper>
+</section>
 <!-- </form> -->
 <!-- <p-calendar inputId="basic" [(ngModel)]="value"></p-calendar> -->

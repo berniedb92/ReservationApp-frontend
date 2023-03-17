@@ -1,3 +1,4 @@
+import { NavbarComponent } from './../navbar/navbar.component';
 import { outputAst } from '@angular/compiler';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Navigation, Router } from '@angular/router';
@@ -8,7 +9,7 @@ import { icon } from '@fortawesome/fontawesome-svg-core';
 
 
 interface ItemMenu {
-  description: string;
+  description: any;
   itemMenu: AdminMenu | UserMenu;
   icon: IconDefinition;
   paths: string[];
@@ -26,14 +27,22 @@ export class SidebarComponent implements OnInit {
   route: any = "";
   userEnum = UserMenu;
   userMenu: UserMenu = UserMenu.home;
+  faBars = faBars
+  showImage = false
+  @ViewChild(NavbarComponent) showImg!: NavbarComponent;
 
   topbarUserList: Array<ItemMenu> = [
-    {
-      description: 'Comprimi',
-      itemMenu: UserMenu.compress,
-      icon: faBars,
-      paths: []
-    },
+  //   {
+  //     description: `<div class="image-text">
+  //     <span class="image">
+  //         <!-- <img src="https://image.similarpng.com/very-thumbnail/2020/09/Tennis-Logo-on--transparent-background-PNG.png" alt="..."> -->
+  //         <img src="/assets/images/logo.png">
+  //     </span>
+  // </div>`,
+  //     itemMenu: UserMenu.compress,
+  //     icon: faBars,
+  //     paths: []
+  //   },
     {
       description: 'Home',
       itemMenu: UserMenu.home,
@@ -83,8 +92,12 @@ export class SidebarComponent implements OnInit {
   openCloseSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
     if (this.sidebarOpen) {
+      this.showImage = true
+      this.showImg.show(true)
       this.sidebarWidth = "14rem";
     } else {
+      this.showImage = false
+      this.showImg.show(false)
       this.sidebarWidth = "3.5rem";
     }
   }
