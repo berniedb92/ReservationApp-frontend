@@ -46,7 +46,7 @@ export class SidebarComponent implements OnInit {
       icon: faUserGroup,
       paths: ["/cliente-list"],
     },
-   
+
     {
       description: 'Campi',
       itemMenu: UserMenu.campi,
@@ -65,7 +65,13 @@ export class SidebarComponent implements OnInit {
       icon: faUsersLine,
       paths: ["/tesseramenti"],
     },
- 
+    {
+      description: 'Login',
+      itemMenu: UserMenu.login,
+      icon: faUsersLine,
+      paths: ["/login"],
+    },
+
   ]
   constructor(private router:Router) {
 
@@ -111,7 +117,7 @@ export class SidebarComponent implements OnInit {
         break;
 
       case this.userEnum.reservation:
-        path = "/reservation";
+        path = "/reservation/1";
         this.userMenu = itemMenu;
         break;
 
@@ -124,6 +130,12 @@ export class SidebarComponent implements OnInit {
         path = "/new-tess";
         this.userMenu = itemMenu;
         break;
+
+      case this.userEnum.login:
+        path = "/login";
+        this.userMenu = itemMenu;
+        break;
+
     }
     this.router.navigate([path]);
   }

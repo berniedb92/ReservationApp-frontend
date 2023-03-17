@@ -19,9 +19,7 @@ export enum UserMenu{
     campi,
     reservation,
     listTessera,
-    addTesserato,
-    login
-
+    addTesserato
 
 
 }

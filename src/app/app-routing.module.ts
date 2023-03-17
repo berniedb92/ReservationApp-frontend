@@ -14,6 +14,8 @@ import { CampiAddComponent } from './campi-add/campi-add.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ReservationAddComponent } from './reservation-add/reservation-add.component';
 import { DetailsReservationComponent } from './details-reservation/details-reservation.component';
+import { Error404Component } from './errors/error404.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'cliente-list', component: ClientiListComponent },
@@ -23,12 +25,15 @@ const routes: Routes = [
   { path: 'cliente-info/:id/modifica', component:ClientiAddComponent },
   { path: 'campi-list', component:CampiListComponent },
   { path: 'campi-add', component:CampiAddComponent },
-  { path: 'reservation', component: ReservationComponent },
+  { path: 'reservation/:numero', component: ReservationComponent },
+  { path: 'reservation', component: ReservationAddComponent },
   { path: 'new-tess', component: TesseramentoAddComponent },
   { path: 'tesseramenti', component: TesseramentoListComponent },
   { path: 'insert-reservation',component:ReservationAddComponent},
   { path: 'details-reservation/:id',component:DetailsReservationComponent},
-  { path: 'modifica-tessera/:codice',component:TesseramentoAddComponent}
+  { path: 'modifica-tessera/:codice',component:TesseramentoAddComponent},
+  { path: 'login',component:LoginComponent},
+  { path: '**', component:Error404Component}
 ];
 
 

@@ -27,7 +27,7 @@ export class ClientiAddComponent implements OnInit {
       this._cliente = cliente;
       this.clienteCopy = Object.assign({}, cliente);
     }
-    
+
     get cliente() {
       return this._cliente;
     } */
@@ -44,7 +44,7 @@ export class ClientiAddComponent implements OnInit {
 
     const id = this.router.snapshot.params['id'];
     if (id) {
- 
+
       this.getCliente(id);
 
     } else {
@@ -66,7 +66,7 @@ export class ClientiAddComponent implements OnInit {
     this.cliente.indirizzo = this.c['address'].value;
     this.cliente.numTelefono = this.c['phone'].value;
     this.cliente.email = this.c['email'].value;
-   
+
     if (this.cliente.id > 0) {
       const userCopy = Object.assign({}, this.cliente)
       this.utenteAnonimoService.uodateCliente(userCopy).subscribe({

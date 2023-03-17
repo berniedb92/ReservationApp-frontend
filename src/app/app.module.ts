@@ -9,9 +9,6 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { BirthdayComponent } from './birthday/birthday.component';
 import { CampiAddComponent } from './campi-add/campi-add.component';
 import { CampiListComponent } from './campi-list/campi-list.component';
@@ -29,8 +26,12 @@ import { TesseramentoAddComponent } from './tesseramento-add/tesseramento-add.co
 import { DetailsReservationComponent } from './details-reservation/details-reservation.component';
 import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { ActivatedRouteSnapshot } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Error404Component } from './errors/error404.component';
+import { LoginComponent } from './login/login.component';
+import { JumbotronComponent } from './jumbotron/jumbotron.component';
+import {CalendarModule} from 'primeng/calendar';
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -51,24 +52,27 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TesseramentoAddComponent,
     TesseramentoListComponent,
     DetailsReservationComponent,
-    SidebarComponent
+    SidebarComponent,
+    Error404Component,
+    LoginComponent,
+    JumbotronComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
     MaterialModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
+    BrowserAnimationsModule,
     NgxPaginationModule,
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    CalendarModule,
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    RippleModule
 
   ],
   providers: [UtenteAnonimoService],

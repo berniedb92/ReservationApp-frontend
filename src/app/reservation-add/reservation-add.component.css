@@ -1,5 +1,86 @@
-section{
-    border: 0.1rem solid #Fefefe;
-    border-radius: 2rem;
-    background-color: rgb(231, 227, 227);
-  }
+section {
+  border: 0.1rem solid #fefefe;
+  border-radius: 2rem;
+  background-color: rgb(231, 227, 227);
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.chips {
+  padding: 2rem;
+  font-size: 18px;
+}
+
+.mats-chips {
+  background-color: #669cd9;
+}
+
+mat-calendar-body-selected {
+  color: red;
+  background-color: blue;
+}
+
+mat-radio-button {
+  margin-left: 0.5rem;
+  margin-block: 1rem;
+}
+
+/* mat-select {
+  padding-block: 1rem;
+} */
+
+.step-2 {
+  padding: 8rem;
+}
+
+input {
+  margin-left: 2rem;
+}
+
+.my-form-input {
+  padding: 8px;
+}
+
+.label {
+  color: #669cd9;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 13px;
+}
+
+h1 {
+  color: #669cd9;
+  font-size: 30px;
+  font-weight: 700;
+  margin-left: 13px;
+}
+
+button {
+  border-radius: 20px !important;
+  width: 20%;
+  height: 50px;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  font-size: calc(1vw + 3pt);
+  padding: 0 !important;
+  background-color: #669cd9;
+  color: #fff;
+  float: right;
+}
+
+.calendar-container {
+  display: ruby-base;
+  position: absolute;
+}
+
+
+.col-8 {
+  display: flex;
+  position: relative;
+}

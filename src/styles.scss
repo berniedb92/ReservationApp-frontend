@@ -1,8 +1,8 @@
-@import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
+/* @import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css'; */
 /* You can add global styles to this file, and also import other style files */
 
 /* ================== BASE =================== */
-body {
+/* body {
   position: relative;
   max-height: 100vh!important;
   overflow-x: none;
@@ -22,14 +22,16 @@ body.offcanvas-active {
 
 .content-main {
   display: flex;
-  min-height:  100vh!important;
+  min-height:  200vh!important;
   background-color: rgb(255, 255, 255);
   justify-content: flex-start;
 }
+
 .content-header {
  display: flex;
  justify-content: center!important;
   position: relative;
+  padding: 5rem;
 }
 
 .content-header a {
@@ -49,35 +51,32 @@ body.offcanvas-active {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
 
-.container{
+/* .container{
   justify-content: center;
   display: flex;
   max-width: 100rem;
   padding-left:6rem!important ;
   padding-top: 4rem;
-}
-table {
+} */
+/* table {
   border-spacing: 1;
   border-collapse: collapse;
   background: white;
   border: #FFED86 1px;
   border-radius: 6px !important;
-  
+
   overflow: hidden;
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
   position: relative;
-}
-table * {
+} */
+/* table * {
   position: relative;
 }
-/* table td, table th {
-  padding-left: 8px;
-} */
 table thead tr {
   height: 60px;
   background: #FFED86;
@@ -101,9 +100,9 @@ table td.c, table th.c {
 }
 table td.r, table th.r {
   text-align: center;
-}
+} */
 
-@media screen and (max-width: 45.5rem) {
+/* @media screen and (max-width: 45.5rem) {
   table {
     display: block;
   }
@@ -127,7 +126,7 @@ table td.r, table th.r {
   table tbody tr td:before {
     position: absolute;
     font-weight: 700;
-    width: 40%;
+    width: 80%;
     left: 10px;
     top: 0;
   }
@@ -146,4 +145,12 @@ table td.r, table th.r {
   table tbody tr td:nth-child(5):before {
     content: "Box Type";
   }
-}
+} */
+
+
+.content-header {
+  display: flex;
+  justify-content: center!important;
+   position: relative;
+   padding: 5rem;
+ }

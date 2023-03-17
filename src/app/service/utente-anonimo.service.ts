@@ -116,6 +116,10 @@ export class UtenteAnonimoService {
     return this.http.get<Prenotazione[]>(this.url + `list-pren-date/${data}`)
   }
 
+  public listaPrenotazioniDateNumber(data: String, number: number): Observable<Prenotazione[]> {
+    return this.http.get<Prenotazione[]>(this.url + `list-pren-campo/${data}/${number}`)
+  }
+
   public insertPrenotazione(prenotazione: Prenotazione): Observable<Prenotazione> {
     return this.http.post<Prenotazione>(this.url + `inserisci`, prenotazione);
   }

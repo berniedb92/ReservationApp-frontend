@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
-import { faBuildingCircleXmark, faCalendarPlus, faMagnifyingGlass, faPlus, faUserPen, faUserPlus, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faBuildingCircleXmark, faCalendarPlus, faMagnifyingGlass, faPlus, faUserPen, faUserPlus, IconDefinition, faTableTennis } from '@fortawesome/free-solid-svg-icons';
 import { UtenteAnonimoService } from '../service/utente-anonimo.service';
 
 import { AdminNavbarMenu, UserNavbarMenu } from './navbar.enum';
@@ -9,7 +9,7 @@ interface ItemMenu {
   description: string;
   itemMenu: AdminNavbarMenu | UserNavbarMenu;
   icon: IconDefinition;
-  paths: string[];
+ //paths: string[];
 }
 @Component({
   selector: 'app-navbar',
@@ -47,7 +47,7 @@ export class NavbarComponent implements OnInit {
             description: 'Aggiungi Cliente',
             itemMenu: UserNavbarMenu.addClient,
             icon: faUserPlus,
-            paths: ["/cliente-add"],
+            //paths: ["/cliente-add"],
           }
         ]
       }
@@ -58,43 +58,106 @@ export class NavbarComponent implements OnInit {
             description: "Aggiungi Campo",
             itemMenu: UserNavbarMenu.addCampi,
             icon: faPlus,
-            paths: ["/campi-add"],
+            //paths: ["/campi-add"],
 
           }
         ]
       }
         break;
-      case "/reservation": {
+      case "/reservation/1": {
         [
           this.topbarUserList = [
-            // {
-            //   description: "Aggiungi Prenotazione",
-            //   itemMenu: UserNavbarMenu.addReservation,
-            //   icon: faCalendarPlus,
-            //   paths: [''],
+            {
+              description: "Aggiungi Prenotazione",
+              itemMenu: UserNavbarMenu.addReservation,
+              icon: faCalendarPlus,
+              //paths: [''],
 
-            // },
+            },
             {
               description: "Campo 1",
               itemMenu: UserNavbarMenu.campo1,
-              icon: faMagnifyingGlass,
-              paths: [""],
+              icon: faTableTennis,
+              //paths: ["/reservation/1"],
             },
             {
               description: "Campo 2",
               itemMenu: UserNavbarMenu.campo2,
-              icon: faMagnifyingGlass,
-              paths: [""],
+              icon: faTableTennis,
+              //paths: ["/reservation/2"],
             },
             {
               description: "Campo Padel",
               itemMenu: UserNavbarMenu.campo3,
-              icon: faMagnifyingGlass,
-              paths: ["/campi-add"],
+              icon: faTableTennis,
+              //paths: ["/reservation/3"],
             }
           ]
         ]
+      }
+      break
+      case "/reservation/2": {
+          [
+            this.topbarUserList = [
+              {
+                description: "Aggiungi Prenotazione",
+                itemMenu: UserNavbarMenu.addReservation,
+                icon: faCalendarPlus,
+                //paths: [''],
 
+              },
+              {
+                description: "Campo 1",
+                itemMenu: UserNavbarMenu.campo1,
+                icon: faTableTennis,
+                //paths: ["/reservation/1"],
+              },
+              {
+                description: "Campo 2",
+                itemMenu: UserNavbarMenu.campo2,
+                icon: faTableTennis,
+                //paths: ["/reservation/2"],
+              },
+              {
+                description: "Campo Padel",
+                itemMenu: UserNavbarMenu.campo3,
+                icon: faTableTennis,
+                //paths: ["/reservation/3"],
+              }
+            ]
+          ]
+        }
+        break
+          case "/reservation/3": {
+            [
+              this.topbarUserList = [
+                {
+                  description: "Aggiungi Prenotazione",
+                  itemMenu: UserNavbarMenu.addReservation,
+                  icon: faCalendarPlus,
+                  //paths: [''],
+
+                },
+                {
+                  description: "Campo 1",
+                  itemMenu: UserNavbarMenu.campo1,
+                  icon: faTableTennis,
+                  //paths: [""],
+                },
+                {
+                  description: "Campo 2",
+                  itemMenu: UserNavbarMenu.campo2,
+                  icon: faTableTennis,
+                  //paths: ["/reservation/2"],
+                },
+                {
+                  description: "Campo Padel",
+                  itemMenu: UserNavbarMenu.campo3,
+                  icon: faTableTennis,
+                  //paths: ["/reservation/3"],
+                }
+              ]
+            ]
       }
         break;
       case "/tesseramenti": {
@@ -104,7 +167,7 @@ export class NavbarComponent implements OnInit {
             description: 'Aggiungi Tesserato',
             itemMenu: UserNavbarMenu.addTesserato,
             icon: faUserPen,
-            paths: ["/new-tess"],
+            //paths: ["/new-tess"],
           }
         ]
 
@@ -136,16 +199,16 @@ export class NavbarComponent implements OnInit {
         break;
 
       case this.userEnum.campo1:
-        path = "/tesseramenti";
+        path = "/reservation/1";
         this.userMenu = itemMenu;
         break;
 
       case this.userEnum.campo2:
-        path = "/tesseramenti";
+        path = "/reservation/2";
         this.userMenu = itemMenu;
         break;
       case this.userEnum.campo3:
-        path = "/tesseramenti";
+        path = "/reservation/3";
         this.userMenu = itemMenu;
         break;
 
