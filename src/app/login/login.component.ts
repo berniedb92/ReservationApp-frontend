@@ -1,7 +1,7 @@
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
-import { AuthJwtService } from '../service/authJwt.service';
+//import { AuthJwtService } from '../service/authJwt.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
   titolo: string = "Accesso & Autenticazione";
   sottotitolo: string = "Procedi ad inserire la userid e la password";
 
-  constructor(private route: Router, private route2: ActivatedRoute,  private Auth: AuthJwtService ) { }
+  constructor(private route: Router, private route2: ActivatedRoute,
+    //private Auth: AuthJwtService
+     ) { }
 
   ngOnInit(): void {
     this.filter$ = this.route2.queryParamMap.pipe(
@@ -45,18 +47,18 @@ export class LoginComponent implements OnInit {
   gestAuth = (): void => {
     console.log(this.userId);
 
-    this.Auth.autenticaService(this.userId, this.password).subscribe({
-      next: (response: any) => {
-        console.log(response);
+    // this.Auth.autenticaService(this.userId, this.password).subscribe({
+    //   next: (response: any) => {
+    //     console.log(response);
 
-        this.autenticato = true;
-        this.route.navigate(['welcome', this.userId]);
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.autenticato = false;
-      }
-    });
+    //     this.autenticato = true;
+    //     this.route.navigate(['welcome', this.userId]);
+    //   },
+    //   error: (error: any) => {
+    //     console.log(error);
+    //     this.autenticato = false;
+    //   }
+    // });
 
   }
 }

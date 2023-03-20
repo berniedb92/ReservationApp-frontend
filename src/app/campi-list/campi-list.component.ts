@@ -1,6 +1,7 @@
-import { UtenteAnonimoService } from '../service/utente-anonimo.service';
-import { Component, OnInit } from '@angular/core';
-import { Campo } from '../model/campo';
+import { Component, OnInit } from "@angular/core";
+import { Campo } from "src/app/model/campo";
+import { UtenteAnonimoService } from "src/app/service/utente-anonimo.service";
+
 
 @Component({
   selector: 'app-campi-list',

@@ -7,6 +7,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { DettaglioPrenotazione } from '../model/dettagliPrenotazione';
 import { Router } from '@angular/router';
+import { DisponibilitaCampo } from '../model/DisponibilitaCampo';
 
 export interface Result {
   date: Date
@@ -168,6 +169,10 @@ export class UtenteAnonimoService {
 
   public selQuoteTesserato(codice: number):Observable<ResponseNode>{
     return this.http.get<ResponseNode>(this.url + `quote-tessere/${codice}`);
+  }
+
+  public selDisponibilità(campo: number, giorno: string):Observable<DisponibilitaCampo[]>{
+    return this.http.get<DisponibilitaCampo[]>(this.url + `availability/${campo}/${giorno}`);
   }
 
 }

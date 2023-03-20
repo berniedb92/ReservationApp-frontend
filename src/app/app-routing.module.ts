@@ -1,21 +1,20 @@
-import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list.component';
-import { TesseramentoAddComponent } from './tesseramento-add/tesseramento-add.component';
-import { HomeComponent } from './home/home.component';
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { ClientiAddComponent } from './clienti-add/clienti-add.component';
-import { ClientiListComponent } from './clienti-list/clienti-list.component';
-import { InfoComponent } from './info/info.component';
-import { CampiListComponent } from './campi-list/campi-list.component';
-import { CampiAddComponent } from './campi-add/campi-add.component';
-
-import { ReservationComponent } from './reservation/reservation.component';
-import { ReservationAddComponent } from './reservation-add/reservation-add.component';
-import { DetailsReservationComponent } from './details-reservation/details-reservation.component';
-import { Error404Component } from './errors/error404.component';
-import { LoginComponent } from './login/login.component';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
+import { CampiAddComponent } from "./campi-add/campi-add.component";
+import { CampiListComponent } from "./campi-list/campi-list.component";
+import { ClientiAddComponent } from "./clienti-add/clienti-add.component";
+import { ClientiListComponent } from "./clienti-list/clienti-list.component";
+import { DetailsReservationComponent } from "./details-reservation/details-reservation.component";
+import { Error404Component } from "./errors/error404.component";
+import { HomeComponent } from "./home/home.component";
+import { InfoComponent } from "./info/info.component";
+import { LoginComponent } from "./login/login.component";
+import { ReservationAddComponent } from "./reservation-add/reservation-add.component";
+import { ReservationComponent } from "./reservation/reservation.component";
+import { TesseramentoAddComponent } from "./tesseramento-add/tesseramento-add.component";
+import { TesseramentoListComponent } from "./tesseramento-list/tesseramento-list.component";
 
 const routes: Routes = [
   { path: 'cliente-list', component: ClientiListComponent },

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -8,13 +7,7 @@ declare var $: any;
 })
 export class AppComponent implements OnInit  {
 
-  isJqueryWorking: any;
-  ngOnInit()
-  {
-    $(document).ready(() => {
-        this.isJqueryWorking = 'Jquery is working !!!';
-    });
-  }
+  ngOnInit(){}
 
   title = 'angular-tennis';
 }

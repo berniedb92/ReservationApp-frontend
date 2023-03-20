@@ -1,13 +1,10 @@
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { UtenteAnonimoService } from '../service/utente-anonimo.service';
-import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/core';
-import { Cliente } from '../model/cliente';
-import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { GlobalFunctions } from '../common/global-functions';
-import { first } from 'rxjs';
-import { timingSafeEqual } from 'crypto';
-import { throws } from 'assert';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { ActivatedRoute, Router } from "@angular/router";
+import { GlobalFunctions } from "src/app/common/global-functions";
+import { Cliente } from "src/app/model/cliente";
+import { UtenteAnonimoService } from "src/app/service/utente-anonimo.service";
 
 @Component({
   selector: 'app-clienti-add',

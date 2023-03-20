@@ -1,10 +1,7 @@
-import { ToastsComponent } from './../toasts/toasts.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { UtenteAnonimoService } from '../service/utente-anonimo.service';
-import { Component, EventEmitter, OnInit, Output, ViewChildren } from '@angular/core';
-import { Cliente } from '../model/cliente';
-
-declare var $: any;
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Cliente } from "src/app/model/cliente";
+import { UtenteAnonimoService } from "src/app/service/utente-anonimo.service";
 
 @Component({
   selector: 'app-clienti-list',

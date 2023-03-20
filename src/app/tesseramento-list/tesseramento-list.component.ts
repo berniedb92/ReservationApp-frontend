@@ -1,7 +1,7 @@
-import { UtenteAnonimoService } from './../service/utente-anonimo.service';
-import { Tesseramento } from './../model/tesseramento';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Tesseramento } from 'src/app/model/tesseramento';
+import { UtenteAnonimoService } from 'src/app/service/utente-anonimo.service';
 
 @Component({
   selector: 'app-tesseramento-list',
@@ -21,17 +21,17 @@ export class TesseramentoListComponent implements OnInit {
   }
 
   constructor(private service: UtenteAnonimoService, private router: Router) {
- 
+
   }
 
   ngOnInit(): void {
-
 
     this.service.selTesserati().subscribe({
       next: (response) => {
         this.tesserati = response;
       }
     })
+
   }
 
   deleteTessera(codice: number) {

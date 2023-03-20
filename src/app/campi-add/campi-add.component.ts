@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
-import { UtenteAnonimoService } from '../service/utente-anonimo.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Campo } from '../model/campo';
+import { Campo } from 'src/app/model/campo';
+import { UtenteAnonimoService } from 'src/app/service/utente-anonimo.service';
 
 @Component({
   selector: 'app-campi-add',

@@ -1,20 +1,24 @@
-import { Tesseramento } from './../model/tesseramento';
-import { UtenteAnonimoService } from './../service/utente-anonimo.service';
-import { Component, Input, OnInit } from '@angular/core';
-import { Campo } from '../model/campo';
-import { Prenotazione } from '../model/prenotazione';
-import { AbstractControl, AsyncValidatorFn, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { GlobalFunctions } from '../common/global-functions';
-import * as moment from 'moment';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CostantsTime } from '../common/constants';
+import * as moment from 'moment';
+import { GlobalFunctions } from 'src/app/common/global-functions';
+import { Campo } from 'src/app/model/campo';
+import { Prenotazione } from 'src/app/model/prenotazione';
+import { Tesseramento } from 'src/app/model/tesseramento';
+import { UtenteAnonimoService } from 'src/app/service/utente-anonimo.service';
+
+interface Chips {
+  ora: string,
+  disabled: boolean,
+  selected: boolean
+}
 
 @Component({
   selector: 'app-reservation-add',
   templateUrl: './reservation-add.component.html',
   styleUrls: ['./reservation-add.component.scss']
 })
-
 
 export class ReservationAddComponent implements OnInit {
 
@@ -42,26 +46,22 @@ export class ReservationAddComponent implements OnInit {
     secondCtrl: ['', Validators.required],
   });
   isLinear = false;
+  error = ''
 
-  timeInizio: any[] = []
-  timeFine: any[] = []
+  orario: any[] = []
+  disponibilita: any[] = []
 
-  timeInizio1: any[] = CostantsTime.timeInizio1
-  timeFine1: any[] = CostantsTime.timeFine1
-  timeInizio2: any[] = CostantsTime.timeInizio2
-  timeFine2: any[] = CostantsTime.timeFine2
-  timeInizioPadel: any[] = CostantsTime.timeInizioPadel
-  timeFinePadel: any[] = CostantsTime.timeFinePadel
-
-  saveDateIn = ''
-  saveDatefi = ''
+  startDate = new Date()
+  selectionDate = new Date()
+  maxDate = new Date("2023-03-26")
+  minDate = new Date()
+  selectedChips = false
+  campoDisp: number = 1
 
   constructor(private service: UtenteAnonimoService, private route: Router, private _formBuilder: FormBuilder) { }
 
 
   ngOnInit(): void {
-    // this.timeInizio = this.timeInizio1
-    // this.timeFine = this.timeFine1
     this.service.listaCampi().subscribe(data => { this.campi = data })
 
     this.service.selTesserati().subscribe(data => { this.tesserati = data });
@@ -75,9 +75,57 @@ export class ReservationAddComponent implements OnInit {
     //   }
     // )
 
+    this.service.selDisponibilità(this.campoDisp, this.startDate.toISOString().split('T')[0]).subscribe({
+      next: (result) => {
+        console.log(result)
+        console.log('dispp', result[0].disponibilita)
+        let parse = JSON.parse(result[0].disponibilita)
+        console.log('parse', parse)
+
+        this.minDate = result[0].giorno
+        this.disponibilita = parse
+        this.orario = this.chipsgenerate()
+
+
+        console.log('parse', this.orario)
+
+      },
+      error: (error) => {
+        console.log('dispp', error)
+        this.error = error.error.message
+      }
+    })
+
     console.log("ROTta", this.service.router);
     console.log("Valore Form", this.registerReservationForm)
 
+  }
+
+  getDisponibilita(numero: number, data: string) {
+    this.orario = []
+    this.disponibilita = []
+    this.error = ''
+    this.service.selDisponibilità(numero, data).subscribe({
+      next: (result) => {
+        console.log(result)
+        console.log('dispp', result[0].disponibilita)
+        let parse = JSON.parse(result[0].disponibilita)
+        console.log('parse', parse)
+
+        this.minDate = result[0].giorno
+        this.disponibilita = parse
+        this.orario = this.chipsgenerate()
+
+
+        console.log('parse', this.orario)
+
+      },
+      error: (error) => {
+        console.log('dispp', error)
+        this.error = error.error.message
+
+      }
+    })
   }
 
   generateForm() {
@@ -114,13 +162,12 @@ export class ReservationAddComponent implements OnInit {
   value: Date = new Date()
   inserimenti() {
     this.prenotazione.data = this.reservation['dateReservation'].value;
-    this.prenotazione.oraInizio = this.dateGenerate(this.a)
-    this.prenotazione.oraFine = this.dateGenerate(this.b)
+   //this.prenotazione.oraInizio = this.dateGenerate(this.a)
+    //this.prenotazione.oraFine = this.dateGenerate(this.b)
     this.prenotazione.campo = this.reservation['campo'].value;
 
     console.log('this', this.prenotazione)
   }
-
 
   inserimento() {
 
@@ -184,7 +231,6 @@ export class ReservationAddComponent implements OnInit {
   }
 
   r: number = 0;
-
   onTypeCognome(cognome: string, type: string) {
     this.service.selTesseratoCognome(cognome).subscribe(
       {
@@ -305,11 +351,6 @@ export class ReservationAddComponent implements OnInit {
 
   }
 
-  startDate = new Date()
-  selectionDate = new Date()
-  maxDate = new Date(2023, 0o3, 0o1)
-  minDate = new Date(this.startDate.setDate(this.startDate.getDate() - 1))
-
   dateFilter = (d: any): boolean => {
     var calendar_date = []
 
@@ -323,129 +364,69 @@ export class ReservationAddComponent implements OnInit {
   handleSelection(event: Date) {
     console.log(event)
     this.selectionDate = event
-    this.prenotazione.data = this.selectionDate
+    this.getDisponibilita(this.campoDisp, event.toISOString().split('T')[0])
     console.log(this.selectionDate)
   }
 
-  campo = 0
-  changeTime(value: any) {
-    console.log(value)
-    switch (value) {
-      case '1':
-        this.timeInizio = this.timeInizio1
-        this.timeFine = this.timeFine1
-        this.campo = 1
-        break
-      case '2':
-        this.timeInizio = this.timeInizio2
-        this.timeFine = this.timeFine2
-        this.campo = 2
-        break
-      case '3':
-        this.timeInizio = this.timeInizioPadel
-        this.timeFine = this.timeFinePadel
-        this.campo = 3
-        break
+  chipsgenerate() {
+    var selected = []
+
+    for(let i = 0; i < this.disponibilita.length; i++) {
+      if(this.disponibilita[i].available) {
+        selected.push({
+          ora: `${this.disponibilita[i].oraInizio} - ${this.disponibilita[i].oraFine}`,
+          disabled: false,
+          selected: false
+        })
+      }
     }
-    console.log(this.timeInizio)
-    console.log(this.timeFine)
+    return selected
   }
 
-  index = 0
-  a = ''
-  chipsSelInizio(value: any) {
-    console.log(value)
-    this.saveDateIn = value
-    this.a = value.ora
-    if (!value.selected) {
+  selectChip(event: any) {
+    console.log(event)
+    var selected = []
 
-      for (let i = 0; i < this.timeInizio.length; i++) {
+    this.selectedChips = false
 
-        this.timeInizio[i] = {
-          ora: this.timeInizio[i].ora,
-          selected: false,
-          disabled: true
-        }
+    for(let i = 0; i < this.orario.length; i++) {
+      console.log(this.orario[i].ora === event.ora)
 
-        if (this.timeInizio[i].ora === value.ora) {
-
-          this.timeInizio[i] = {
-            ora: this.timeInizio[i].ora,
-            selected: true,
-            disabled: false
-          }
-
-          this.index = i + 1
-        }
+      if(this.orario[i].selected) {
+        this.selectedChips = true
+        this.orario = this.chipsgenerate()
+        break
       }
-      for (let j = 0; j < this.timeFine.length; j++) {
 
-        this.timeFine[j] = {
-          ora: this.timeFine[j].ora,
-          selected: false,
-          disabled: true
-        }
-
-        if (this.timeFine[j].ora === value.ora) {
-
-          var max = this.index + 1
-
-          if (this.campo === 3) max = this.index
-
-          for (let x = this.index; x <= max; x++) {
-
-            this.timeFine[x] = {
-              ora: this.timeFine[x].ora,
-              selected: false,
-              disabled: false
-            }
-            j++;
-          }
-        }
-      }
-      console.log('fineeeee', this.timeFine)
-    } else {
-      this.timeInizio = CostantsTime.resetTimeInizio(this.campo)
-      this.timeFine = CostantsTime.resetTimeFine(this.campo)
-    }
-  }
-
-  b = ''
-  chipsSelFine(value: any) {
-    this.saveDatefi = value
-    this.b = value.ora
-    if (!value.selected) {
-
-      for (let i = 0; i < this.timeFine.length; i++) {
-
-        this.timeFine[i] = {
-          ora: this.timeFine[i].ora,
-          selected: false,
-          disabled: true
-        }
-
-        if (this.timeFine[i].ora == value.ora) {
-
-          this.timeFine[i] = {
-            ora: this.timeFine[i].ora,
-            selected: true,
-            disabled: false
-          }
-
-        }
-      }
-    } else {
-      if (this.campo === 3) {
-        CostantsTime.resetTimeInizio(this.campo)
+      if(this.orario[i].ora === event.ora) {
+        selected.push({
+          ora: this.orario[i].ora,
+          disabled: false,
+          selected: true
+        })
       } else {
-        this.chipsSelInizio(this.saveDateIn)
+        selected.push({
+          ora: this.orario[i].ora,
+          disabled: true,
+          selected: false
+        })
       }
     }
+    if(!this.selectedChips) this.orario = selected
+    console.log(selected)
   }
+
+  changeCampo(radio: any) {
+    this.campoDisp = radio.value
+    this.getDisponibilita(radio.value, this.selectionDate.toISOString().split('T')[0])
+  }
+
 
   changeRadio(radio: any) {
     console.log(radio)
   }
+
+
 
 }
 

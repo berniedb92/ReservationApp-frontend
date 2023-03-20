@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../model/cliente';
-import { UtenteAnonimoService } from '../service/utente-anonimo.service';
+import { Cliente } from 'src/app/model/cliente';
+import { UtenteAnonimoService } from 'src/app/service/utente-anonimo.service';
 
 @Component({
   selector: 'app-birthday',

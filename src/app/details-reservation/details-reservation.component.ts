@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AnyForUntypedForms, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DettaglioPrenotazione } from '../model/dettagliPrenotazione';
-import { UtenteAnonimoService } from '../service/utente-anonimo.service';
+import { DettaglioPrenotazione } from 'src/app/model/dettagliPrenotazione';
+import { UtenteAnonimoService } from 'src/app/service/utente-anonimo.service';
 
 @Component({
   selector: 'app-details-reservation',
@@ -33,7 +33,7 @@ export class DetailsReservationComponent implements OnInit {
     this.service.getDettagliPrenotazione(id).subscribe(
       data => {
         this.dettaglioPrenotazioni = data;
-      
+
       }
     )
   }
@@ -104,7 +104,7 @@ export class DetailsReservationComponent implements OnInit {
       'cliente': this.dettTesserato["cliente"],
       'pagamento': this.dettTesserato["pagamento"],
       'pagamentoEffettuato': this.dettTesserato['pagamentoEffettuato'],
-      'note': this.dettTesserato.note 
+      'note': this.dettTesserato.note
     }).subscribe({
       next: () => {
 

@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBuildingCircleXmark, faCalendarPlus, faMagnifyingGlass, faPlus, faUserPen, faUserPlus, IconDefinition, faTableTennis } from '@fortawesome/free-solid-svg-icons';
-import { UtenteAnonimoService } from '../service/utente-anonimo.service';
 
 import { AdminNavbarMenu, UserNavbarMenu } from './navbar.enum';
+import { UtenteAnonimoService } from 'src/app/service/utente-anonimo.service';
 
 interface ItemMenu {
   description: string;

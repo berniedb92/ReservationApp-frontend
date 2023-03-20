@@ -1,7 +1,6 @@
-import { UtenteAnonimoService } from './../service/utente-anonimo.service';
-import { Component, OnInit } from '@angular/core';
-import { Prenotazione } from '../model/prenotazione';
-import { Tesseramento } from '../model/tesseramento';
+import { Component, OnInit } from "@angular/core";
+import { Prenotazione } from "src/app/model/prenotazione";
+import { UtenteAnonimoService } from "src/app/service/utente-anonimo.service";
 
 @Component({
   selector: 'app-reservation-day',
@@ -16,8 +15,8 @@ export class ReservationDayComponent implements OnInit {
   date = new Date()
   tesserati:any;
 
-  constructor(private service: UtenteAnonimoService) { 
-  
+  constructor(private service: UtenteAnonimoService) {
+
   }
 
   ngOnInit(): void {
@@ -27,7 +26,7 @@ export class ReservationDayComponent implements OnInit {
       }
     )
 
-    
+
   }
 
   splitData(data: Date): string {

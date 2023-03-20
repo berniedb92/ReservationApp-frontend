@@ -1,6 +1,4 @@
-import { UtenteAnonimoService } from '../service/utente-anonimo.service';
-import { Component, Input, OnInit, Output, AfterViewInit, ViewChild } from '@angular/core';
-import { Prenotazione } from '../model/prenotazione';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService, EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
@@ -10,6 +8,8 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { DataSource } from '@angular/cdk/collections';
 import * as moment from 'moment';
+import { Prenotazione } from 'src/app/model/prenotazione';
+import { UtenteAnonimoService } from 'src/app/service/utente-anonimo.service';
 
 @Component({
   selector: 'app-reservation',
@@ -69,6 +69,18 @@ export class ReservationComponent extends DataSource<Prenotazione> implements On
         })
       }
     )
+
+
+    this.service.selDisponibilità(this.number, this.startDate.toISOString().split('T')[0]).subscribe({
+      next: (result) => {
+        console.log('dispp', result[0].disponibilita)
+        let parse = JSON.parse(result[0].disponibilita)
+        console.log('parse', parse)
+      },
+      error: (error) => {
+        console.log('dispp', error)
+      }
+    })
 
     console.log("ROTta", this.service.router);
   }

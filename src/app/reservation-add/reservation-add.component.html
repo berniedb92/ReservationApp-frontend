@@ -189,37 +189,29 @@
           </div>
         </div>
 
-        <div class="col-8">
+        <div class="col-8 mt-5">
           <mat-label class="label">Seleziona il campo:</mat-label>
           <br>
-          <mat-radio-group class="chips" formControlName="campo"
-            (change)="changeTime(registerReservationForm.get('campo')?.value)">
-            <mat-radio-button *ngFor="let c of campi" value="{{c.numero}}">{{c.numero}} -
+          <mat-radio-group class="chips" formControlName="campo">
+            <mat-radio-button *ngFor="let c of campi" value="{{c.numero}}" (change)="changeCampo($event)">{{c.numero}} -
               {{c.superficie}}</mat-radio-button>
           </mat-radio-group>
           <br>
-          <mat-label class="label" *ngIf="timeInizio.length != 0">Inizio:</mat-label>
+          <mat-label class="label">Seleziona l'orario:</mat-label>
           <div class="chips">
+
+            <div class="error-message" *ngIf="error.length != 0">
+              <h1>{{error}}!</h1>
+            </div>
+
             <mat-chip-list formControlName="oraInizio">
-              <ng-container *ngFor="let t of timeInizio">
+              <ng-container *ngFor="let t of orario">
                 <mat-chip class="mats-chips" [disabled]="t.disabled" [selected]="t.selected"
-                  (click)="t.disabled ? false : chipsSelInizio(t)" [value]="t.ora">{{t.ora}}</mat-chip>
+                  (click)="t.disabled ? false : selectChip(t)" [value]="t.ora">{{t.ora}}</mat-chip>
                 <!-- <mat-chip (disabled)="!t.disabled" [selected]="!t.selected" (click)="chipsSel(t)">{{t.ora}}</mat-chip> -->
               </ng-container>
             </mat-chip-list>
           </div>
-          <mat-label class="label" *ngIf="timeInizio.length != 0">Fine:</mat-label>
-          <div class="chips">
-
-            <mat-chip-list formControlName="oraFine">
-              <ng-container *ngFor="let t of timeFine">
-                <mat-chip class="mats-chips" [disabled]="t.disabled" [selected]="t.selected"
-                  (click)="t.disabled ? false : chipsSelFine(t)">{{t.ora}}</mat-chip>
-                <!-- <mat-chip [hidden]="!selectedChip2" [selected]="t.selected" (click)="chipsSel(t)">{{t.ora}}</mat-chip> -->
-              </ng-container>
-            </mat-chip-list>
-          </div>
-          <!-- </mat-form-field> -->
         </div>
       </div>
       <div>

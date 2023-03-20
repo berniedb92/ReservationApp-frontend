@@ -1,11 +1,11 @@
-import { ActivatedRoute } from '@angular/router';
-import { GlobalFunctions } from './../common/global-functions';
-import { Cliente } from './../model/cliente';
-import { UtenteAnonimoService } from './../service/utente-anonimo.service';
-import { Tesseramento, TipoTessera, IntegrazioneTessera } from './../model/tesseramento';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { GlobalFunctions } from "src/app/common/global-functions";
+import { Cliente } from "src/app/model/cliente";
+import { Tesseramento, TipoTessera, IntegrazioneTessera } from "src/app/model/tesseramento";
+import { UtenteAnonimoService } from "src/app/service/utente-anonimo.service";
+
 
 @Component({
   selector: 'app-tesseramento-add',
