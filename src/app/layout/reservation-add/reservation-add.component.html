@@ -1,0 +1,210 @@
+<header id="secondary-header" class="secondary-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="title">
+          <h1>Nuova prenotazione</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="content">
+
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="registerReservationForm">
+        <ng-template matStepLabel>Seleziona data e ora</ng-template>
+        <div class="row">
+          <div class="col-4">
+            <div class="calendar-container resizableDialog">
+              <mat-label class="label">Seleziona la data</mat-label>
+              <mat-calendar class="calendar-container" formControlName="dateReservation"
+              [startAt]="startDate"
+              [selected]="selectionDate"
+              [minDate]="minDate"
+              [maxDate]="maxDate"
+              [dateFilter]="dateFilter"
+              (selectedChange)="handleSelection($event)">
+              </mat-calendar>
+            </div>
+          </div>
+
+          <div class="col-8 mt-5">
+            <mat-label class="label">Seleziona il campo:</mat-label>
+            <br>
+            <mat-radio-group class="chips" formControlName="campo">
+              <mat-radio-button #campoDisp *ngFor="let c of campi" value="{{c.numero}}" (change)="changeCampo($event)">{{c.numero}}
+                -
+                {{c.sport}}</mat-radio-button>
+            </mat-radio-group>
+            <br>
+            <mat-label class="label">Seleziona l'orario:</mat-label>
+            <div class="chips">
+
+              <div class="error-message" *ngIf="error.length != 0">
+                <h1>{{error}}!</h1>
+              </div>
+
+              <mat-chip-list formControlName="oraInizio">
+                <ng-container *ngFor="let t of orario">
+                  <mat-chip class="mats-chips" (click)="t.disabled ? false : selectChip(t)"
+                  [disabled]="t.disabled"
+                  [selected]="t.selected"
+                  [value]="t.ora">{{t.ora}}
+                </mat-chip>
+                </ng-container>
+              </mat-chip-list>
+            </div>
+            <mat-label class="label">Modalità:</mat-label>
+            <br>
+            <mat-radio-group class="chips" formControlName="modality" #modality [disabled]="campoDisp == 3"
+              (change)="changeRadio(registerReservationForm.get('modality')?.value)" aria-label="Select an option">
+              <mat-radio-button value="singolo">Singolo</mat-radio-button>
+              <mat-radio-button value="doppio">Doppio</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div>
+          <button class="button-confirm" mat-button matStepperNext (click)="inserimenti()">Continua</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Seleziona modalità e giocatori">
+      <form [formGroup]="registerReservationForm2">
+        <div class="step-2">
+          <div class="d-flex justify-content-center mb-5">
+            <mat-label class="label">Giocatori:</mat-label>
+          </div>
+
+          <div class="col d-flex justify-content-around">
+
+            <div class="my-form-input">
+              <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Giocatore 1</mat-label>
+                  <input type="text" placeholder="Pick one" aria-label="Giocatore 1" matInput [formControl]="aComplete1"
+                    [matAutocomplete]="auto" (click)="generateAutocomplete('playerOne')">
+                  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayAutocomplete">
+                    <mat-option *ngFor="let item of tesseraG1 | async" [value]="item">
+                      {{item.clienteTess.cognome}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </div>
+
+            <div class="my-form-input">
+              <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Giocatore 2</mat-label>
+                  <input type="text" placeholder="Pick one" aria-label="Giocatore 2" matInput [formControl]="aComplete2"
+                    [matAutocomplete]="auto2" (click)="generateAutocomplete('playerTwo')">
+                  <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayAutocomplete">
+                    <mat-option *ngFor="let item of tesseraG2 | async" [value]="item">
+                      {{item.clienteTess.cognome}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </div>
+
+            <div class="my-form-input" [hidden]="campoDisp != 3 && registerReservationForm.get('modality')?.value == 'singolo'">
+              <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Giocatore 3</mat-label>
+                  <input type="text" placeholder="Pick one" aria-label="Giocatore 3" matInput [formControl]="aComplete3"
+                    [matAutocomplete]="auto3" (click)="generateAutocomplete('playerThree')">
+                  <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete" [displayWith]="displayAutocomplete">
+                    <mat-option *ngFor="let item of tesseraG3 | async" [value]="item">
+                      {{item.clienteTess.cognome}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </div>
+
+            <div class="my-form-input" [hidden]="campoDisp != 3 && registerReservationForm.get('modality')?.value == 'singolo'">
+              <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Giocatore 4</mat-label>
+                  <input type="text" placeholder="Pick one" aria-label="Giocatore 4" matInput [formControl]="aComplete4"
+                    [matAutocomplete]="auto4" (click)="generateAutocomplete('playerFour')">
+                  <mat-autocomplete autoActiveFirstOption #auto4="matAutocomplete" [displayWith]="displayAutocomplete">
+                    <mat-option *ngFor="let item of tesseraG4 | async" [value]="item">
+                      {{item.clienteTess.cognome}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </div>
+          </div>
+
+        </div>
+        <div>
+          <button class="button-refuse" mat-button matStepperPrevious>Indietro</button>
+          <button class="button-confirm" mat-button matStepperNext (click)="inserimento()">Continua</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Conferma</ng-template>
+      <div class="row justify-content-center">
+        <table class="table table-primary table-borderless bdr mt-5 mb-5">
+          <tbody>
+            <tr>
+              <th colspan="2" class="first-row">Conferma Prenotazione</th>
+            </tr>
+            <tr>
+              <th>Data</th>
+              <td>{{prenotazione.data| date: 'EEEE, dd'}}</td>
+            </tr>
+            <tr>
+              <th>Inizio</th>
+              <td>{{prenotazione.oraInizio| date : 'HH:mm'}}</td>
+            </tr>
+            <tr>
+              <th>Fine</th>
+              <td>{{prenotazione.oraFine| date : 'HH:mm'}}</td>
+            </tr>
+            <tr [hidden]="prenotazione.modalita == 'padel'">
+              <th>Modalita</th>
+              <td>{{prenotazione.modalita ? prenotazione.modalita : 'padel'}}</td>
+            </tr>
+            <tr>
+              <th>Campo</th>
+              <td>{{prenotazione.campo ? prenotazione.campo.numero : 1}}</td>
+            </tr>
+            <tr>
+              <th>Giocatore 1</th>
+              <td>{{prenotazione.giocatore1 ? prenotazione.giocatore1.clienteTess.cognome + ' ' +
+                prenotazione.giocatore1.clienteTess.nome : ''}}</td>
+            </tr>
+            <tr>
+              <th>Giocatore 2</th>
+              <td>{{prenotazione.giocatore2 ? prenotazione.giocatore2.clienteTess.cognome + ' ' +
+                prenotazione.giocatore2.clienteTess.nome : ''}}</td>
+            </tr>
+            <tr *ngIf="prenotazione.modalita == 'doppio' || prenotazione.modalita == 'padel'">
+              <th>Giocatore 3</th>
+              <td>{{prenotazione.giocatore3 ? prenotazione.giocatore3.clienteTess.cognome + ' ' +
+                prenotazione.giocatore3.clienteTess.nome : ''}}</td>
+            </tr>
+            <tr *ngIf="prenotazione.modalita == 'doppio' || prenotazione.modalita == 'padel'">
+              <th>Giocatore 4</th>
+              <td>{{prenotazione.giocatore4 ? prenotazione.giocatore4.clienteTess.cognome + ' ' +
+                prenotazione.giocatore4.clienteTess.nome : ''}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <button mat-button class="button-refuse" matStepperPrevious>Indietro</button>
+          <button mat-button class="button-nullable" (click)="stepper.reset()">Annulla</button>
+          <button mat-button class="button-confirm" (click)="save()">Salva</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+</section>

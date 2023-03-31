@@ -1,0 +1,66 @@
+<section class="content">
+  <div id="lista-tesserati">
+    <h1>Lista tesserati</h1>
+    <table class="table table-white table striped">
+      <thead>
+        <tr>
+          <th scope="col">Codice Tessera</th>
+          <th scope="col">Cognome</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Tipo Tessera</th>
+          <th scope="col">Integrazione Tessera</th>
+          <th scope="col">Data Tesseramento</th>
+          <th scope="col">Scadenza Certificato</th>
+          <th scope="col">Azioni</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let t of tesserati | paginate: {itemsPerPage: pageSize, currentPage: pageIndex}">
+          <tr [ngClass]="t.attiva === false ? 'table-danger' : 'table-bordered'">
+            <td>{{ t.codiceTessera }}</td>
+            <td>{{ t.clienteTess.cognome }}</td>
+            <td>{{ t.clienteTess.nome }}</td>
+            <td>{{ t.tipo.tipo }}</td>
+            <td>{{ t.integrazione.tipo }}</td>
+            <td>{{ t.dataTesseramento | date :'dd/MM/yyyy' }}</td>
+            <td>{{ t.scadenzaCertificato | date :'dd/MM/yyyy' }}</td>
+            <td>
+              <div class="buttons-grid">
+                <button type="button" class="btn button-modifica" [routerLink]="['/modifica-tessera', t.codiceTessera]">
+                  <span class="material-icons md-edit"
+                    title="Modifica" aria-hidden="true"></span>
+                    <fa-icon class="icon" [icon]="faEdit"></fa-icon>
+                </button>
+                <button type="button" class="btn button-note">
+                  <!-- <span class="material-icons md-event_note" title="Note" aria-hidden="true"></span> -->
+                  <fa-icon class="icon" [icon]="faNoteSticky"></fa-icon>
+                </button>
+                <button type="button" class="btn button-delete" (click)="deleteTessera(t.codiceTessera)">
+                  <!-- <span class="material-icons md-delete_outline" title="Elimina" aria-hidden="true"></span> -->
+                  <fa-icon class="icon" [icon]="faTrash"></fa-icon>
+                </button>
+                <button type="button" class="btn button-quote"
+                  (click)="quote(t.codiceTessera, t.clienteTess.cognome)" data-bs-toggle="collapse"
+                  data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <!-- <span class="material-icons md-info" title="Info" aria-hidden="true"></span> -->
+                  <fa-icon class="icon" [icon]="faMoneyBill"></fa-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <h3>Cliente selezionato => {{quoteSel.tesserato}}</h3>
+        <ul class="list-group">
+          <li class="list-group-item">Singolo tennis: {{quoteSel.singolo}}</li>
+          <li class="list-group-item">Doppio tennis: {{quoteSel.doppio}}</li>
+          <li class="list-group-item">Padel: {{quoteSel.padel}}</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>

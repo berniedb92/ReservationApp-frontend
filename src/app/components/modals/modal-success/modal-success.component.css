@@ -1,0 +1,26 @@
+.modalSuccess {
+    text-align: center;
+    width: 400px;
+    margin-top: 30px;
+}
+.titleModalAgency {
+    font-size: 26px;
+    color:#669cd9;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 649px) and (min-width: 481px) {
+    .modalSuccess {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modalSuccess {
+        width: auto;
+        margin: 0px;
+    }
+    .titleModalAgency {
+        font-size: 18px;
+    }
+}

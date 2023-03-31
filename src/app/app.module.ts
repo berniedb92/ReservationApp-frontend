@@ -1,8 +1,6 @@
-import { MaterialModule } from './material/material.module';
-import { UtenteAnonimoService } from './service/utente-anonimo.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,34 +10,42 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {CalendarModule} from 'primeng/calendar';
 import { RippleModule } from 'primeng/ripple';
-import { CampiListComponent } from './campi-list/campi-list.component';
-import { BirthdayComponent } from './birthday/birthday.component';
-import { CampiAddComponent } from './campi-add/campi-add.component';
-import { ClientiAddComponent } from './clienti-add/clienti-add.component';
-import { ClientiListComponent } from './clienti-list/clienti-list.component';
-import { DetailsReservationComponent } from './details-reservation/details-reservation.component';
-import { Error404Component } from './errors/error404.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { InfoComponent } from './info/info.component';
-import { JumbotronComponent } from './jumbotron/jumbotron.component';
-import { LoginComponent } from './login/login.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ReservationAddComponent } from './reservation-add/reservation-add.component';
-import { ReservationDayComponent } from './reservation-day/reservation-day.component';
-import { ReservationComponent } from './reservation/reservation.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { TesseramentoAddComponent } from './tesseramento-add/tesseramento-add.component';
-import { TesseramentoListComponent } from './tesseramento-list/tesseramento-list.component';
-import { ToastsComponent } from './toasts/toasts.component';
+import { IonicModule } from '@ionic/angular';
+import { AuthInterceptorService } from 'src/service/interceptors/auth-interceptor.service';
+import { GestErrorInterceptor } from 'src/service/interceptors/gest-error.interceptor';
+import { NetworkInterceptor } from 'src/service/interceptors/network.interceptor';
+import { UtenteAnonimoService } from 'src/service/utente-anonimo.service';
+import { MaterialModule } from './material/material.module';
+import { Error404Component } from './components/errors/error404.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ModalErrorComponent } from './components/modals/modal-error/modal-error.component';
+import { ModalSuccessComponent } from './components/modals/modal-success/modal-success.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { BirthdayComponent } from './layout/birthday/birthday.component';
+import { ModalAddCampoComponent } from './layout/modal-add-campi/modal-add-campi.component';
+import { AppSettingsComponent } from './layout/app-settings/app-settings.component';
+import { ClientiAddComponent } from './layout/clienti-add/clienti-add.component';
+import { ClientiListComponent } from './layout/clienti-list/clienti-list.component';
+import { DetailsReservationComponent } from './layout/details-reservation/details-reservation.component';
+import { HomeComponent } from './layout/home.component';
+import { LoginComponent } from './layout/login/login.component';
+import { ReservationAddComponent } from './layout/reservation-add/reservation-add.component';
+import { ReservationDayComponent } from './layout/reservation-day/reservation-day.component';
+import { ReservationComponent } from './layout/reservation/reservation.component';
+import { TesseramentoAddComponent } from './layout/tesseramento-add/tesseramento-add.component';
+import { TesseramentoListComponent } from './layout/tesseramento-list/tesseramento-list.component';
+import { ModalSetAvailabilityComponent } from './layout/modal-set-availability/modal-set-availability.component';
+import { ModalConfirmComponent } from './components/modals/modal-confirm/modal-confirm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientiListComponent,
     ClientiAddComponent,
-    CampiListComponent,
-    CampiAddComponent,
+    AppSettingsComponent,
+    ModalAddCampoComponent,
     ReservationComponent,
     ReservationAddComponent,
     ReservationDayComponent,
@@ -48,14 +54,16 @@ import { ToastsComponent } from './toasts/toasts.component';
     DetailsReservationComponent,
     NavbarComponent,
     BirthdayComponent,
-    InfoComponent,
     FooterComponent,
     HomeComponent,
-    ToastsComponent,
     SidebarComponent,
     Error404Component,
     LoginComponent,
-    JumbotronComponent
+    SpinnerComponent,
+    ModalErrorComponent,
+    ModalSuccessComponent,
+    ModalSetAvailabilityComponent,
+    ModalConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -63,15 +71,21 @@ import { ToastsComponent } from './toasts/toasts.component';
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     NgxPaginationModule,
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     FontAwesomeModule,
     CalendarModule,
-    RippleModule
+    RippleModule,
+    IonicModule.forRoot()
   ],
-  providers: [UtenteAnonimoService],
-  bootstrap: [AppComponent]
+  providers: [UtenteAnonimoService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: GestErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true},
+    ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

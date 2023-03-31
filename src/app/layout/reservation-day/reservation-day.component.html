@@ -1,0 +1,43 @@
+<h1 class="text-dark">Prenotazioni del giorno</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th >Data</th>
+        <th >Inizio</th>
+        <th >Fine</th>
+        <th>Modalita</th>
+        <th >Cliente 1</th>
+        <th >Cliente 2</th>
+        <th>Campo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let p of prenotazioni | paginate: {itemsPerPage: pageSize, currentPage: pageIndex}">
+      <tr>
+        <td>{{ p.data | date :'dd/MM/yy' }}</td>
+        <td>{{ p.oraInizio | date :'HH:mm' }}</td>
+        <td>{{ p.oraFine | date :'HH:mm' }}</td>
+        <td>{{ p.modalita }}</td>
+        <td>{{ p.modalita === 'singolo' ? p.giocatore1.clienteTess.nome +' '+ p.giocatore1.clienteTess.cognome : p.giocatore1.clienteTess.nome +' '+p.giocatore1.clienteTess.cognome + '-' + p.giocatore3.clienteTess.nome +' '+p.giocatore3.clienteTess.cognome }}</td>
+         <td>{{ p.modalita === 'singolo' ? p.giocatore2.clienteTess.nome +' '+ p.giocatore2.clienteTess.cognome : p.giocatore2.clienteTess.nome +' '+p.giocatore2.clienteTess.cognome + '-' + p.giocatore4.clienteTess.nome +' '+p.giocatore4.clienteTess.cognome }}</td>
+        <td>{{ p.campo.numero + ' ' + p.campo.superficie }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<nav class="float-end" aria-label="Page navigation">
+  <pagination-controls
+            class="my-pagination"
+            (pageChange)="pageIndex = $event"
+            previousLabel="Precedente"
+            nextLabel="Successivo">
+ </pagination-controls>
+</nav>
+
+<label>Clienti per pagina:</label>
+<select class="form-select form-select-sm" #size [(ngModel)]="pageSize">
+  <option value=10>10</option>
+  <option selected value=20>20</option>
+  <option value=30>30</option>
+</select>

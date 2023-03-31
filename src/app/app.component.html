@@ -1,5 +1,18 @@
-<div class="body">
- <app-sidebar></app-sidebar>
+<div id="main-nav">
+  <app-navbar></app-navbar>
 </div>
+<div id="main-body">
+  <app-sidebar></app-sidebar>
+  <div id="main" class="bg-main">
+    <app-spinner></app-spinner>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>
+
+
+
+
+
 
 

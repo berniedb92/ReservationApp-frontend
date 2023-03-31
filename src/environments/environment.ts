@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  APIURL: 'http://localhost:8080/tennis/',
+  APIURL: 'http://localhost:8081/tennis/',
   server: "localhost",
   //port : "5051",
-  port : "8765",
+  port : "9100",
   //Auth Server JWT EndPoint
-  authServerUri: "http://localhost:8765/auth",
+  authServerUri: "http://localhost:9100/auth",
 };
 
 /*

@@ -1,0 +1,36 @@
+.modal-confirm{
+  display: block;
+  align-content: center;
+}
+
+h1 {
+  font-size: 26px;
+  color:#669cd9;
+  font-weight: bold;
+}
+
+.button-confirm {
+  border-radius: 20px !important;
+  width: 20%;
+  height: 50px;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  font-size: calc(1vw + 3pt);
+  padding: 0 !important;
+  background-color: #669cd9;
+  color: #fff;
+  float: right;
+}
+
+.button-refuse {
+  border-radius: 20px !important;
+  width: 20%;
+  height: 50px;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  font-size: calc(1vw + 3pt);
+  padding: 0 !important;
+  background-color: #d366d9;
+  color: #fff;
+  float: right;
+}

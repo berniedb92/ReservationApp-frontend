@@ -1,0 +1,177 @@
+@import "../../../styles/variables.scss";
+
+img {
+  max-width: 8rem;
+}
+
+// .dduser {
+//   margin-right: 50px;
+//   margin-left: 20px;
+// }
+
+// .nav {
+//   align-items: center;
+// }
+
+// .col-nav {
+//   display: flex;
+//   align-items: center;
+//   border-right: 10px;
+//   border-left: 10px;
+// }
+
+// .btn-mobile {
+//   display: none;
+// }
+
+// .btn-icon {
+//   text-align: center;
+//   padding-left: 0.5em;
+//   padding-right: 0.5em;
+// }
+
+// .nav-item > a {
+//   border-radius: 0.25rem;
+//   color: #adb5bd;
+//   display: block;
+//   text-decoration: none;
+// }
+
+// .search {
+//   border-right: 10px;
+// }
+
+// .md-menu {
+//     margin-left: -18px;
+// }
+
+// .material-icons {
+//   font-size: 30px;
+// }
+
+// nav {
+//   background: whitesmoke;
+//   border-bottom: #669cd9;
+//   min-height: 4.5rem;
+// }
+// .navbar-collapse{
+//   justify-content: space-between;
+// }
+// .addReservation{
+//  display: inline;
+//   justify-content: space-between;
+// }
+// .menu {
+//   margin-top: 1rem;
+//   color: whitesmoke;
+//   border-color: #669cd9;
+//   margin-left: 5rem;
+// }
+
+// button{
+//   justify-content: space-between;
+//   border: none;
+//   margin-left: 1.5rem;
+//   background-color: whitesmoke;
+//   color: black;
+//   font-size: large;
+// }
+
+// .button-bar{
+//   justify-content: space-between;
+//   border: none;
+//   background-color: whitesmoke;
+//   color: #669cd9;
+//   font-size: large;
+//   margin-left: 0;
+// }
+
+// .container-fluid {
+//   border-bottom: whitesmoke;
+// }
+
+.icon {
+  color: #669cd9;
+  height: 50px;
+  width: 100px;
+}
+
+// .example-spacer {
+//   /* flex: 1 1 auto; */
+//   display: flex;
+// }
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 10px;
+  background-color: $grey-neutral-30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+
+
+.navigation {
+
+  a {
+    position: relative;
+    font-size: 1.1em;
+    color: #669cd9;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    font-weight: bold;
+  }
+
+  a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #669cd9;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s;
+  }
+
+  a:hover::after{
+    transform: scaleX(1);
+  }
+
+  .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #669cd9;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color:#669cd9;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+  }
+
+  .btnLogin-popup:hover {
+    background: #669cd9;
+    color:#fff;
+  }
+
+}

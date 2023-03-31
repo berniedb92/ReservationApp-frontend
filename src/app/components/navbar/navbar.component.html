@@ -1,0 +1,107 @@
+<!-- <nav class="navbar navbar-expand-lg main-nav">
+
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav ">
+        <header>
+          <div class="image-text">
+              <span class="image" [hidden]="showImg"> -->
+<!-- <img src="https://image.similarpng.com/very-thumbnail/2020/09/Tennis-Logo-on--transparent-background-PNG.png" alt="..."> -->
+<!-- <img src="/assets/images/logo.png">
+              </span>
+          </div>
+      </header> -->
+
+<!-- <div class="menu" *ngFor="let item of topbarUserList">
+        <button (click)="navigate(item.itemMenu)"><fa-icon class='icon' [icon]="item.icon"></fa-icon>
+         <b class="text">{{item.description}}</b></button> -->
+<!-- <div class="addReservation" *ngIf="item.description =='Campo Padel'">
+           <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><b>Aggiungi Prenotazione</b></button>
+         </div> -->
+<!-- </div>
+
+      </ul>
+     <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="md-28 material-icons md-menu"></i> </button>
+        <ul class="nav"> -->
+
+
+<!-- <li class="nav-item">
+            <a class="nav-link btn-icon" onclick="darkmode(this)" href="#">
+              <span class="material-icons md-nights_stay" title="Dark mode"></span>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"> English </a>
+          </li> -->
+
+<!-- <li class="dropdown nav-item">
+            <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#"> -->
+<!-- <img class="img-xs rounded-circle" src="/assets/images/avatars/avatar4.jpg" alt="User" width="35" height="35"> -->
+<!-- <img class="img-xs rounded-circle"  src="/assets/images/avatars/offline_user.png" alt="User" width="35" height="35">
+            </a>
+            <div class="dropdown-menu dropdown-menu-end">
+              <a class="dropdown-item" routerLink="/login">Accedi</a>
+              <a class="dropdown-item" routerLink="/signup">Registrati</a>
+              <a class="dropdown-item disabled" href="#">Profilo</a>
+              <a class="dropdown-item disabled" href="#">Settings</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item disabled" routerLink="/logout">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</nav> -->
+
+<!-- <app-sidebar (openSideBar)="openCloseSidebar()" ></app-sidebar> -->
+
+
+
+<!--
+<mat-toolbar>
+
+  <button mat-icon-button class="button-bar" aria-label="Example icon-button with menu icon" (click)="open()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="/assets/images/logo.png">
+  <span class="example-spacer"></span>
+  <div *ngFor="let item of topbarUserList">
+    <button class="icon-black" (click)="navigate(item.itemMenu)"><fa-icon class='icon' [icon]="item.icon"></fa-icon>
+      <b class="text">{{item.description}}</b></button>
+  </div>
+
+</mat-toolbar> -->
+
+<header>
+  <div class="row">
+    <div class="col-5">
+      <button mat-icon-button class="button-bar" aria-label="Example icon-button with menu icon" (click)="open()"
+        *ngIf="isloggedIn">
+        <fa-icon class="icon" [icon]="faBars"></fa-icon>
+      </button>
+    </div>
+    <div class="col-7">
+      <img src="/assets/images/logo.png">
+    </div>
+    <span class="example-spacer"></span>
+  </div>
+  <div *ngFor="let item of topbarUserList">
+    <button class="icon-black" (click)="navigate(item.itemMenu)"><fa-icon class='icon' [icon]="item.icon"></fa-icon>
+      <b class="text">{{item.description}}</b></button>
+  </div>
+  <nav class="navigation">
+    <!-- <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contacts</a> -->
+    <a href="#" *ngIf="isloggedIn">Benvenuto!   {{idUser}}</a>
+    <button class="btnLogin-popup" *ngIf="!isloggedIn">Login</button>
+    <button class="btnLogin-popup" *ngIf="isloggedIn" (click)="logout()">Logout</button>
+  </nav>
+</header>

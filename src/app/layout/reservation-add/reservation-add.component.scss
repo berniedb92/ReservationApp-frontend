@@ -1,0 +1,75 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.chips {
+  padding: 2rem;
+  font-size: 18px;
+}
+
+.mats-chips {
+  background-color: #669cd9;
+}
+
+mat-calendar-body-selected {
+  color: red;
+  background-color: blue;
+}
+
+mat-radio-button {
+  margin-left: 1rem;
+  margin-block: 1rem;
+}
+
+.step-2 {
+  padding: 8rem;
+}
+
+.my-form-input {
+  padding: 8px;
+}
+
+.label {
+  color: #669cd9;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 13px;
+}
+
+.calendar-container {
+  width: 95%;
+
+  &mat-calendar-body-selected {
+    color: red;
+    background-color: blue;
+  }
+}
+
+.bdr {
+  border-radius: 8rem;
+  width: 50%;
+}
+
+td {
+  height: 5rem;
+  vertical-align: middle;
+  font-size: large;
+  font-size: 30px;
+  text-align: center;
+}
+
+th {
+  text-align: center;
+  height: 5rem;
+  width: 40%;
+  vertical-align: middle;
+  font-size: 30px;
+  &.first-row {
+    font-size: 40px;
+  }
+}
+

@@ -1,7 +1,8 @@
-import { Cliente } from "./cliente";
+import { Cliente } from "./Cliente";
 
 export class Tesseramento {
   clienteTess!: Cliente;
+  userid!: string;
   tipo!: TipoTessera;
   integrazione!: IntegrazioneTessera;
   codiceTessera!: number;

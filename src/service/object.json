@@ -1,0 +1,40 @@
+{
+  "id": "641f4075e555b21a4e6cf75c",
+  "userId": "Admin",
+  "password": "$2a$10$q.VrajD.kg/L0mtQtL6GgOMFcGJXgQRT.WZGUsKzNiJwDqlE7TF8e",
+  "attivo": "Si",
+  "ruoli": ["USER", "ADMIN"],
+  "user": {
+    "codiceTessera": 1002,
+    "dataTesseramento": "2022-12-12",
+    "tipo": {
+      "id": 4,
+      "quotaAssociativa": 15,
+      "tipo": "SUPER-TENNIS/SUPER-PADEL",
+      "prezzo": 70
+    },
+    "integrazione": {
+      "id": 5,
+      "tipo": "FIT AGONISTICA TENNIS / FIT AGONISTICA PADEL",
+      "prezzo": 60
+    },
+    "clienteTess": {
+      "id": 9,
+      "nome": "Bernardino",
+      "cognome": "Di Biagio",
+      "dataNascita": "1992-08-06",
+      "luogoNascita": "Orvieto",
+      "codiceFiscale": "brn001",
+      "nazionalita": "italiana",
+      "indirizzo": "via Alessandro Guarnelli 22",
+      "email": "bernardinodibiagio@live.it",
+      "numTelefono": "3393517768"
+    },
+    "scadenzaCertificato": "2023-10-24",
+    "scadenzaTessera": "2022-12-31",
+    "attiva": true,
+    "pagamento": 145,
+    "note": null,
+    "pagata": false
+  }
+}

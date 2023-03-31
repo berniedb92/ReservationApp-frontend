@@ -1,86 +1,319 @@
 @import "./styles/fonts";
 @import "./styles/variables";
-@import "./styles/other-screen";
-@import "./styles/tablet";
-@import "./styles/mobile";
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
 
-.content {
-  margin-inline: 100px;
-  padding: 0;
-  color: $fut-blue;
-  background: $bg-color;
-  font-family: Poppins;
-  font-size: 0.875rem;
+
+
+a,
+a:hover {
   text-decoration: none;
+  cursor: pointer;
+}
 
-  h1 {
-    color: $fut-blue;
-    background-color: white;
-    font-weight: 700;
-    font-family: Poppins;
+a:focus,
+a:active,
+button:focus,
+button:active {
+  outline: 0;
+}
+
+button:hover,
+button:focus {
+  outline: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+// h1 {
+//   color: $blue;
+//   font-weight: 700;
+//   font-family: Delicious;
+// }
+
+h2 {
+  color: $blue;
+  font-weight: 700;
+  font-family: Delicious;
+}
+
+h3 {
+  color: $blue;
+  font-weight: 700;
+  font-family: Delicious;
+}
+
+h4 {
+  color: $blue;
+  font-weight: 700;
+  font-family: Delicious;
+}
+
+h5 {
+  color: $blue;
+  font-weight: 700;
+  font-family: Delicious;
+}
+
+h6 {
+  color: $blue;
+  font-weight: 700;
+  font-family: Delicious;
+}
+
+p {
+  color: $blue;
+  margin-bottom: 0.5rem;
+}
+
+// td, th, tr, table {
+//   font-family: Delicious;
+//   color: $blue;
+// }
+
+.mat-radio-label-content {
+  font-family: Delicious;
+  -webkit-user-select: auto;
+  user-select: auto;
+  display: inline-block;
+  order: 0;
+  line-height: inherit;
+  padding-left: 8px;
+  padding-right: 0;
+}
+
+.mat-h1, .mat-headline, .mat-typography .mat-h1,
+.mat-typography .mat-headline, .mat-typography h1 {
+  font-family: Delicious;
+  letter-spacing: normal;
+  color: $blue;
+  font-weight: 1700;
+  margin: 0 0 16px;
+}
+
+.mat-step-text-label {
+  text-overflow: ellipsis;
+  font-family: Delicious;
+}
+
+#main-body {
+  // margin-left: 220px;
+  // background: $bg-main-nav;
+  z-index: 0;
+
+  #main.bg-main {
+    background: $bg-main-nav;
+    min-height: calc(100vh - 95px);
+
+    #secondary-header {
+      padding: 0 45px;
+
+      &.secondary-header {
+        .breadcrumbs {
+          margin-bottom: 5px;
+          color: $blue-light;
+
+          span {
+            margin-right: 5px;
+          }
+
+          .classe-detail {
+            font-weight: 500;
+          }
+        }
+
+        .title {
+          .action-dot {
+            background: none;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            outline: 0;
+            margin-top: -10px;
+            margin-left: 10px;
+          }
+        }
+      }
+
+    }
+
+    .content {
+      display: block;
+      padding: 5rem 100px;
+      margin: 20px 40px 0px;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      .button-delete {
+        color: red;
+        border-width: 2px;
+      }
+
+      .button-add {
+        color: green;
+        border-width: 2px;
+      }
+
+      .button-note{
+        color: sandybrown;
+        border-width: 2px;
+      }
+
+      .button-calendar {
+        color: #d366d9;
+        border-width: 2px;
+      }
+
+      .button-modifica {
+        color: blueviolet;
+        border-width: 2px;
+      }
+
+      .button-quote {
+        color: blue;
+        border-width: 2px;
+      }
+
+      .icon {
+        height: 50px;
+        width: 100px;
+      }
+
+      .button-confirm {
+        border-radius: 20px !important;
+        width: 20%;
+        height: 50px;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        font-size: calc(1vw + 3pt);
+        padding: 0 !important;
+        background-color: #669cd9;
+        color: #fff;
+        float: right;
+      }
+
+      .button-refuse {
+        border-radius: 20px !important;
+        width: 20%;
+        height: 50px;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        font-size: calc(1vw + 3pt);
+        padding: 0 !important;
+        background-color: #d366d9;
+        color: #fff;
+        float: right;
+      }
+
+      .button-nullable {
+        border-radius: 20px !important;
+        width: 20%;
+        height: 50px;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        font-size: calc(1vw + 3pt);
+        padding: 0 !important;
+        background-color: red;
+        color: #fff;
+        float: right;
+      }
+
+      .form-input {
+        border: none;
+        border-bottom: 3px solid #669cd9;
+        outline: none;
+        border-radius: 0;
+        background: transparent;
+        height: 60px;
+        width: 80%;
+        font-size: 25px;
+        font-weight: 500;
+      }
+
+      .form-adj{
+        padding: 2rem;
+      }
+
+      &.form-adj2 {
+        margin-left: 8rem;
+      }
+
+      .label {
+        color: #669cd9;
+        font-size: 18px;
+        font-weight: 700;
+        margin-left: 13px;
+      }
+
+      &.second-dashboard {
+        background: $grey-neutral-20;
+        border-radius: 32px;
+        margin: 80px 0 40px;
+        padding-bottom: 40px;
+      }
+
+      &.sticky {
+        position: sticky;
+        background: $grey-neutral-20;
+        top: 89px;
+        margin: 0;
+        padding: 0;
+        z-index: 102;
+
+        .reservation-card {
+          padding: 10px;
+          margin: 0;
+          background: transparent;
+
+          .reservation-card-header {
+            display: none;
+          }
+
+          .reservation-card-body {
+            .fieldset {
+              margin: 0;
+
+              label {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
   }
+}
 
-  a,
-  a:hover {
-    text-decoration: none;
-    cursor: pointer;
+@media screen and (max-width: 768px) {
+  body {
+    .test-responsive{
+      background-color: blue;
+    }
+
+    .resizableDialog {
+      max-height: 100% !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    #main-body {
+      // margin-left: 220px;
+      // background: $bg-main-nav;
+      z-index: 0;
+
+      #main.bg-main {
+        background: $bg-main-nav;
+        min-height: calc(100vh - 90px);
+      }
+
+      .error-message {
+        padding: 1rem;
+      }
+    }
+
   }
-
-  a:focus,
-  a:active,
-  button:focus,
-  button:active {
-    outline: 0;
-  }
-
-  button:hover,
-  button:focus {
-    outline: 0;
-  }
-
-  .clear {
-    clear: both;
-  }
-
-  h1 {
-    color: $fut-blue;
-    font-weight: 700;
-    font-family: Space-Grotesk;
-  }
-
-  h2 {
-    color: $fut-blue;
-    font-weight: 700;
-    font-family: Space-Grotesk;
-  }
-
-  h3 {
-    color: $fut-blue;
-    font-weight: 700;
-    font-family: Space-Grotesk;
-  }
-
-  h4 {
-    color: $fut-blue;
-    font-weight: 700;
-    font-family: Space-Grotesk;
-  }
-
-  h5 {
-    color: $fut-blue;
-    font-weight: 700;
-    font-family: Space-Grotesk;
-  }
-
-  h6 {
-    color: $fut-blue;
-    font-weight: 700;
-    font-family: Space-Grotesk;
-  }
-
-  p {
-    color: $fut-blue;
-    margin-bottom: 0.5rem;
-  }
-
 }
