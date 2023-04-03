@@ -1,0 +1,85 @@
+#modal-disponibility {
+  .mat-dialog-container {
+    transform: none;
+    width: 650px;
+    height: 800px;
+  }
+
+  .modal-style {
+    width: 950px;
+    height: 800px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .card-orario {
+      width: 150px;
+      border-radius: 20px;
+      outline: none;
+      background-color: khaki;
+      text-align: center;
+      font-size: 20px;
+      font-style: italic;
+  }
+
+  .button-confirm {
+    border-radius: 20px !important;
+    width: 20%;
+    height: 50px;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    font-size: calc(1vw + 3pt);
+    padding: 0 !important;
+    background-color: #669cd9;
+    color: #fff;
+    float: right;
+  }
+
+  .button-refuse {
+    border-radius: 20px !important;
+    width: 20%;
+    height: 50px;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    font-size: calc(1vw + 3pt);
+    padding: 0 !important;
+    background-color: #d366d9;
+    color: #fff;
+    float: right;
+  }
+
+  .select-form {
+      width: 63%;
+      border-radius: 50px;
+      font-size: 22px;
+      text-align: center;
+      margin-inline: 20px;
+      margin-block: 6px;
+      background-color: coral;
+      ::first-line{
+        background-color: red;
+      }
+  }
+
+  ::ng-deep .select-disp {
+    background-color: transparent;
+    border-radius: 50%;
+  }
+
+  // input {
+  //   background-color: transparent;
+  //   border: none;
+  // }
+  .datepicker {
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    font-size: 20px;
+    text-align: center;
+    background-color: aliceblue;
+    margin-top: 7px;
+    margin-left: 190px;
+    border: none;
+}
+}
+

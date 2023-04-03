@@ -1,2 +1,37 @@
-<p>modal-set-availability works!</p>
-<p>{{numero}}</p>
+<div id="modal-disponibility">
+  <div class="row modal-style">
+    <div class="row d-flex justify-content-around">
+      <div class="col">
+        <h1>Disponibilità campi</h1>
+      </div>
+      <div class="col">
+        <input type="date" class="datepicker" id="datePicker" [value]="dateSelect">
+      </div>
+    </div>
+<!-- <form [formGroup]="dispForm"> -->
+    <ng-container *ngFor="let disp of disponibilitaCampo;let i = index">
+      <div class="col-2">
+
+        <input type="hidden" formControlName="id" [value]="i" id="id">
+        <mat-card class="card-orario" id="orario">
+          {{disp}}
+        </mat-card>
+      </div>
+
+      <div class="col-2">
+
+        <select [(ngModel)]="disp.available" id="availability" class="form-select select-form">
+          <option value="true">Si</option>
+          <option value="false">No</option>
+        </select>
+
+      </div>
+    </ng-container>
+
+    <div>
+      <button class="button-refuse" (click)="close()">Chiudi</button>
+      <button class="button-confirm" (click)="save()">Salva</button>
+    </div>
+
+  </div>
+</div>
